@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menuscroll::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa;
+}
+
+.divmenu .active {
+  background: rgb(220, 219, 219);
+}
+
+.text-shortscomponent:hover .btn {
+  display: block;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 25px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.swiper-button-prev::after {
+  width: 30px;
+  height: 38px;
+}
+.swiper-button-next::after {
+  width: 30px;
+  height: 38px;
+}
+.swiper-slide {
+  width: min-content !important;
+}
+
+.swiper-wrapper {
+  transform: translate3d(0px, 0px, 0px, 0px) !important;
+}
+
+.slider-name .active {
+  background: rgb(42, 41, 41);
+  color: rgb(255, 255, 255);
+}
+
+
+.children{
+  display: none;
+}
+.father:hover .children{
+  display: block;
+}

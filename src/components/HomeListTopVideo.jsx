@@ -9,7 +9,7 @@ function HomeListVideo() {
   const [mute, setmute] = useState(false);
   const [totaltime, settotaltime] = useState(0);
   const [currenttime, setcurrenttime] = useState();
-  const [items, setitems] = useState(false);
+  // const [items, setitems] = useState(false);
 
   const VideoMousMove = (e) => {
     if (showvideo) {
@@ -53,6 +53,12 @@ function HomeListVideo() {
       )}:${lodingZeroFormater.format(seconds)} `;
     }
   }
+
+  useEffect(()=>{
+   window.addEventListener('click',e=>{
+    console.log('window',e);
+   }) 
+  },[])
 
   return (
     <div className="p-1 w-[100%] h-[300px] flex flex-col items-center justify-center gap-1">
@@ -147,7 +153,7 @@ function HomeListVideo() {
           <p className=" text-white"></p>
         </div> */}
       </div>
-      <div className="w-full bg-red-500 father flex relative ">
+      <div className="w-full father flex relative ">
         <NavLink to="/tsttssts" className=" w-full block">
           <div className="flex gap-2 p-1">
             <img
@@ -168,19 +174,20 @@ function HomeListVideo() {
             </div>
           </div>
         </NavLink>
-        <div className="children h-max bg-red-400">
+        {/* <div className="children relative hover:father h-max ">
           <button
-            onClick={() => setitems(!items)}
+            onClick={(e) => {
+              setitems(!items)
+              console.log(e);
+            }}
             className=" w-[25px] h-[25px] bg-red-500 rotate-90 rounded-full"
           >
             ---
           </button>
-        </div>
-        <div
-          className={`hidden w-[150px] h-[200px] z-[100] absolute top-6  right-0 bg-green-600`}
-        >
+        <div className={` children  w-[150px] h-[200px] z-[100] absolute top-6  right-0 bg-green-600`}>
           <p>tst</p>
         </div>
+        </div> */}
       </div>
     </div>
   );

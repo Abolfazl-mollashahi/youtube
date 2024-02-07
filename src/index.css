@@ -51,3 +51,9 @@
 .father:hover .children{
   display: block;
 }
+.child{
+  display: none;
+}
+.father:hover .child{
+  display: flex;
+}

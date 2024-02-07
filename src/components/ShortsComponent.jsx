@@ -75,7 +75,7 @@ function ShortsComponent() {
           className="w-full h-[450px] overflow-hidden p-1 justify-center items-center grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
         >
           {dbshorts.map((item) => (
-            <NavLink to="/" key={item}>
+            <NavLink to="/shorts" key={item}>
               <div className="  mx-auto p-1 ">
                 <video
                   onMouseMove={VideoMousMoveshorts}

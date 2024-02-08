@@ -14,30 +14,32 @@ function Home() {
 
   const divcontiner = useRef({});
   const divslidername = useRef({});
-  // const spanvideo = useRef({});
-  // let sum = useRef({ data : 0 })
-
 
   const togglefunc = () => {
     if (toggleflag) {
       settoggleflag(false);
       divcontiner.current.style.marginLeft = "0px";
-      // divcontiner.current.style.width = "100%";
       divslidername.current.style.marginLeft = "0px";
       divslidername.current.style.paddingRight = "0px";
-      console.log("if");
+      console.log("true");
     } else {
       settoggleflag(true);
-      // divcontiner.current.style.width = "80%";
       divcontiner.current.style.marginLeft = "150px";
       divslidername.current.style.marginLeft = "150px";
-      // divslidername.current.style.paddingRight = "220px";
-      console.log("else");
+    }
+  };
+
+  const closefather = () => {
+    if(toggleflag){
+      settoggleflag(false);
+      divcontiner.current.style.marginLeft = "0px";
+      divslidername.current.style.marginLeft = "0px";
+      divslidername.current.style.paddingRight = "0px";
     }
   };
 
   return (
-    <>
+    <div onClick={closefather}>
       <MyNavbar
         toggleflag={toggleflag}
         settoggleflag={settoggleflag}
@@ -61,18 +63,15 @@ function Home() {
           <div className="contin-video w-full md:pl-[80px] relative mt-[50px] flex flex-col overflow-scroll overflow-x-auto">
             <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-2 justify-center items-center">
               {dbvideos.slice(0, 8).map((item) => (
-                <HomeListTopVideo
-                  key={item}
-
-                />
+                <HomeListTopVideo key={item} />
               ))}
             </div>
 
             {/*  */}
 
             <ShortsComponent
-              // VideoMousMove={VideoMousMove}
-              // VideoMousLeav={VideoMousLeav}
+            // VideoMousMove={VideoMousMove}
+            // VideoMousLeav={VideoMousLeav}
             />
 
             {/*  */}
@@ -90,8 +89,8 @@ function Home() {
             {/*  */}
 
             <ShortsComponent
-              // VideoMousMove={VideoMousMove}
-              // VideoMousLeav={VideoMousLeav}
+            // VideoMousMove={VideoMousMove}
+            // VideoMousLeav={VideoMousLeav}
             />
 
             {/*  */}
@@ -108,7 +107,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

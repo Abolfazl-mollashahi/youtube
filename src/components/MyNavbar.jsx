@@ -37,14 +37,14 @@ function MyNavbar({ toggleflag,settoggleflag,togglefunc }) {
     }
   };
 
-  window.addEventListener('click',e=>{
-    console.log('before if');
-    if(e.target !== btnnav.current && btnnav.current.style.display === "block"){
-      btnnav.current.style.display = 'none'
-      console.log('in if');
-    }
-    console.log('after if');
-  })
+  // window.addEventListener('click',e=>{
+  //   console.log('before if');
+  //   if(e.target !== btnnav.current && btnnav.current.style.display === "block"){
+  //     btnnav.current.style.display = 'none'
+  //     console.log('in if');
+  //   }
+  //   console.log('after if');
+  // })
   
 
   return (

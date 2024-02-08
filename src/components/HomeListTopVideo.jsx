@@ -11,17 +11,17 @@ function HomeListVideo() {
   const [currenttime, setcurrenttime] = useState();
   // const [items, setitems] = useState(false);
 
-  const VideoMousMove = (e) => {
+  const VideoMousMove = () => {
     if (showvideo) {
       setshowvideo(!showvideo);
-      e.target.play();
+      videoelem.current.play();
     } else {
-      e.target.play();
+      videoelem.current.play();
       setshowvideo(true);
     }
   };
-  const VideoMousLeav = (e) => {
-    e.target.pause();
+  const VideoMousLeav = () => {
+    videoelem.current.pause();
   };
 
   const updatetimes = () => {
@@ -32,8 +32,8 @@ function HomeListVideo() {
     setmute(!mute);
     videoelem.current.muted = !videoelem.current.muted;
   };
-  const lodeddata = (e) => {
-    settotaltime(formatduration(e.timeStamp));
+  const lodeddata = () => {
+    settotaltime(formatduration(videoelem.current.timeStamp));
   };
 
   const lodingZeroFormater = new Intl.NumberFormat(undefined, {
@@ -56,21 +56,23 @@ function HomeListVideo() {
 
   return (
     <div className="p-1 w-[100%] h-[300px] flex flex-col items-center justify-center gap-1">
-      <div className="father relative rounded-xl z-[5] before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[7] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden">
+      <div
+       className="father z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
+          onMouseOver={VideoMousMove}
+          onMouseOut={VideoMousLeav}
+       >
         <NavLink to="/tsttssts" className="">
           <video
             src={tstvideo}
-            onMouseOver={VideoMousMove}
-            onMouseOut={VideoMousLeav}
             onLoadedData={lodeddata}
             onTimeUpdate={updatetimes}
             muted
             ref={videoelem}
-            className=" w-full h-[240px]  object-cover rounded-xl"
+            className=" w-full h-[240px] z-[10] object-cover rounded-xl"
           ></video>
         </NavLink>
 
-        <div className="children bg-[#3939392b]  px-1 py-0.5 absolute right-2 top-2 flex items-center rounded-lg gap-1">
+        <div className="children bg-[#3939392b] z-[2] px-1 py-0.5 absolute right-2 top-2 flex items-center rounded-lg gap-1">
           <button onClick={mutefunc} className="mute z-[20]">
             <svg
               style={mute ? {} : { display: "none" }}
@@ -139,13 +141,12 @@ function HomeListVideo() {
           </button>
         </div>
 
-        <p className="children flex absolute bottom-3 left-2 items-center z-[6] text-white  gap-1 ">
+        <div className="children absolute bottom-3 left-2 text-white ">
           <span>{currenttime}</span>/<span>{totaltime}</span>
-        </p>
+        </div>
 
-        {/* <div className="children bg-red-400 h-[5px] absolute bottom-0 left-0">
-          <p className=" text-white"></p>
-        </div> */}
+
+        
       </div>
       <div className="w-full father flex relative ">
         <NavLink to="/tsttssts" className=" w-full block">

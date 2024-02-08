@@ -14,6 +14,7 @@ function MyNavbar({ toggleflag,settoggleflag,togglefunc }) {
   const [flag1, setflag1] = useState(false);
   const btnmore = useRef({});
   const btnless = useRef({});
+  const btnnav = useRef();
 
   let div2 = useRef({});
 
@@ -35,6 +36,16 @@ function MyNavbar({ toggleflag,settoggleflag,togglefunc }) {
       setflag1(false);
     }
   };
+
+  window.addEventListener('click',e=>{
+    console.log('before if');
+    if(e.target !== btnnav.current && btnnav.current.style.display === "block"){
+      btnnav.current.style.display = 'none'
+      console.log('in if');
+    }
+    console.log('after if');
+  })
+  
 
   return (
     <>
@@ -143,7 +154,7 @@ function MyNavbar({ toggleflag,settoggleflag,togglefunc }) {
 
           {/* menu-hamber */}
           <div className="flex flex-col pl-3 relative">
-            <button onClick={togglefunc}>
+            <button ref={btnnav} onClick={togglefunc}>
               <FaBarsStaggered size={23} />
             </button>
 

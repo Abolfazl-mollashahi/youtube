@@ -19,7 +19,7 @@ function Shorts() {
       <div className=" w-full mt-[60px] justify-center items-center flex flex-col gap-5 pb-5">
         <div className=" w-[340px] relative father flex flex-col mx-auto h-[600px] rounded-2xl bg-red-500">
           
-          <video autoPlay src={videoshorts}></video>
+          <video className=" rounded-2xl" autoPlay src={videoshorts}></video>
 
           <div className=" child absolute top-0 left-0 w-full px-3 pt-3 flex justify-between">
             <div className="left">

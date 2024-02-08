@@ -54,15 +54,9 @@ function HomeListVideo() {
     }
   }
 
-  useEffect(()=>{
-   window.addEventListener('click',e=>{
-    console.log('window',e);
-   }) 
-  },[])
-
   return (
     <div className="p-1 w-[100%] h-[300px] flex flex-col items-center justify-center gap-1">
-      <div className="father relative rounded-xl z-[5] before:content-[''] before:absolute before:bottom-0 before:w-full before:-z-[1] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#000000f4] before:to-[#26262643] before:bg-transparent overflow-hidden">
+      <div className="father relative rounded-xl z-[5] before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[7] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden">
         <NavLink to="/tsttssts" className="">
           <video
             src={tstvideo}

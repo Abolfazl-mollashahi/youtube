@@ -15,6 +15,9 @@ import { useState } from "react";
 
 function Shorts() {
   const [toggleflagshorts, settoggleflagshorts] = useState(false);
+  const [likeflag, setlikeflag] = useState(false);
+  const [likenumber, setlikenumber] = useState(435);
+
 
   const togglefuncshorts = () => {
     if (toggleflagshorts) {
@@ -23,12 +26,17 @@ function Shorts() {
       settoggleflagshorts(true);
     }
   };
-
   const closefathershorts = () => {
     if (toggleflagshorts) {
       settoggleflagshorts(false);
     }
   };
+  const setlikefunc = ()=>{
+    if(!likeflag){
+      setlikeflag(true)
+      setlikenumber(likenumber + 1)
+    }
+  }
 
   return (
     <div onClick={closefathershorts}>
@@ -38,7 +46,7 @@ function Shorts() {
       />
       <div className=" w-full mt-[60px] justify-center items-center flex flex-col gap-5 pb-5">
         <div className=" w-[340px] relative father flex flex-col mx-auto h-[600px] rounded-2xl bg-red-500">
-          <video className=" rounded-2xl" autoPlay src={videoshorts}></video>
+          <video className=" rounded-2xl" autoPlayc src={videoshorts}></video>
 
           <div className=" child absolute top-0 left-0 w-full px-3 pt-3 flex justify-between">
             <div className="left">
@@ -61,10 +69,10 @@ function Shorts() {
 
           <div className=" absolute text-[13px] text-white bottom-0 right-0 sm:-right-[65px] sm:text-black w-[60px] h-max flex flex-col gap-3 items-center justify-center bg-blue-4000">
             <div className="p-1 w-[100%] text-center h-max like">
-              <button className=" p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full bg-[#0000004a] ">
+              <button onClick={setlikefunc} className={` ${likeflag ? 'bg-[#f6f2f2] text-black ' : 'bg-[#0000004a] '} p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}>
                 <SlLike size={20} />
               </button>
-              <p>4.8M</p>
+              <p>{likenumber}</p>
             </div>
             <div className="p-1 w-[100%] text-center h-max dislike">
               <button className=" p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full bg-[#0000004a] ">

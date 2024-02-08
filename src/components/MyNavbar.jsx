@@ -173,7 +173,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/subscriptions"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Subscriptions</span>
@@ -197,7 +197,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           <hr />
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <svg
@@ -218,7 +218,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Your channel</span>
@@ -238,7 +238,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>History</span>
@@ -262,7 +262,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Your videos</span>
@@ -284,7 +284,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Watch later</span>
@@ -331,7 +331,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           {flag1 ? (
                             <div className=" px-4 w-[240px] mx-auto flex flex-col gap-3 items-end">
                               <NavLink
-                                to="/shorts"
+                                to="/tst"
                                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                               >
                                 <span>Liked videos</span>
@@ -353,7 +353,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                               </NavLink>
 
                               <NavLink
-                                to="/shorts"
+                                to="/tst"
                                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                               >
                                 <span>play list</span>
@@ -406,7 +406,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           <p className="pl-2">Subscriptions</p>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <div className=" w-[5px] h-[5px] rounded-full bg-blue-600"></div>
@@ -415,7 +415,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Browse channels</span>
@@ -458,7 +458,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           <p className="pl-2">Explore</p>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Trending</span>
@@ -479,7 +479,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Shopping</span>
@@ -500,7 +500,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Music</span>
@@ -521,7 +521,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Movies & TV</span>
@@ -542,7 +542,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Live</span>
@@ -565,7 +565,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Gaming</span>
@@ -586,7 +586,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>News</span>
@@ -607,7 +607,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Sports</span>
@@ -628,7 +628,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Learning</span>
@@ -649,7 +649,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Fashion & Beauty</span>
@@ -670,7 +670,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Podcasts</span>
@@ -693,7 +693,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           <p className="pl-2">More from YouTube</p>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>YouTube Premium</span>
@@ -762,7 +762,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>YouTube Studio</span>
@@ -796,7 +796,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>YouTube TV</span>
@@ -822,7 +822,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>YouTube Music</span>
@@ -854,7 +854,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>YouTube Kids</span>
@@ -890,7 +890,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           <hr />
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Settings</span>
@@ -911,7 +911,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                           </NavLink>
 
                           <NavLink
-                            to="/shorts"
+                            to="/tst"
                             className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                           >
                             <span>Report history</span>

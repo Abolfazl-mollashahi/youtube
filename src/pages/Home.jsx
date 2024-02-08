@@ -21,7 +21,6 @@ function Home() {
       divcontiner.current.style.marginLeft = "0px";
       divslidername.current.style.marginLeft = "0px";
       divslidername.current.style.paddingRight = "0px";
-      console.log("true");
     } else {
       settoggleflag(true);
       divcontiner.current.style.marginLeft = "150px";

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function HomeListVideo() {
-  const videoelem = useRef({});
+  const videoelem = useRef();
   const [showvideo, setshowvideo] = useState(false);
   const [mute, setmute] = useState(false);
   const [totaltime, settotaltime] = useState(0);
@@ -32,9 +32,6 @@ function HomeListVideo() {
     setmute(!mute);
     videoelem.current.muted = !videoelem.current.muted;
   };
-  const lodeddata = () => {
-    settotaltime(formatduration(videoelem.current.timeStamp));
-  };
 
   const lodingZeroFormater = new Intl.NumberFormat(undefined, {
     minimumIntegerDigits: 2,
@@ -53,6 +50,10 @@ function HomeListVideo() {
       )}:${lodingZeroFormater.format(seconds)} `;
     }
   }
+  const lodeddata = (e) => {
+    settotaltime(formatduration(e.timeStamp));
+  };
+
 
   return (
     <div className="p-1 w-[100%] h-[300px] flex flex-col items-center justify-center gap-1">

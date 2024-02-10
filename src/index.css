@@ -60,5 +60,18 @@
 
 .shareshortspage::-webkit-scrollbar {
   height: 0px;
+  width: 0px;
+}
+.widthscroll::-webkit-scrollbar{
+  width: 5px;
+  background: #cbb7d9;
+}
+
+.widthscroll::-webkit-scrollbar-thumb{
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 100%;
+  background: #440367;
+
 }
 

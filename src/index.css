@@ -57,3 +57,8 @@
 .father:hover .child{
   display: flex;
 }
+
+.shareshortspage::-webkit-scrollbar {
+  height: 0px;
+}
+

@@ -44,17 +44,16 @@
   color: rgb(255, 255, 255);
 }
 
-
-.children{
+.children {
   display: none;
 }
-.father:hover .children{
+.father:hover .children {
   display: block;
 }
-.child{
+.child {
   display: none;
 }
-.father:hover .child{
+.father:hover .child {
   display: flex;
 }
 
@@ -62,16 +61,21 @@
   height: 0px;
   width: 0px;
 }
-.widthscroll::-webkit-scrollbar{
+.widthscroll::-webkit-scrollbar {
   width: 5px;
   background: #cbb7d9;
 }
 
-.widthscroll::-webkit-scrollbar-thumb{
+.widthscroll::-webkit-scrollbar-thumb {
   width: 10px !important;
   height: 10px !important;
   border-radius: 100%;
   background: #440367;
-
 }
 
+.shadow-tst {
+  border-radius: 61px;
+background: linear-gradient(145deg, #9c73c5, #b989ea);
+box-shadow:  24px 24px 48px #513c67,
+             -24px -24px 48px #ffc4ff;
+}

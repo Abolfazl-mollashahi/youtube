@@ -21,6 +21,8 @@ function ShowVideoShorts() {
   const [showcomments, setshowcomments] = useState(false);
   const [videomeutflag, setvideomeutflag] = useState(false);
   const [videoplayflag, setvideoplayflag] = useState(false);
+  const [dialogsub, setdialogsub] = useState(false);
+  const [sub, setsub] = useState(false);
   const [likenumber, setlikenumber] = useState(435);
   const divshowmenu = useRef({});
   const btnmenuitem = useRef({});
@@ -116,17 +118,25 @@ function ShowVideoShorts() {
     };
   });
 
+  const subscribefunc =()=>{
+    if(sub){
+      setdialogsub(true)
+    }else{
+      setsub(true)
+    }
+  }
+
   return (
     <div className="w-[450px] sm:w-[550px] md:w-[750px] md:flex md:justify-center h-[620px] overflow-y-auto shareshortspage overflow-scroll">
       <div
         className={` ${
           showcomments ? "w-max" : " "
-        } h-[570px]  flex justify-center gap-1`}
+        } h-[570px]  flex justify-center gap-2`}
       >
         <div
           onMouseEnter={move}
           onMouseLeave={leve}
-          className=" w-[340px] z-[5] relative mx-auto father flex flex-col h-[570px] rounded-2xl"
+          className=" w-[340px] z-[5] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500"
         >
           <video
             ref={videotag}
@@ -261,7 +271,7 @@ function ShowVideoShorts() {
               <NavLink className=" text-white" to={`/`}>
                 abolfazl-tst
               </NavLink>
-              <button className=" px-2 py-1 bg-yellow-50 rounded-2xl">
+              <button onClick={subscribefunc} className={` ${sub ? ' bg-[#25232385] text-white' : ' bg-yellow-50'} px-2 py-1  rounded-2xl `}>
                 Subscribe
               </button>
             </div>
@@ -273,7 +283,7 @@ function ShowVideoShorts() {
 
         {/* show-comments */}
         {showcomments ? (
-          <div className=" w-[340px] h-[570px] rounded-2xl bg-red-300f">
+          <div className=" w-[340px] h-[570px] rounded-2xl shadow-lg shadow-violet-500">
             <div className="px-2 flex justify-between items-center">
               <p>
                 {" "}
@@ -345,6 +355,21 @@ function ShowVideoShorts() {
       ) : (
         ""
       )}
+
+      {/* dialog-sub */}
+      {
+        dialogsub ? 
+        <div className=" w-full h-full fixed z-[200] top-0 left-0 flex justify-center items-center bg-[#00000036] ">
+          <div className="w-[270px] h-[100px] p-2 flex flex-col gap-3 justify-center bg-[#f5f5f8] shadow-lg shadow-gray-800 rounded-2xl">
+            <span className=" w-max mx-auto"> UnSubscribe from @abolfazl-tst?</span>
+            <div className=" w-full flex justify-center gap-5">
+            <button onClick={()=>setdialogsub(false)} className=" px-2 py-1 rounded-lg hover:bg-gray-200 text-black">Cancel</button>
+            <button onClick={()=>{setsub(false),setdialogsub(false)}} className=" px-2 py-1 rounded-lg hover:bg-gray-200 text-blue-600">UnSubscribe</button>
+            </div>
+          </div>
+        </div>
+        : <></>
+      }
     </div>
   );
 }

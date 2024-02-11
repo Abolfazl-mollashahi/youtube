@@ -315,7 +315,7 @@ function ShowVideoShorts() {
       {/* share */}
       {shareflag ? (
         <div className=" w-full h-full fixed z-[200] top-0 left-0 flex justify-center items-center bg-[#00000085]">
-          <div className=" w-[400px] h-[210px] p-2 bg-[#e1e4f4] shadow-lg shadow-gray-800 rounded-2xl">
+          <div className=" w-[400px] h-[210px] p-2 bg-[#ffffff] shadow-lg shadow-gray-800 rounded-2xl">
             <div className="px-1 mt-1 flex items-center justify-between">
               <span>Share</span>
               <button

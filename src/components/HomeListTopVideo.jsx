@@ -7,8 +7,8 @@ function HomeListVideo() {
   const videoelem = useRef();
   const [showvideo, setshowvideo] = useState(false);
   const [mute, setmute] = useState(false);
-  const [totaltime, settotaltime] = useState(0);
-  const [currenttime, setcurrenttime] = useState();
+  const [totaltime, settotaltime] = useState("");
+  const [currenttime, setcurrenttime] = useState("");
   // const [items, setitems] = useState(false);
 
   const VideoMousMove = () => {
@@ -24,7 +24,6 @@ function HomeListVideo() {
     videoelem.current.pause();
   };
 
-  
   const mutefunc = () => {
     setmute(!mute);
     videoelem.current.muted = !videoelem.current.muted;
@@ -33,10 +32,12 @@ function HomeListVideo() {
   const lodingZeroFormater = new Intl.NumberFormat(undefined, {
     minimumIntegerDigits: 2,
   });
-  function formatduration(time) {
+  
+  const formatDuration = (time) => {
     const seconds = Math.floor(time % 60);
     const minutes = Math.floor(time / 60) % 60;
     const hours = Math.floor(time / 3600);
+  
     if (hours === 0) {
       return ` ${minutes}:${lodingZeroFormater.format(seconds)} `;
     } else if (minutes === 0) {
@@ -44,29 +45,48 @@ function HomeListVideo() {
     } else {
       return ` ${hours}:${lodingZeroFormater.format(
         minutes
-        )}:${lodingZeroFormater.format(seconds)} `;
-      }
+      )}:${lodingZeroFormater.format(seconds)} `;
     }
-    const updatetimes = () => {
-      setcurrenttime(formatduration(videoelem.current.currentTime));
-    };
-  const lodeddata = (e) => {
-    settotaltime(formatduration(e.timeStamp));
   };
+  
+  const updateTimes = () => {
+    setcurrenttime(formatDuration(videoelem.current.currentTime));
+  };
+  
+  const loadedData = (e) => {
+    settotaltime(formatDuration(e.target.duration));
+  };
+  
+  useEffect(() => {
+    const videoElement = videoelem.current;
+  
+    if (videoElement) {
+      videoElement.addEventListener("timeupdate", updateTimes);
+      videoElement.addEventListener("loadeddata", loadedData);
+    }
+  
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener("timeupdate", updateTimes);
+        videoElement.removeEventListener("loadeddata", loadedData);
+      }
+    };
+  },[]);
+
 
 
   return (
     <div className="p-1 w-[100%] h-[300px] flex flex-col items-center justify-center gap-1">
       <div
-       className="father z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
-          onMouseOver={VideoMousMove}
-          onMouseOut={VideoMousLeav}
-       >
+        className="father z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
+        onMouseOver={VideoMousMove}
+        onMouseOut={VideoMousLeav}
+      >
         <NavLink to="/tsttssts" className="">
           <video
             src={tstvideo}
-            onLoadedData={lodeddata}
-            onTimeUpdate={updatetimes}
+            onLoadedData={loadedData}
+            onTimeUpdate={updateTimes}
             muted
             ref={videoelem}
             className=" w-full h-[240px] z-[10] object-cover rounded-xl"
@@ -142,12 +162,9 @@ function HomeListVideo() {
           </button>
         </div>
 
-        <div className="children absolute bottom-3 left-2 text-white ">
+        <div className="childrens absolute bottom-3 left-2 text-white ">
           <span>{currenttime}</span>/<span>{totaltime}</span>
         </div>
-
-
-        
       </div>
       <div className="w-full father flex relative ">
         <NavLink to="/tsttssts" className=" w-full block">

@@ -269,13 +269,15 @@ function ShowVideoShorts() {
                 onClick={setlikefunc}
                 className={` ${
                   likeflag
-                    ? " bg-[#4a4a4a] text-white  "
-                    : "bg-[#7e7d7d4a] text-black "
+                    ? " bg-[#ffffff] border border-black text-black  "
+                    : "bg-[#4e4e4e4a] text-white "
                 } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
               >
                 <SlLike size={20} />
               </button>
-              <p>{likenumber}</p>
+              <p className={` ${
+                showcomments ? 'text-white' : ' text-white sm:text-black'
+              } `}>{likenumber}</p>
             </div>
             {/* btn-dislike */}
             <div className="p-1 w-[100%] text-center h-max dislike">
@@ -283,13 +285,15 @@ function ShowVideoShorts() {
                 onClick={setdislikefunc}
                 className={` ${
                   dislikeflag
-                    ? " bg-[#f6f2f2] text-black sm:bg-[#000000da] sm:text-white "
-                    : "bg-[#0000004a] "
+                  ? " bg-[#ffffff] border border-black text-black  "
+                  : "bg-[#4e4e4e4a] text-white "
                 } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
               >
                 <SlDislike size={20} />
               </button>
-              <p>Dislike</p>
+              <p className={` ${
+                showcomments ? 'text-white' : ' text-white sm:text-black'
+              } `}>Dislike</p>
             </div>
             {/* btn-comment */}
             <div className="p-1 w-[100%] text-center h-max comment">
@@ -298,13 +302,15 @@ function ShowVideoShorts() {
                   onClick={() => setshowcomments(!showcomments)}
                   className={`${
                     showcomments
-                      ? " bg-[#f6f2f2] text-black  sm:text-white "
-                      : "bg-[#0000004a] "
+                    ? " bg-[#ffffff] border border-black text-black  "
+                    : "bg-[#4e4e4e4a] text-white "
                   } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
                 >
                   <MdComment size={20} />
                 </button>
-                <p>4.3K</p>
+                <p className={` ${
+                showcomments ? 'text-white' : ' text-white sm:text-black'
+              } `}>4.3K</p>
               </div>
             </div>
             {/* btn-share */}
@@ -313,13 +319,15 @@ function ShowVideoShorts() {
                 onClick={setshareflagfunc}
                 className={` ${
                   shareflag
-                    ? " bg-[#f6f2f2] text-black sm:bg-[#000000da] sm:text-white "
-                    : "bg-[#0000004a] "
+                  ? " bg-[#ffffff] border border-black text-black  "
+                  : "bg-[#4e4e4e4a] text-white "
                 } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
               >
                 <RiShareForwardFill size={20} />
               </button>
-              <p>Share</p>
+              <p className={` ${
+                showcomments ? 'text-white' : ' text-white sm:text-black'
+              } `}>Share</p>
             </div>
             {/* btn-menu */}
             <div className="p-1 w-[100%] text-center h-max menu">
@@ -328,8 +336,8 @@ function ShowVideoShorts() {
                 onClick={menuitemsfunc}
                 className={`${
                   menulitems
-                    ? " bg-[#f6f2f2] text-black sm:bg-[#000000da] sm:text-white "
-                    : "bg-[#0000004a] "
+                  ? " bg-[#ffffff] border border-black text-black  "
+                  : "bg-[#4e4e4e4a] text-white "
                 }  p-1 w-[45px] btn-tst h-[45px] flex items-center justify-center rounded-full `}
               >
                 <CiMenuKebab size={20} />

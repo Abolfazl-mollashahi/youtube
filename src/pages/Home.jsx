@@ -68,39 +68,25 @@ function Home() {
 
             {/*  */}
 
-            <ShortsComponent
-            // VideoMousMove={VideoMousMove}
-            // VideoMousLeav={VideoMousLeav}
-            />
+            <ShortsComponent/>
 
             {/*  */}
 
             <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 justify-center items-center">
               {dbvideos.slice(0, 8).map((item) => (
-                <HomeListTopVideo
-                  key={item}
-                  // VideoMousMove={VideoMousMove}
-                  // VideoMousLeav={VideoMousLeav}
-                />
+                <HomeListTopVideo key={item}/>
               ))}
             </div>
 
             {/*  */}
 
-            <ShortsComponent
-            // VideoMousMove={VideoMousMove}
-            // VideoMousLeav={VideoMousLeav}
-            />
+            <ShortsComponent />
 
             {/*  */}
 
             <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 justify-center items-center">
               {dbvideos.map((item) => (
-                <HomeListTopVideo
-                  key={item}
-                  // VideoMousMove={VideoMousMove}
-                  // VideoMousLeav={VideoMousLeav}
-                />
+                <HomeListTopVideo key={item} />
               ))}
             </div>
           </div>

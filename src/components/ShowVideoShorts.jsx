@@ -20,8 +20,8 @@ function ShowVideoShorts() {
   const [menulitems, setmenulitems] = useState(false);
   const [showcomments, setshowcomments] = useState(false);
   const [videomeutflag, setvideomeutflag] = useState(false);
-  const [videoplayflag, setvideoplayflag] = useState(false);
   const [dialogsub, setdialogsub] = useState(false);
+  const [flagplay, setflagplay] = useState(false);
   const [sub, setsub] = useState(false);
   const [likenumber, setlikenumber] = useState(435);
   const divshowmenu = useRef({});
@@ -171,16 +171,6 @@ function ShowVideoShorts() {
     setshareflag(!shareflag);
   };
 
-  const videoplayfunc = () => {
-    if (videoplayflag) {
-      videotag.current.pause();
-      setvideoplayflag(false);
-    } else {
-      videotag.current.play();
-      setvideoplayflag(true);
-    }
-  };
-
   const videomeutfunc = () => {
     setvideomeutflag(!videomeutflag);
     videotag.current.muted = !videotag.current.muted;
@@ -188,13 +178,16 @@ function ShowVideoShorts() {
   };
 
   const move = () => {
-    videotag.current.currentTime = 0;
-    videotag.current.play();
-    // setvideoplayflag(true);
+    if (flagplay) {
+      videotag.current.pause();
+    } else {
+      videotag.current.play();
+    }
+    setflagplay(!flagplay);
   };
   const leve = () => {
     videotag.current.pause();
-    // setvideoplayflag(false);
+    setflagplay(false);
   };
 
   const menuitemsfunc = (event) => {
@@ -232,8 +225,8 @@ function ShowVideoShorts() {
         } h-[570px]  flex justify-center gap-2`}
       >
         <div
-          onMouseEnter={move}
-          onMouseLeave={leve}
+          onMouseDown={move}
+          onMouseOut={leve}
           className=" w-[340px] z-[5] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500"
         >
           <video
@@ -245,17 +238,15 @@ function ShowVideoShorts() {
           <div className="z-[6] child absolute top-0 left-0 w-full px-3 pt-3 flex justify-between">
             <div className="left">
               <button
-                onClick={videoplayfunc}
-                className="hidden w-[35px] h-[35px] dflex items-center justify-center text-white rounded-full bg-[#0000004a] "
+                onClick={move}
+                className="hiddenn w-[35px] h-[35px] flex items-center justify-center text-white rounded-full bg-[#0000004a] "
               >
-                {videoplayflag ? (
+                {flagplay ? (
                   <TbPlayerPause size={22} />
                 ) : (
                   <IoPlayOutline size={22} />
                 )}
               </button>
-              {/* <button className=" w-[35px] h-[35px] flex items-center justify-center text-white rounded-full bg-[#0000004a] ">
-                  </button> */}
             </div>
             <div className="right">
               <button
@@ -444,8 +435,7 @@ function ShowVideoShorts() {
           <div className=" w-[340px] h-[570px] rounded-2xl shadow-lg shadow-violet-500">
             <div className="px-2 flex justify-between items-center">
               <p>
-                {" "}
-                Comments <span>10</span>
+                Comments <span>{listcoments.length}</span>
               </p>
               <div className="">
                 <button className=" w-[30px] h-[30px] rounded-full hover:bg-gray-200">
@@ -456,11 +446,23 @@ function ShowVideoShorts() {
 
             <div className=" w-full h-[450px] overflow-scroll widthscroll overflow-x-auto bg-red-100f">
               <div className="flex flex-col gap-2">
-                {listcoments &&
+                {listcoments.length > 0 ?
                   listcoments.map((item) => (
                     <Comments key={item.id} coment={item} />
-                  ))}
+                  )): <p className=" relative top-3 text-center">Nothing comment</p> }
               </div>
+            </div>
+
+            <div className="p-2">
+            <div className=" w-full p-1 flex gap-1 flex-col ">
+              <div className="w-full flex gap-2 items-center">
+                <img className=" w-[30px] h-[30px]" src={imgreact} alt="" />
+                <input className=" w-full h-[20px] border-b-2 border-violet-400 bg-transparent outline-none p-1" placeholder="Add a reply..." type="text" name="" id="" />
+              </div>
+              <div className="w-full flex gap-4 justify-end">
+                <button className="py-1 px-2 bg-blue-500 rounded-lg text-white">Reply</button>
+              </div>
+            </div>
             </div>
           </div>
         ) : (
@@ -698,7 +700,6 @@ function ShowVideoShorts() {
                   </svg>
                   <span className=" mx-auto">Mix</span>
                 </button>
-
               </div>
             </div>
 

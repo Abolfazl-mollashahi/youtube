@@ -5,6 +5,7 @@ import ShowVideoShorts from "../components/ShowVideoShorts";
 
 function Shorts() {
   const [toggleflagshorts, settoggleflagshorts] = useState(false);
+  const divshortsvideo = useRef({})
 
   const togglefuncshorts = () => {
     if (toggleflagshorts) {
@@ -19,11 +20,12 @@ function Shorts() {
     }
   };
 
-  
+ 
+
   return (
     <div onClick={closefathershorts}>
       <MyNavbar toggleflag={toggleflagshorts} togglefunc={togglefuncshorts} />
-      <div className=" w-full mt-[60px] justify-center items-center flex flex-col gap-16 pb-5">
+      <div ref={divshortsvideo} className=" w-full mt-[60px] justify-center items-center flex flex-col gap-16 pb-5">
         <ShowVideoShorts />
         <ShowVideoShorts />
         <ShowVideoShorts />

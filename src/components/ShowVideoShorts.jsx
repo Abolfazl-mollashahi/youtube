@@ -226,12 +226,12 @@ function ShowVideoShorts() {
       >
         <div
           onMouseDown={move}
-          onMouseOut={leve}
-          className=" w-[340px] z-[5] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500"
+          onMouseLeave={leve}
+          className=" w-[340px] z-[6] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500"
         >
           <video
             ref={videotag}
-            className=" h-full z-[1] object-cover rounded-2xl "
+            className=" h-full z-[6] w-full object-cover rounded-2xl "
             src={videoshorts}
           ></video>
 

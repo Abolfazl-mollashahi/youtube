@@ -24,15 +24,12 @@ function HomeListVideo() {
     videoelem.current.pause();
   };
 
-  const updatetimes = () => {
-    setcurrenttime(formatduration(videoelem.current.currentTime));
-  };
-
+  
   const mutefunc = () => {
     setmute(!mute);
     videoelem.current.muted = !videoelem.current.muted;
   };
-
+  
   const lodingZeroFormater = new Intl.NumberFormat(undefined, {
     minimumIntegerDigits: 2,
   });
@@ -47,9 +44,12 @@ function HomeListVideo() {
     } else {
       return ` ${hours}:${lodingZeroFormater.format(
         minutes
-      )}:${lodingZeroFormater.format(seconds)} `;
+        )}:${lodingZeroFormater.format(seconds)} `;
+      }
     }
-  }
+    const updatetimes = () => {
+      setcurrenttime(formatduration(videoelem.current.currentTime));
+    };
   const lodeddata = (e) => {
     settotaltime(formatduration(e.timeStamp));
   };

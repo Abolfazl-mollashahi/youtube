@@ -82,7 +82,7 @@ function HomeListVideo() {
         onMouseOver={VideoMousMove}
         onMouseOut={VideoMousLeav}
       >
-        <NavLink to="/tsttssts" className="">
+        <NavLink to="/video/1" className="">
           <video
             src={tstvideo}
             onLoadedData={loadedData}
@@ -167,7 +167,7 @@ function HomeListVideo() {
         </div>
       </div>
       <div className="w-full father flex relative ">
-        <NavLink to="/tsttssts" className=" w-full block">
+        <NavLink to="/video/1" className=" w-full block">
           <div className="flex gap-2 p-1">
             <img
               className=" w-[40px] h-[40px] rounded-full object-contain"

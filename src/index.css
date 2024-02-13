@@ -79,3 +79,9 @@ background: linear-gradient(145deg, #9c73c5, #b989ea);
 box-shadow:  24px 24px 48px #513c67,
              -24px -24px 48px #ffc4ff;
 }
+
+.vid{
+  width: 100% !important;
+  height: 100% !important;
+}
+

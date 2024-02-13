@@ -1,5 +1,6 @@
 import Home from "./pages/Home";
 import Shorts from "./pages/Shorts";
+import ShowVideo from "./pages/ShowVideo";
 
 const routes = [
   {
@@ -9,6 +10,10 @@ const routes = [
   {
     path: "/shorts",
     element: <Shorts/> ,
+  },
+  {
+    path: "/video/:id",
+    element: <ShowVideo/> ,
   },
 ];
 export default routes;

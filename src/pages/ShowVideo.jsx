@@ -32,15 +32,15 @@ function ShowVideo() {
   return (
     <div className=" w-full p-2 h-max flex flex-col gap-2 lg:flex-row items-start">
       {/* left */}
-      <div className="w-full h-max p-1  bg-red-100">
+      <div className="w-full h-max p-1 flex flex-col gap-2 bg-red-100">
         {/* div-video-asly */}
-        <div className=" h-[300px] sm:w-[600px] sm:h-[400px] md:w-[90%] lg:w-[100%] mx-auto lg:h-[450px] rounded-3xl overflow-hidden bg-red-700">
+        <div className=" h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl overflow-hidden ">
           <video className=" vid object-cover  " src={tstvideo}></video>
         </div>
         <h3 className=" pl-2 text-[20px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h3>
-        <div className="w-full flex flex-col gap-2 md:px-5 md:flex-row">
+        <div className="w-full flex flex-col gap-2 md:px-1 md:flex-row">
           {/* img-prof & btn sub */}
           <div className=" w-full flex items-center gap-5">
             <img
@@ -75,7 +75,7 @@ function ShowVideo() {
             <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
               <RiShareForwardFill /> Share
             </button>
-            <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
+            <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
               Download
             </button>
             <button

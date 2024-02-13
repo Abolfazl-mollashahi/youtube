@@ -27,7 +27,7 @@ function VideoComponentShow() {
     <div className=" flex gap-1 relative father">
       <NavLink to={`/video/2`}>
         <video
-          className=" w-[160px] h-[100px] object-cover rounded-lg bg-red-500"
+          className=" w-[160px] h-[100px] object-cover rounded-lg"
           src={tstvideo}
         ></video>
       </NavLink>

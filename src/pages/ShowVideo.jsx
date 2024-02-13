@@ -5,17 +5,33 @@ import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { RiShareForwardFill } from "react-icons/ri";
 import { CiMenuKebab } from "react-icons/ci";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import VideoComponentShow from "../components/VideoComponentShow";
 
 function ShowVideo() {
   const [menuitemvid, setmenuitemvid] = useState(false);
-  let dbvideos = [
-    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
-  ]
+  const btnmenvideo = useRef({})
+  const divmenvideo = useRef({})
+  let dbvideos = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+  const btnmenu = (e)=>{
+    if (btnmenvideo.current.contains(e.target) || divmenvideo.current.contains(e.target)) {
+      setmenuitemvid(true)
+    } else {
+      setmenuitemvid(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", btnmenu);
+    return () => {
+      document.removeEventListener("click", btnmenu);
+    };
+  }, []);
 
   return (
     <div className=" w-full p-2 h-max flex flex-col gap-2 lg:flex-row items-start">
+      {/* left */}
       <div className="w-full h-max p-1  bg-red-100">
         {/* div-video-asly */}
         <div className=" h-[300px] sm:w-[600px] sm:h-[400px] md:w-[90%] lg:w-[100%] mx-auto lg:h-[450px] rounded-3xl overflow-hidden bg-red-700">
@@ -32,8 +48,8 @@ function ShowVideo() {
               src={imgreact}
               alt=""
             />
-            <div className="text-white flex flex-col">
-              <NavLink className=" text-[19px]" to={`/`}>
+            <div className="text-black flex flex-col">
+              <NavLink className=" text-[19px]" to={`/profile/id`}>
                 abolfazl-tst
               </NavLink>
               <span className=" text-[13px]">900k Subscribe</span>
@@ -63,7 +79,8 @@ function ShowVideo() {
               Download
             </button>
             <button
-              onClick={() => setmenuitemvid(!menuitemvid)}
+            ref={btnmenvideo}
+              onClick={btnmenu}
               className=" w-[40px] h-[40px] flex justify-center items-center bg-gray-300 hover:bg-gray-200 rounded-full"
             >
               <CiMenuKebab />
@@ -71,6 +88,7 @@ function ShowVideo() {
 
             {/* menu-hidden */}
             <div
+            ref={divmenvideo}
               className={`${
                 menuitemvid ? "flex" : "hidden"
               } w-[100px] absolute top-12 p-2 right-0 h-max bg-gray-100 gap-2 flex-col  rounded-xl `}
@@ -89,6 +107,7 @@ function ShowVideo() {
         </div>
       </div>
 
+      {/* right */}
       <div className="w-full lg:w-3/6 h-max p-2 flex flex-col bg-green-100">
         {/* tabliqh */}
         <div className=" w-full h-[140px] bg-green-300 flex flex-col justify-center rounded-xl">

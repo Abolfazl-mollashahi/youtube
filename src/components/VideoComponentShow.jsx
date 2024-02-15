@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import tstvideo from "../assets/videos/video.mp4";
 import { CiLogin, CiMenuKebab } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
+import { useVideo } from "../utils/useVideo";
 
 function VideoComponentShow() {
   const [menuit, setmenuit] = useState(false);
   const btnm = useRef({});
   const divmen = useRef({});
+  const [ videoelem,mute,totaltime,currenttime,VideoMousMove,VideoMousLeav,mutefunc,updateTimes,loadedData ] = useVideo()
+
 
   const menufunc = (e) => {
     if (btnm.current.contains(e.target) || divmen.current.contains(e.target)) {
@@ -27,6 +30,9 @@ function VideoComponentShow() {
     <div className=" flex gap-1 relative father">
       <NavLink to={`/video/2`}>
         <video
+        ref={videoelem}
+        onMouseMove={VideoMousMove}
+        onMouseLeave={VideoMousLeav}
           className=" w-[160px] h-[100px] object-cover rounded-lg"
           src={tstvideo}
         ></video>

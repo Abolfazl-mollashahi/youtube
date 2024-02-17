@@ -7,12 +7,140 @@ import { RiShareForwardFill } from "react-icons/ri";
 import { CiMenuKebab } from "react-icons/ci";
 import { useEffect, useRef, useState } from "react";
 import VideoComponentShow from "../components/VideoComponentShow";
+import { useVideo } from "../utils/useVideo";
+import Comments from "../components/Comments";
 
 function ShowVideo() {
   const [menuitemvid, setmenuitemvid] = useState(false);
   const btnmenvideo = useRef({})
   const divmenvideo = useRef({})
   let dbvideos = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+  const [ videoelem,mute,totaltime,currenttime,VideoMousMove,VideoMousLeav,mutefunc,updateTimes,loadedData ] = useVideo()
+  
+  const listcoments2 = [
+    {
+      id: 1,
+      imgprof: imgreact,
+      user: "@abolfzl-1",
+      textcoment: "tstcoment-1",
+      comentlike: 10,
+      comentdislike: 50,
+      date: "1 months ago",
+      replys: [],
+    },
+    {
+      id: 2,
+      imgprof: imgreact,
+      user: "@abolfzl-2",
+      textcoment: "tstcoment-2",
+      comentlike: 45,
+      comentdislike: 3,
+      date: "2 months ago",
+      replys: [],
+    },
+    {
+      id: 3,
+      imgprof: imgreact,
+      user: "@abolfzl-3",
+      textcoment: "tstcoment-3",
+      comentlike: 23,
+      comentdislike: 30,
+      date: "3 months ago",
+      replys: [],
+    },
+    {
+      id: 4,
+      imgprof: imgreact,
+      user: "@abolfzl-4",
+      textcoment: "tstcoment-4",
+      comentlike: 98,
+      comentdislike: 5,
+      date: "4 months ago",
+      replys: [],
+    },
+    {
+      id: 5,
+      imgprof: imgreact,
+      user: "@abolfzl-5",
+      textcoment: "tstcoment-5",
+      comentlike: 21,
+      comentdislike: 32,
+      date: "5 months ago",
+      replys: [],
+    },
+    {
+      id: 6,
+      imgprof: imgreact,
+      user: "@abolfzl-6",
+      textcoment: "tstcoment-6",
+      comentlike: 90,
+      comentdislike: 45,
+      date: "6 months ago",
+      replys: [],
+    },
+    {
+      id: 7,
+      imgprof: imgreact,
+      user: "@abolfzl-7",
+      textcoment: "tstcoment-7",
+      comentlike: 130,
+      comentdislike: 12,
+      date: "7 months ago",
+      replys: [],
+    },
+    {
+      id: 8,
+      imgprof: imgreact,
+      user: "@abolfzl-8",
+      textcoment: "tstcoment-8",
+      comentlike: 40,
+      comentdislike: 39,
+      date: "8 months ago",
+      replys: [],
+    },
+    {
+      id: 9,
+      imgprof: imgreact,
+      user: "@abolfzl-9",
+      textcoment: "tstcoment-9",
+      comentlike: 120,
+      comentdislike: 2,
+      date: "9 months ago",
+      replys: [],
+    },
+    {
+      id: 10,
+      imgprof: imgreact,
+      user: "@abolfzl-10",
+      textcoment: "tstcoment-10",
+      comentlike: 730,
+      comentdislike: 8,
+      date: "10 months ago",
+      replys: [],
+    },
+    {
+      id: 11,
+      imgprof: imgreact,
+      user: "@abolfzl-11",
+      textcoment: "tstcoment-11",
+      comentlike: 260,
+      comentdislike: 26,
+      date: "11 months ago",
+      replys: [],
+    },
+    {
+      id: 12,
+      imgprof: imgreact,
+      user: "@abolfzl-12",
+      textcoment: "tstcoment-12",
+      comentlike: 430,
+      comentdislike: 16,
+      date: "12 months ago",
+      replys: [],
+    },
+  ];
+
+
 
   const btnmenu = (e)=>{
     if (btnmenvideo.current.contains(e.target) || divmenvideo.current.contains(e.target)) {
@@ -33,9 +161,11 @@ function ShowVideo() {
     <div className=" w-full p-2 h-max flex flex-col gap-2 lg:flex-row items-start">
       {/* left */}
       <div className="w-full h-max p-1 flex flex-col gap-2 bg-red-100">
-        {/* div-video-asly */}
         <div className=" h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl overflow-hidden ">
-          <video className=" vid object-cover  " src={tstvideo}></video>
+        {/* div-video-asly */}
+          <div className="vid ">
+          <video autoPlay muted ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" vid object-cover " src={tstvideo}></video>
+          </div>
         </div>
         <h3 className=" pl-2 text-[20px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -105,7 +235,17 @@ function ShowVideo() {
             </div>
           </div>
         </div>
+
+        {/* div-coments */}
+        <div className="">
+          {
+            listcoments2.map((item)=>(
+              <Comments key={item.id} coment={item}/>
+            ))
+          }
+        </div>
       </div>
+
 
       {/* right */}
       <div className="w-full lg:w-3/6 h-max p-2 flex flex-col bg-green-100">

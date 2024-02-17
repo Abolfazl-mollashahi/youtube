@@ -26,16 +26,20 @@ function VideoComponentShow() {
     };
   }, []);
 
+
   return (
     <div className=" flex gap-1 relative father">
-      <NavLink to={`/video/2`}>
+      <NavLink to={`/video/2`} className=" w-max relative">
         <video
         ref={videoelem}
         onMouseMove={VideoMousMove}
         onMouseLeave={VideoMousLeav}
-          className=" w-[160px] h-[100px] object-cover rounded-lg"
+        onLoadedData={loadedData}
+          className=" w-[160px] h-[100px] object-cover rounded-lg peer-[tst]:"
           src={tstvideo}
-        ></video>
+        >
+        </video>
+          <span className=" w-max absolute  bottom-1 right-1 px-1 rounded-lg bg-[#251515bb] text-white">{totaltime}</span>
       </NavLink>
       <div className="flex flex-col gap-1">
         <NavLink to={`/video/2`}>

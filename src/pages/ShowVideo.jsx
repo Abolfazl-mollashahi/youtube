@@ -164,7 +164,7 @@ function ShowVideo() {
         <div className=" h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl overflow-hidden ">
         {/* div-video-asly */}
           <div className="vid ">
-          <video autoPlay muted ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" vid object-cover " src={tstvideo}></video>
+          <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" vid object-cover " src={tstvideo}></video>
           </div>
         </div>
         <h3 className=" pl-2 text-[20px]">

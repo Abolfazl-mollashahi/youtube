@@ -235,9 +235,17 @@ function ShowVideo() {
             </div>
           </div>
         </div>
+        {/* date-views video */}
+        <div className="flex gap-2 items-center pl-3">
+          <p><span>89K</span> views</p>
+          <p> <span>1</span> year ago</p>
+        </div>
 
         {/* div-coments */}
-        <div className="">
+        <div className="bg-sky-100">
+          <div className=" w-[300px] h-[30px] flex">
+            <p className=" text-[17px]"> <span>{listcoments2.length}</span> Cooments</p>
+          </div>
           {
             listcoments2.map((item)=>(
               <Comments key={item.id} coment={item}/>

@@ -31,10 +31,315 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
         className=" px-2 pt-1 flex justify-between items-center w-full bg-white fixed top-0 left-0 z-[100] "
       >
         <div className="div-1 flex gap-4 items-center">
-          <div className="">
-            <button className=" w-[35px] h-[35px] rounded-full bg-blue-900">
+          <div className=" relative father">
+            <button className=" w-[35px] h-[35px] rounded-full text-white bg-blue-900">
               a
             </button>
+            {/* div-acant */}
+            <div className="hidden child w-[280px] p-2 h-max absolute  top-[35px] right-0 flex-col rounded-xl bg-white shadow-orange-100 border-2 bordder-black shadow-lg">
+              <div className="w-full flex mb-1 flex-row-reverse items-center gap-2">
+                <img
+                  className={`w-[50px] h-[50px] rounded-full`}
+                  src={imgreact}
+                />
+                <div className=" w-full flex flex-col items-end gap-1">
+                  <NavLink
+                    className={` w-full h-max flex-col items-end`}
+                    to={`/`}
+                  >
+                    <p className="w-full text-left">abolfazl_mollashahi</p>
+                    <p className="w-full text-left">@abolfazlmollashahi</p>
+                  </NavLink>
+                  <NavLink className={` text-sky-600`}>
+                    View your channel
+                  </NavLink>
+                </div>
+              </div>
+              <hr />
+
+              <div className=" w-full flex justify-between items-center">
+                <button className="pr-4">///</button>
+                <NavLink
+                  to="/tst"
+                  className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+                >
+                  <span>Switch account</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                    className="ml-[10px]"
+                    style={{
+                      display: "block",
+                      width: "24px",
+                      height: "24px",
+                    }}
+                  >
+                    <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                  </svg>
+                </NavLink>
+              </div>
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Sign out</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+              <hr />
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>TouTube Studio</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Purchases and memberships</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+              <hr />
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Yor data in YouTube</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+              <div className=" w-full flex justify-between items-center">
+                <button className="pr-4">///</button>
+                <NavLink
+                  to="/tst"
+                  className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+                >
+                  <span>Appearance: <span>Light</span></span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                    className="ml-[10px]"
+                    style={{
+                      display: "block",
+                      width: "24px",
+                      height: "24px",
+                    }}
+                  >
+                    <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                  </svg>
+                </NavLink>
+              </div>
+
+              <div className=" w-full flex justify-between items-center">
+                <button className="pr-4">///</button>
+                <NavLink
+                  to="/tst"
+                  className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+                >
+                  <span>Language: <span>English</span></span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                    className="ml-[10px]"
+                    style={{
+                      display: "block",
+                      width: "24px",
+                      height: "24px",
+                    }}
+                  >
+                    <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                  </svg>
+                </NavLink>
+              </div>
+
+              <div className=" w-full flex justify-between items-center">
+                <button className="pr-4">///</button>
+                <NavLink
+                  to="/tst"
+                  className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+                >
+                  <span>Restricted Mode: <span>Off</span></span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                    className="ml-[10px]"
+                    style={{
+                      display: "block",
+                      width: "24px",
+                      height: "24px",
+                    }}
+                  >
+                    <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                  </svg>
+                </NavLink>
+              </div>
+
+              <div className=" w-full flex justify-between items-center">
+                <button className="pr-4">///</button>
+                <NavLink
+                  to="/tst"
+                  className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+                >
+                  <span>Location: <span>United States</span></span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                    className="ml-[10px]"
+                    style={{
+                      display: "block",
+                      width: "24px",
+                      height: "24px",
+                    }}
+                  >
+                    <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                  </svg>
+                </NavLink>
+              </div>
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Keybord shortcuts</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+              <hr />
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Settings</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+              
+              <hr />
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Help</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+              <NavLink
+                to="/tst"
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Send feedback</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  className="ml-[10px]"
+                  style={{
+                    display: "block",
+                    width: "24px",
+                    height: "24px",
+                  }}
+                >
+                  <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
+                </svg>
+              </NavLink>
+
+            </div>
           </div>
 
           <div className="">
@@ -1045,7 +1350,6 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   </>
                 )}
               </div>
-
             </div>
           </div>
         </div>

@@ -160,7 +160,7 @@ function ShowVideo() {
   return (
     <div className=" w-full p-2 h-max flex flex-col gap-2 lg:flex-row items-start">
       {/* left */}
-      <div className="w-full h-max p-1 flex flex-col gap-2 bg-red-100">
+      <div className="w-full h-max p-1 flex flex-col gap-2 ">
         <div className=" h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl overflow-hidden ">
         {/* div-video-asly */}
           <div className="vid ">
@@ -242,7 +242,7 @@ function ShowVideo() {
         </div>
 
         {/* div-coments */}
-        <div className="bg-sky-100">
+        <div className="">
           <div className=" w-[300px] h-[30px] flex">
             <p className=" text-[17px]"> <span>{listcoments2.length}</span> Cooments</p>
           </div>
@@ -256,7 +256,7 @@ function ShowVideo() {
 
 
       {/* right */}
-      <div className="w-full lg:w-3/6 h-max p-2 flex flex-col bg-green-100">
+      <div className="w-full lg:w-3/6 h-max p-2 flex flex-col ">
         {/* tabliqh */}
         <div className=" w-full h-[140px] bg-green-300 flex flex-col justify-center rounded-xl">
           <div className="flex gap-3 justify-center items-center">

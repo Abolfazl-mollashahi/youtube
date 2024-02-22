@@ -169,7 +169,9 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   to="/tst"
                   className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                 >
-                  <span>Appearance: <span>Light</span></span>
+                  <span>
+                    Appearance: <span>Light</span>
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -192,7 +194,9 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   to="/tst"
                   className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                 >
-                  <span>Language: <span>English</span></span>
+                  <span>
+                    Language: <span>English</span>
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -215,7 +219,9 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   to="/tst"
                   className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                 >
-                  <span>Restricted Mode: <span>Off</span></span>
+                  <span>
+                    Restricted Mode: <span>Off</span>
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -238,7 +244,9 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   to="/tst"
                   className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                 >
-                  <span>Location: <span>United States</span></span>
+                  <span>
+                    Location: <span>United States</span>
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -296,7 +304,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
                 </svg>
               </NavLink>
-              
+
               <hr />
 
               <NavLink
@@ -338,20 +346,80 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc }) {
                   <path d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
                 </svg>
               </NavLink>
-
             </div>
           </div>
 
-          <div className="">
+          <div className=" relative father">
             <button>
               <SlBell size={23} />
             </button>
+            {/* div-notifications */}
+            <div className="hidden child w-[400px] text-[14px] p-2 h-max absolute  top-[35px] right-0 flex-col rounded-xl bg-white shadow-orange-100 border-2 bordder-black shadow-lg">
+              {/* notif-1 */}
+              <div className=" w-full h-max flex gap-2 items-center">
+                <img className="w-[40px] h-[40px] rounded-full" src="" alt="" />
+                <div className="flex flex-col items-end">
+                  <p className=" text-left">
+                    incidunt in aut tenetur sint debitis error pariatur
+                    provident consequuntur
+                  </p>
+                  <span> 2 weeks ago</span>
+                </div>
+                <img className="w-[70px] h-[50px] rounded-lg" src="" alt="" />
+              </div>
+            </div>
           </div>
 
-          <div className="">
+          <div className="relative father">
             <button>
               <PiBatteryPlus size={23} />
             </button>
+          {/* div-upload video */}
+            <div className="hidden child w-[150px] text-[14px] p-2 h-max absolute  top-[30px] right-0 flex-col rounded-xl bg-white shadow-orange-100 border-2 bordder-black shadow-lg">
+              <NavLink
+                to="/shorts"
+                className=" w-[100%]  mx-auto py-1 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Upload video</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  className="ml-[10px]"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  focusable="false"
+                  style={{
+                    display: "block",
+                    width: "25px",
+                    height: "25px",
+                  }}
+                >
+                  <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l2.04-1.08v-1.21l-.69-.28-1.11-.46c-.99-.41-1.65-1.35-1.7-2.41-.05-1.06.52-2.06 1.46-2.56l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72L15.5 9.26v1.21l1.8.74c.99.41 1.65 1.35 1.7 2.41.05 1.06-.52 2.06-1.46 2.56z"></path>
+                </svg>
+              </NavLink>
+
+              <NavLink
+                to="/shorts"
+                className=" w-[100%]  mx-auto py-1 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
+              >
+                <span>Go live</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  className="ml-[10px]"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  focusable="false"
+                  style={{
+                    display: "block",
+                    width: "25px",
+                    height: "25px",
+                  }}
+                >
+                  <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l2.04-1.08v-1.21l-.69-.28-1.11-.46c-.99-.41-1.65-1.35-1.7-2.41-.05-1.06.52-2.06 1.46-2.56l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72L15.5 9.26v1.21l1.8.74c.99.41 1.65 1.35 1.7 2.41.05 1.06-.52 2.06-1.46 2.56z"></path>
+                </svg>
+              </NavLink>
+            </div>
           </div>
 
           <div className=" sm:hidden">

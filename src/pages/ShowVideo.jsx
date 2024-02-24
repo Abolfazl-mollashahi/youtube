@@ -1,6 +1,10 @@
 import tstvideo from "../assets/videos/video.mp4";
 import imgreact from "../assets/react.svg";
 import { NavLink } from "react-router-dom";
+import { IoPlayOutline } from "react-icons/io5";
+import { GoUnmute } from "react-icons/go";
+import { GoMute } from "react-icons/go";
+import { TbPlayerPause } from "react-icons/tb";
 import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { RiShareForwardFill } from "react-icons/ri";
@@ -9,14 +13,27 @@ import { useEffect, useRef, useState } from "react";
 import VideoComponentShow from "../components/VideoComponentShow";
 import { useVideo } from "../utils/useVideo";
 import Comments from "../components/Comments";
+import MyNavbar from "../components/MyNavbar";
 
 function ShowVideo() {
   const [menuitemvid, setmenuitemvid] = useState(false);
-  const btnmenvideo = useRef({})
-  const divmenvideo = useRef({})
-  let dbvideos = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-  const [ videoelem,mute,totaltime,currenttime,VideoMousMove,VideoMousLeav,mutefunc,updateTimes,loadedData ] = useVideo()
-  
+  const btnmenvideo = useRef({});
+  const divmenvideo = useRef({});
+  let dbvideos = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ];
+  const [
+    videoelem,
+    mute,
+    totaltime,
+    currenttime,
+    VideoMousMove,
+    VideoMousLeav,
+    mutefunc,
+    updateTimes,
+    loadedData,
+  ] = useVideo();
+
   const listcoments2 = [
     {
       id: 1,
@@ -139,15 +156,32 @@ function ShowVideo() {
       replys: [],
     },
   ];
+  const [flagplay, setflagplay] = useState(false);
+  const [flagmute, setflagmute] = useState(false);
+  const [toggleflag, settoggleflag] = useState(false);
 
-
-
-  const btnmenu = (e)=>{
-    if (btnmenvideo.current.contains(e.target) || divmenvideo.current.contains(e.target)) {
-      setmenuitemvid(true)
+  const btnmenu = (e) => {
+    if (
+      btnmenvideo.current.contains(e.target) ||
+      divmenvideo.current.contains(e.target)
+    ) {
+      setmenuitemvid(true);
     } else {
-      setmenuitemvid(false)
+      setmenuitemvid(false);
     }
+  };
+  const funcvideo = ()=>{
+    if(flagplay){
+      videoelem.current.play()
+    }else{
+      videoelem.current.pause()
+    }
+    setflagplay(!flagplay)
+  }
+
+  const funcmutevideo = ()=>{
+    videoelem.current.muted = !videoelem.current.muted
+    setflagmute(!flagmute)
   }
 
   useEffect(() => {
@@ -157,141 +191,205 @@ function ShowVideo() {
     };
   }, []);
 
+  const togglefunc = () => {
+    if (toggleflag) {
+      settoggleflag(false);
+      divcontiner.current.style.marginLeft = "0px";
+      divslidername.current.style.marginLeft = "0px";
+      divslidername.current.style.paddingRight = "0px";
+    } else {
+      settoggleflag(true);
+      divcontiner.current.style.marginLeft = "150px";
+      divslidername.current.style.marginLeft = "150px";
+    }
+  };
+
+  const closefather = () => {
+    if(toggleflag){
+      settoggleflag(false);
+      divcontiner.current.style.marginLeft = "0px";
+      divslidername.current.style.marginLeft = "0px";
+      divslidername.current.style.paddingRight = "0px";
+    }
+  };
+
   return (
-    <div className=" w-full p-2 h-max flex flex-col gap-2 lg:flex-row items-start">
-      {/* left */}
-      <div className="w-full h-max p-1 flex flex-col gap-2 ">
-        <div className=" h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl overflow-hidden ">
-        {/* div-video-asly */}
-          <div className="vid ">
-          <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" vid object-cover " src={tstvideo}></video>
-          </div>
-        </div>
-        <h3 className=" pl-2 text-[20px]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </h3>
-        <div className="w-full flex flex-col gap-2 md:px-1 md:flex-row">
-          {/* img-prof & btn sub */}
-          <div className=" w-full flex items-center gap-5">
-            <img
-              className=" w-[50px] h-[50px]  rounded-full"
-              src={imgreact}
-              alt=""
-            />
-            <div className="text-black flex flex-col">
-              <NavLink className=" text-[19px]" to={`/profile/id`}>
-                abolfazl-tst
-              </NavLink>
-              <span className=" text-[13px]">900k Subscribe</span>
+    <div onClick={closefather}>
+      <MyNavbar
+        toggleflag={toggleflag}
+        settoggleflag={settoggleflag}
+        togglefunc={togglefunc}
+        flagpagevideo={false}
+      />
+      <div className=" w-full p-2 h-max mt-14 flex flex-col gap-2 lg:flex-row items-start">
+        {/* left */}
+        <div className="w-full h-max p-1 flex flex-col gap-2 ">
+          <div className=" relative h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden ">
+            {/* div-video-asly */}
+            <div className=" !w-full !h-full hiddene bg-red-600 ">
+              <video
+                autoPlay
+                ref={videoelem}
+                onTimeUpdate={updateTimes}
+                onLoadedData={loadedData}
+                className=" !w-full !h-full object-cover z-[2] "
+                src={tstvideo}
+              ></video>
+              {/* btn-video */}
+              <div className=" w-full flex gap-2 px-3 h-[40px] items-center text-white bg-red-700 absolute  bottom-2 left-0 z-[3]">
+                <span >
+                  {flagplay ? (
+                    <IoPlayOutline onClick={funcvideo} size={30} />
+                    ) : (
+                      <TbPlayerPause onClick={funcvideo} size={30} />
+                  )}
+                </span>
+                <span>
+                  forward
+                </span>
+                <span>
+                  {
+                    flagmute ?
+                    <GoMute onClick={funcmutevideo} size={25} />
+                    :
+                    <GoUnmute onClick={funcmutevideo} size={25} />
+                  }
+                </span>
+                <span >{currenttime}</span>
+
+              </div>
             </div>
-            <button
-              className={` ${
-                false ? " bg-[#25232385] text-white" : " bg-yellow-50"
-              } px-2 py-1  rounded-2xl `}
-            >
-              Subscribe
-            </button>
+            {/* <div className=" !w-full !h-full bg-green-700">
+            <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" !w-full !h-full object-cover " src={tstvideo}></video>
+            </div> */}
           </div>
-          {/* btns */}
-          <div className=" px-2 flex gap-4 h-[40px] relative items-center justify-end">
-            <div className="flex items-center h-full bg-gray-300 overflow-hidden rounded-full">
-              <button className=" w-[80px] h-full  flex gap-3 justify-center items-center hover:bg-gray-200">
-                <SlLike /> 3.5K
-              </button>
-              <button className=" w-[40px] h-full flex justify-center items-center bg-gray-300 hover:bg-gray-200">
-                <SlDislike />
+          <h3 className=" pl-2 text-[20px]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h3>
+          <div className="w-full flex flex-col gap-2 md:px-1 md:flex-row">
+            {/* img-prof & btn sub */}
+            <div className=" w-full flex items-center gap-5">
+              <img
+                className=" w-[50px] h-[50px]  rounded-full"
+                src={imgreact}
+                alt=""
+              />
+              <div className="text-black flex flex-col">
+                <NavLink className=" text-[19px]" to={`/profile/id`}>
+                  abolfazl-tst
+                </NavLink>
+                <span className=" text-[13px]">900k Subscribe</span>
+              </div>
+              <button
+                className={` ${
+                  false ? " bg-[#25232385] text-white" : " bg-yellow-50"
+                } px-2 py-1  rounded-2xl `}
+              >
+                Subscribe
               </button>
             </div>
-            <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
-              <RiShareForwardFill /> Share
-            </button>
-            <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
-              Download
-            </button>
-            <button
-            ref={btnmenvideo}
-              onClick={btnmenu}
-              className=" w-[40px] h-[40px] flex justify-center items-center bg-gray-300 hover:bg-gray-200 rounded-full"
-            >
-              <CiMenuKebab />
-            </button>
+            {/* btns */}
+            <div className=" px-2 flex gap-4 h-[40px] relative items-center justify-end">
+              <div className="flex items-center h-full bg-gray-300 overflow-hidden rounded-full">
+                <button className=" w-[80px] h-full  flex gap-3 justify-center items-center hover:bg-gray-200">
+                  <SlLike /> 3.5K
+                </button>
+                <button className=" w-[40px] h-full flex justify-center items-center bg-gray-300 hover:bg-gray-200">
+                  <SlDislike />
+                </button>
+              </div>
+              <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
+                <RiShareForwardFill /> Share
+              </button>
+              <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
+                Download
+              </button>
+              <button
+                ref={btnmenvideo}
+                onClick={btnmenu}
+                className=" w-[40px] h-[40px] flex justify-center items-center bg-gray-300 hover:bg-gray-200 rounded-full"
+              >
+                <CiMenuKebab />
+              </button>
 
-            {/* menu-hidden */}
-            <div
-            ref={divmenvideo}
-              className={`${
-                menuitemvid ? "flex" : "hidden"
-              } w-[100px] absolute top-12 p-2 right-0 h-max bg-gray-100 gap-2 flex-col  rounded-xl `}
-            >
-              <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
-                Clip
-              </button>
-              <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
-                Save
-              </button>
-              <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
-                Report
+              {/* menu-hidden */}
+              <div
+                ref={divmenvideo}
+                className={`${
+                  menuitemvid ? "flex" : "hidden"
+                } w-[100px] absolute top-12 p-2 right-0 h-max bg-gray-100 gap-2 flex-col  rounded-xl `}
+              >
+                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
+                  Clip
+                </button>
+                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
+                  Save
+                </button>
+                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
+                  Report
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* date-views video */}
+          <div className="flex gap-2 items-center pl-3">
+            <p>
+              <span>89K</span> views {flagplay ? 1:0}
+            </p>
+            <p>
+              {" "}
+              <span>1</span> year ago
+            </p>
+          </div>
+
+          {/* div-coments */}
+          <div className="">
+            <div className=" w-[300px] h-[30px] flex">
+              <p className=" text-[17px]">
+                {" "}
+                <span>{listcoments2.length}</span> Cooments
+              </p>
+            </div>
+            {listcoments2.map((item) => (
+              <Comments key={item.id} coment={item} />
+            ))}
+          </div>
+        </div>
+
+        {/* right */}
+        <div className="w-full lg:w-3/6 h-max p-2 flex flex-col ">
+          {/* tabliqh */}
+          <div className=" w-full h-[140px] bg-green-300 flex flex-col justify-center rounded-xl">
+            <div className="flex gap-3 justify-center items-center">
+              <img
+                className=" w-[50px] h-[50px] bg-red-500 rounded-full"
+                src={imgreact}
+                alt=""
+              />
+              <div className="flex flex-col gap-1">
+                <span>Find Your Match</span>
+                <span>
+                  Sponsored .{" "}
+                  <span className=" text-gray-300">www.target.com/b/maul</span>
+                </span>
+              </div>
+              <button className=" px-2 py-2 bg-blue-600 text-white rounded-full">
+                Shop new
               </button>
             </div>
           </div>
-        </div>
-        {/* date-views video */}
-        <div className="flex gap-2 items-center pl-3">
-          <p><span>89K</span> views</p>
-          <p> <span>1</span> year ago</p>
-        </div>
 
-        {/* div-coments */}
-        <div className="">
-          <div className=" w-[300px] h-[30px] flex">
-            <p className=" text-[17px]"> <span>{listcoments2.length}</span> Cooments</p>
+          <div className=" text-center">
+            <p>slider name</p>
           </div>
-          {
-            listcoments2.map((item)=>(
-              <Comments key={item.id} coment={item}/>
-            ))
-          }
-        </div>
-      </div>
 
-
-      {/* right */}
-      <div className="w-full lg:w-3/6 h-max p-2 flex flex-col ">
-        {/* tabliqh */}
-        <div className=" w-full h-[140px] bg-green-300 flex flex-col justify-center rounded-xl">
-          <div className="flex gap-3 justify-center items-center">
-            <img
-              className=" w-[50px] h-[50px] bg-red-500 rounded-full"
-              src={imgreact}
-              alt=""
-            />
-            <div className="flex flex-col gap-1">
-              <span>Find Your Match</span>
-              <span>
-                Sponsored .{" "}
-                <span className=" text-gray-300">www.target.com/b/maul</span>
-              </span>
-            </div>
-            <button className=" px-2 py-2 bg-blue-600 text-white rounded-full">
-              Shop new
-            </button>
-          </div>
-        </div>
-
-        <div className=" text-center">
-          <p>slider name</p>
-        </div>
-
-        {/* videos */}
-        <div className=" flex flex-col gap-2">
-          {
-            dbvideos.map(item=>(
+          {/* videos */}
+          <div className=" flex flex-col gap-2">
+            {dbvideos.map((item) => (
               <VideoComponentShow key={item} />
-            ))
-          }
+            ))}
+          </div>
         </div>
-
-
       </div>
     </div>
   );

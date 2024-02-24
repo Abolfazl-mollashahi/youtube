@@ -43,6 +43,7 @@ function Home() {
         toggleflag={toggleflag}
         settoggleflag={settoggleflag}
         togglefunc={togglefunc}
+        flagpagevideo={true}
       />
 
       <div className="flex w-full fixed top-0 left-0 ">
@@ -92,6 +93,7 @@ function Home() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

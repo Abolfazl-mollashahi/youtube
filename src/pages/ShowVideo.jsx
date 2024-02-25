@@ -6,6 +6,10 @@ import { GoUnmute } from "react-icons/go";
 import { GoMute } from "react-icons/go";
 import { TbPlayerPause } from "react-icons/tb";
 import { SlLike } from "react-icons/sl";
+import { MdFullscreen } from "react-icons/md";
+import { MdFullscreenExit } from "react-icons/md";
+import { CgLogIn, CgPlayTrackPrev } from "react-icons/cg";
+import { CgMiniPlayer } from "react-icons/cg";
 import { SlDislike } from "react-icons/sl";
 import { RiShareForwardFill } from "react-icons/ri";
 import { CiMenuKebab } from "react-icons/ci";
@@ -19,6 +23,8 @@ function ShowVideo() {
   const [menuitemvid, setmenuitemvid] = useState(false);
   const btnmenvideo = useRef({});
   const divmenvideo = useRef({});
+  const spanplayvideo = useRef({});
+  const speedbtn = useRef({});
   let dbvideos = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
@@ -159,6 +165,9 @@ function ShowVideo() {
   const [flagplay, setflagplay] = useState(false);
   const [flagmute, setflagmute] = useState(false);
   const [toggleflag, settoggleflag] = useState(false);
+  const [flagminivideo, setflagminivideo] = useState(false);
+  const [fullscreen, setfullscreen] = useState(false);
+  const [speedvideo, setspeedvideo] = useState(1);
 
   const btnmenu = (e) => {
     if (
@@ -170,22 +179,64 @@ function ShowVideo() {
       setmenuitemvid(false);
     }
   };
-  const funcvideo = ()=>{
-    if(flagplay){
-      videoelem.current.play()
-    }else{
-      videoelem.current.pause()
+  // هنوکارداره
+  const funcvideo = (e) => {
+    e.stopPropagation();
+    if (
+      e.target == videoelem.current
+      // spanplayvideo.current.contains(e.target)
+      // e.stopPropagation() === undefined
+    ) {
+      if (flagplay) {
+        videoelem.current.play();
+      } else {
+        videoelem.current.pause();
+      }
+      console.log(e.stopPropagation());
+      setflagplay(!flagplay);
     }
-    setflagplay(!flagplay)
-  }
+    console.log("kkk");
+  };
 
-  const funcmutevideo = ()=>{
-    videoelem.current.muted = !videoelem.current.muted
-    setflagmute(!flagmute)
-  }
+  const funcmutevideo = () => {
+    videoelem.current.muted = !videoelem.current.muted;
+    setflagmute(!flagmute);
+  };
+
+  const FuncMiniVideo = () => {
+    if (flagminivideo) {
+      window.document.exitPictureInPicture();
+    }
+    videoelem.current.requestPictureInPicture();
+    setflagminivideo(!flagminivideo);
+  };
+  const FuncFullScreenVideo = () => {
+    if (document.fullscreenElement == null) {
+      videoelem.current.requestFullscreen();
+    } else {
+      videoelem.current.exitFullscreen();
+    }
+  };
+
+  // speed-btn
+  const speedBtn = () => {
+    if (speedvideo >= 2) {
+      videoelem.current.playbackRate = 1;
+      setspeedvideo(1);
+    } else {
+      setspeedvideo((videoelem.current.playbackRate += 0.25));
+    }
+  };
 
   useEffect(() => {
     document.addEventListener("click", btnmenu);
+    document.addEventListener("fullscreenchange", () => {
+      videoelem.current.classList.toggle(
+        "fullscreen",
+        document.fullscreenElement
+      );
+    });
+
     return () => {
       document.removeEventListener("click", btnmenu);
     };
@@ -205,7 +256,7 @@ function ShowVideo() {
   };
 
   const closefather = () => {
-    if(toggleflag){
+    if (toggleflag) {
       settoggleflag(false);
       divcontiner.current.style.marginLeft = "0px";
       divslidername.current.style.marginLeft = "0px";
@@ -223,40 +274,100 @@ function ShowVideo() {
       />
       <div className=" w-full p-2 h-max mt-14 flex flex-col gap-2 lg:flex-row items-start">
         {/* left */}
-        <div className="w-full h-max p-1 flex flex-col gap-2 ">
+        <div className="w-full h-max p-1 flex flex-col gap-4 ">
           <div className=" relative h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden ">
             {/* div-video-asly */}
-            <div className=" !w-full !h-full hiddene bg-red-600 ">
+            <div
+              onClick={(e) => funcvideo(e)}
+              className=" !w-full !h-full hiddene flex items-center justify-center bg-red-600 z-[2]  "
+            >
+              {/* time-line */}
+              <div className="timeline-container w-full h-[7px] z-[4] bottom-32 absolute flex items-center cursor-pointer">
+                <img className="thumbnail-img " src="" alt="" />
+                <div className="timeline h-[3px] w-[100%] relative bg-[#5d5b5b70]">
+                  <img className="preview-img" alt="" />
+                  <div className="thumb-indicator"></div>
+                </div>
+              </div>
+
               <video
                 autoPlay
                 ref={videoelem}
                 onTimeUpdate={updateTimes}
                 onLoadedData={loadedData}
-                className=" !w-full !h-full object-cover z-[2] "
+                className="video !w-full !h-full object-cover z-[2] "
                 src={tstvideo}
               ></video>
+              {flagplay ? (
+                <span className="z-[3] absolute bg-[#0000005b] animate-pulse text-white rounded-full ">
+                  <IoPlayOutline size={65} />
+                </span>
+              ) : (
+                <span className="z-[3] opacity-0 absolute bg-[#0000005b] animate-play text-white rounded-full ">
+                  <TbPlayerPause size={65} />
+                </span>
+              )}
               {/* btn-video */}
-              <div className=" w-full flex gap-2 px-3 h-[40px] items-center text-white bg-red-700 absolute  bottom-2 left-0 z-[3]">
-                <span >
-                  {flagplay ? (
-                    <IoPlayOutline onClick={funcvideo} size={30} />
+              <div className=" w-full flex gap-2 justify-between px-5 h-[40px] items-center text-white bg-red-950 absolute  bottom-1 left-0 z-[3]">
+                {/* left */}
+                <div className="flex gap-3 items-center">
+                  <span
+                    ref={spanplayvideo}
+                    onClick={(e) => funcvideo(e)}
+                    className=" cursor-pointer pointer-events-auto z-[3] "
+                  >
+                    {flagplay ? (
+                      <IoPlayOutline size={30} />
                     ) : (
-                      <TbPlayerPause onClick={funcvideo} size={30} />
-                  )}
-                </span>
-                <span>
-                  forward
-                </span>
-                <span>
-                  {
-                    flagmute ?
-                    <GoMute onClick={funcmutevideo} size={25} />
-                    :
-                    <GoUnmute onClick={funcmutevideo} size={25} />
-                  }
-                </span>
-                <span >{currenttime}</span>
-
+                      <TbPlayerPause size={30} />
+                    )}
+                  </span>
+                  <span className="cursor-pointer rotate-180">
+                    <CgPlayTrackPrev size={30} />
+                  </span>
+                  <span className=" cursor-pointer flex gap-1 father">
+                    {flagmute ? (
+                      <GoMute onClick={funcmutevideo} size={30} />
+                    ) : (
+                      <GoUnmute onClick={funcmutevideo} size={30} />
+                    )}
+                    <input
+                      className=" children w-[100px] origin-left "
+                      type="range"
+                      name=""
+                      min={`0`}
+                      max={`5`}
+                      id=""
+                    />
+                  </span>
+                  <span className=" cursor-default flex gap-2 items-center ">
+                    {currenttime} / {totaltime}
+                  </span>
+                </div>
+                {/* right */}
+                <div className="flex gap-3 items-center">
+                  <span className=" cursor-pointer">
+                    <CgMiniPlayer onClick={FuncMiniVideo} size={30} />
+                  </span>
+                  {/* speed-btn */}
+                  <span
+                    ref={speedbtn}
+                    onClick={speedBtn}
+                    className=" w-[45px] text-center text-[20px] cursor-pointer"
+                  >
+                    {speedvideo + "x"}
+                  </span>
+                  <span className=" cursor-pointer">
+                    {fullscreen ? (
+                      <MdFullscreenExit
+                        onClick={FuncFullScreenVideo}
+                        size={30}
+                      />
+                    ) : (
+                      <MdFullscreen onClick={FuncFullScreenVideo} size={30} />
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
             {/* <div className=" !w-full !h-full bg-green-700">
@@ -332,21 +443,19 @@ function ShowVideo() {
             </div>
           </div>
           {/* date-views video */}
-          <div className="flex gap-2 items-center pl-3">
+          <div className="flex gap-2 items-center pl-5">
             <p>
-              <span>89K</span> views {flagplay ? 1:0}
+              <span>89K</span> views {flagplay ? 1 : 0}
             </p>
             <p>
-              {" "}
               <span>1</span> year ago
             </p>
           </div>
 
           {/* div-coments */}
-          <div className="">
+          <div className="p-3">
             <div className=" w-[300px] h-[30px] flex">
               <p className=" text-[17px]">
-                {" "}
                 <span>{listcoments2.length}</span> Cooments
               </p>
             </div>

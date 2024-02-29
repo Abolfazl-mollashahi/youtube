@@ -275,14 +275,14 @@ function ShowVideo() {
       <div className=" w-full p-2 h-max mt-14 flex flex-col gap-2 lg:flex-row items-start">
         {/* left */}
         <div className="w-full h-max p-1 flex flex-col gap-4 ">
-          <div className=" relative h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden ">
+          <div className=" relative divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden ">
             {/* div-video-asly */}
             <div
               onClick={(e) => funcvideo(e)}
-              className=" !w-full !h-full hiddene flex items-center justify-center bg-red-600 z-[2]  "
+              className=" div-video !w-full !h-full hiddene flex items-center justify-center "
             >
               {/* time-line */}
-              <div className="timeline-container w-full h-[7px] z-[4] bottom-32 absolute flex items-center cursor-pointer">
+              <div className="timeline-container w-full h-[7px] z-[4] bottom-[50px] absolute flex items-center cursor-pointer">
                 <img className="thumbnail-img " src="" alt="" />
                 <div className="timeline h-[3px] w-[100%] relative bg-[#5d5b5b70]">
                   <img className="preview-img" alt="" />
@@ -308,7 +308,7 @@ function ShowVideo() {
                 </span>
               )}
               {/* btn-video */}
-              <div className=" w-full flex gap-2 justify-between px-5 h-[40px] items-center text-white bg-red-950 absolute  bottom-1 left-0 z-[3]">
+              <div className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[3]  ">
                 {/* left */}
                 <div className="flex gap-3 items-center">
                   <span

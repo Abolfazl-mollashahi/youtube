@@ -495,7 +495,7 @@ function ShowVideo() {
           {/* videos */}
           <div className=" flex flex-col gap-2">
             {dbvideos.map((item) => (
-              <VideoComponentShow key={item} />
+              <VideoComponentShow Wvideo={`160px`} Hvideo={`100px`} key={item} />
             ))}
           </div>
         </div>

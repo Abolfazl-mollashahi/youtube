@@ -4,7 +4,7 @@ import { CiLogin, CiMenuKebab } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import { useVideo } from "../utils/useVideo";
 
-function VideoComponentShow() {
+function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild }) {
   const [menuit, setmenuit] = useState(false);
   const btnm = useRef({});
   const divmen = useRef({});
@@ -28,20 +28,20 @@ function VideoComponentShow() {
 
 
   return (
-    <div className=" flex gap-1 relative father">
+    <div className={` ${ classdiv ? classdiv : `w-full flex gap-1 relative father `} `}>
       <NavLink to={`/video/2`} className=" w-max relative">
         <video
         ref={videoelem}
         onMouseMove={VideoMousMove}
         onMouseLeave={VideoMousLeav}
         onLoadedData={loadedData}
-          className=" w-[160px] h-[100px] object-cover rounded-lg peer-[tst]:"
+          className={` ${ classvideo ? classvideo : ` w-[${Wvideo}] h-[${Hvideo}] object-cover rounded-lg ` } `}
           src={tstvideo}
         >
         </video>
           <span className=" w-max absolute  bottom-1 right-1 px-1 rounded-lg bg-[#251515bb] text-white">{totaltime}</span>
       </NavLink>
-      <div className="flex flex-col gap-1">
+      <div className={` ${ classdivchild ? classdivchild : `flex flex-col gap-1 `}`}>
         <NavLink to={`/video/2`}>
           <span className=" text-[15px]">Lorem, ipsum dolor sit amet</span>
         </NavLink>

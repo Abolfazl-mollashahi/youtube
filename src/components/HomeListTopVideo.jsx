@@ -27,20 +27,20 @@ function HomeListVideo() {
 
 
   return (
-    <div className="p-1 w-[100%] h-[300px] flex flex-col items-center justify-center gap-1">
+    <div className={`p-1 h-[300px] flex flex-col items-center justify-center gap-1 w-full `}>
       <div
-        className="father z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
+        className="father w-full z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[-2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
         onMouseOver={VideoMousMove}
         onMouseOut={VideoMousLeav}
       >
-        <NavLink to="/video/1" className="">
+        <NavLink to="/video/1" className=" ">
           <video
             src={tstvideo}
             onLoadedData={loadedData}
             onTimeUpdate={updateTimes}
             muted
             ref={videoelem}
-            className=" w-full h-[240px] z-[10] object-cover rounded-xl"
+            className={` w-full h-[240px] z-[10] object-cover rounded-xl `}
           ></video>
         </NavLink>
 
@@ -119,7 +119,7 @@ function HomeListVideo() {
       </div>
       <div className="w-full father flex relative ">
         <NavLink to="/video/1" className=" w-full block">
-          <div className="flex gap-2 p-1">
+          <div className="flex flex-shrink gap-2 p-1">
             <img
               className=" w-[40px] h-[40px] rounded-full object-contain"
               src={imgreact}

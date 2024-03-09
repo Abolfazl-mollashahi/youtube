@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import Serachpage from "./pages/Search";
 import Shorts from "./pages/Shorts";
 import ShowVideo from "./pages/ShowVideo";
+import Subscribepage from "./pages/Subscribepage";
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
   {
     path: "/serach/:value",
     element: <Serachpage/> ,
+  },
+  {
+    path: "/Subscribe",
+    element: <Subscribepage/> ,
   },
 ];
 export default routes;

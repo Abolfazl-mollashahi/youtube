@@ -20,8 +20,7 @@ function Shorts() {
     }
   };
 
- 
-
+  
   return (
     <div onClick={closefathershorts}>
       <MyNavbar toggleflag={toggleflagshorts} togglefunc={togglefuncshorts} />
@@ -31,7 +30,13 @@ function Shorts() {
         <ShowVideoShorts />
         <ShowVideoShorts />
         <ShowVideoShorts />
+        <ShowVideoShorts />
+        <ShowVideoShorts />
+        <ShowVideoShorts />
+        <ShowVideoShorts />
+        <ShowVideoShorts />
       </div>
+      
     </div>
   );
 }

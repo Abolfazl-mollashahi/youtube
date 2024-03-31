@@ -542,7 +542,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
                       </NavLink>
 
                       <NavLink
-                        to="/subscriptions"
+                        to="/subscribe"
                         className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
                       >
                         <span>Subscriptions</span>
@@ -1351,12 +1351,12 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
               (
                 flagpagevideo ?
                   <div className=" hidden p-3 w-[80px] text-[12px] pt-[10px] h-max md:flex bg-white gap-5 flex-col items-center justify-start">
-                      <NavLink className=" w-max h-max flex flex-col items-center ">
+                      <NavLink to={`/`} className=" w-max h-max flex flex-col items-center ">
                         <IoMdHome size={24} />
                         <span>Home</span>
                       </NavLink>
     
-                      <NavLink className=" w-max h-max flex flex-col items-center ">
+                      <NavLink to={`/shorts`} className=" w-max h-max flex flex-col items-center ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"
@@ -1374,7 +1374,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
                         <span>Shorts</span>
                       </NavLink>
     
-                      <NavLink className=" w-max h-max flex flex-col items-center ">
+                      <NavLink to={`/Subscribe`} className=" w-max h-max flex flex-col items-center ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"
@@ -1392,7 +1392,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
                         <span>Subscriptions</span>
                       </NavLink>
     
-                      <NavLink className=" w-max h-max flex flex-col items-center ">
+                      <NavLink to={`/`} className=" w-max h-max flex flex-col items-center ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"

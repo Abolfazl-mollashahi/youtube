@@ -27,6 +27,7 @@ function ShowVideoShorts() {
   const divshowmenu = useRef({});
   const btnmenuitem = useRef({});
   const videotag = useRef({});
+  const loadingtag = useRef()
 
   const listcoments = [
     {
@@ -177,11 +178,23 @@ function ShowVideoShorts() {
     console.log(videotag.current);
   };
 
+  // اینجا تعقییرات لازمه
   const move = () => {
+    let num = 0
     if (flagplay) {
       videotag.current.pause();
     } else {
-      videotag.current.play();
+      setInterval(() => {
+       num++
+       if(num == 100){
+         num = 100
+        //  loadingtag.current.style.width = "0px"
+        }
+       loadingtag.current.style.width = `${num} %`
+       setTimeout(() => {
+         videotag.current.play();
+       }, 4000);
+      },50);
     }
     setflagplay(!flagplay);
   };
@@ -752,6 +765,8 @@ function ShowVideoShorts() {
       ) : (
         <></>
       )}
+      {/* loading-tag */}
+    <p ref={loadingtag} className="w-0 h-[5px] absolute top-0 left-0 bg-red-500 z-[100]"></p>
     </div>
   );
 }

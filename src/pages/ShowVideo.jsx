@@ -181,27 +181,39 @@ function ShowVideo() {
   };
   // هنوکارداره
   const funcvideo = (e) => {
+    console.log(e.target);
+    console.log("play");
     e.stopPropagation();
-    if (
-      e.target == videoelem.current
-      // spanplayvideo.current.contains(e.target)
-      // e.stopPropagation() === undefined
-    ) {
-      if (flagplay) {
-        videoelem.current.play();
-      } else {
-        videoelem.current.pause();
-      }
-      console.log(e.stopPropagation());
-      setflagplay(!flagplay);
+    // if (
+    //   e.target == videoelem.current
+    //   // spanplayvideo.current.contains(e.target)
+    //   // e.stopPropagation() === undefined
+    // ) {
+    // };
+    setflagplay(!flagplay);
+    if (flagplay) {
+      videoelem.current.pause();
+    } else {
+      videoelem.current.play();
     }
-    console.log("kkk");
+    // console.log(e.stopPropagation());
+  }
+
+  const funcmutevideo = (e) => {
+    // console.log(e.target);
+    // if(flagmute){
+    //   videoelem.current.play();
+    //   videoelem.current.muted = !videoelem.current.muted;
+    //   setflagmute(false);
+    // }else{
+    //   setflagmute(true);
+    // }
   };
 
-  const funcmutevideo = () => {
-    videoelem.current.muted = !videoelem.current.muted;
-    setflagmute(!flagmute);
-  };
+  // const funcmute =() =>{
+  //   videoelem.current.play()
+  //   console.log(videoelem.current);
+  // }
 
   const FuncMiniVideo = () => {
     if (flagminivideo) {
@@ -291,7 +303,7 @@ function ShowVideo() {
               </div>
 
               <video
-                autoPlay
+                // autoPlay
                 ref={videoelem}
                 onTimeUpdate={updateTimes}
                 onLoadedData={loadedData}
@@ -299,37 +311,37 @@ function ShowVideo() {
                 src={tstvideo}
               ></video>
               {flagplay ? (
-                <span className="z-[3] absolute bg-[#0000005b] animate-pulse text-white rounded-full ">
-                  <IoPlayOutline size={65} />
-                </span>
-              ) : (
                 <span className="z-[3] opacity-0 absolute bg-[#0000005b] animate-play text-white rounded-full ">
                   <TbPlayerPause size={65} />
                 </span>
+              ) : (
+                <span className="z-[3] absolute bg-[#0000005b] animate-pulse text-white rounded-full ">
+                  <IoPlayOutline size={65} />
+                </span>
               )}
               {/* btn-video */}
-              <div className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[3]  ">
+              <div className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[5]  ">
                 {/* left */}
                 <div className="flex gap-3 items-center">
                   <span
                     ref={spanplayvideo}
                     onClick={(e) => funcvideo(e)}
-                    className=" cursor-pointer pointer-events-auto z-[3] "
+                    className=" cursor-pointer pointer-events-none z-[3] "
                   >
                     {flagplay ? (
-                      <IoPlayOutline size={30} />
-                    ) : (
                       <TbPlayerPause size={30} />
+                      ) : (
+                      <IoPlayOutline size={30} />
                     )}
                   </span>
                   <span className="cursor-pointer rotate-180">
                     <CgPlayTrackPrev size={30} />
                   </span>
-                  <span className=" cursor-pointer flex gap-1 father">
+                  <span className=" cursor-pointer flex gap-1 father ">
                     {flagmute ? (
-                      <GoMute onClick={funcmutevideo} size={30} />
+                      <GoMute onClick={(e)=>funcmutevideo(e)} size={30} />
                     ) : (
-                      <GoUnmute onClick={funcmutevideo} size={30} />
+                      <GoUnmute onClick={(e)=>funcmutevideo(e)} size={30} />
                     )}
                     <input
                       className=" children w-[100px] origin-left "
@@ -369,6 +381,7 @@ function ShowVideo() {
                   </span>
                 </div>
               </div>
+
             </div>
             {/* <div className=" !w-full !h-full bg-green-700">
             <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" !w-full !h-full object-cover " src={tstvideo}></video>
@@ -393,8 +406,8 @@ function ShowVideo() {
               </div>
               <button
                 className={` ${
-                  false ? " bg-[#25232385] text-white" : " bg-yellow-50"
-                } px-2 py-1  rounded-2xl `}
+                  false ? " bg-[#25232385] text-white" : " bg-gray-200"
+                } px-3 py-1.5  rounded-2xl `}
               >
                 Subscribe
               </button>
@@ -468,7 +481,7 @@ function ShowVideo() {
         {/* right */}
         <div className="w-full lg:w-3/6 h-max p-2 flex flex-col ">
           {/* tabliqh */}
-          <div className=" w-full h-[140px] bg-green-300 flex flex-col justify-center rounded-xl">
+          <div className=" w-full h-[140px] bg-green-200 flex flex-col justify-center rounded-xl">
             <div className="flex gap-3 justify-center items-center">
               <img
                 className=" w-[50px] h-[50px] bg-red-500 rounded-full"
@@ -495,7 +508,11 @@ function ShowVideo() {
           {/* videos */}
           <div className=" flex flex-col gap-2">
             {dbvideos.map((item) => (
-              <VideoComponentShow Wvideo={`160px`} Hvideo={`100px`} key={item} />
+              <VideoComponentShow
+                Wvideo={`160px`}
+                Hvideo={`100px`}
+                key={item}
+              />
             ))}
           </div>
         </div>

@@ -27,9 +27,8 @@
   background: rgb(2, 0, 36);
   background: linear-gradient(
     to top,
-    rgb(24, 6, 57) 0%,
-    rgba(37, 10, 96, 0.568) 10%,
-    rgba(77, 58, 202, 0.128) 100%
+    rgb(24, 6, 57) 30%,
+    rgba(77, 58, 202, 0.005) 100%
   );
 }
 
@@ -174,4 +173,11 @@
 }
 .timeline-container:hover .timeline {
   height: 100%;
+}
+
+.tt{
+  z-index: 5 !important;
+}
+.imp{
+  z-index: 50 !important;
 }

@@ -4,14 +4,17 @@ import { CgMenuGridO } from "react-icons/cg";
 import MyNavbar from "../components/MyNavbar";
 import HomeListVideo from "../components/HomeListTopVideo";
 import Listflexcolvideo from "../components/listflexcolvideo";
+import { useNavigate } from "react-router-dom";
 
 function Subscribepage() {
   const [toggleflag, settoggleflag] = useState(false);
   const [chengemanege, setchengemanege] = useState(false);
   const [dizinegrid, setdizinegrid] = useState(true);
   const [dizineflex, setdizineflex] = useState(false);
+  const navigate = useNavigate()
 
   const divcontiner = useRef({});
+  // const btnshow = useRef({});
   let db = [
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1,
@@ -43,6 +46,7 @@ function Subscribepage() {
     setdizineflex(false);
     setdizinegrid(false);
     setchengemanege(true);
+    navigate("/channels")
   };
   const desinegridfunc = () => {
     setdizineflex(false);
@@ -115,32 +119,26 @@ function Subscribepage() {
         </div>
 
         <div className="w-full relative top-[50px] py-2 ">
-          {chengemanege ? (
+          {/* {chengemanege && (
             <div className={` h-[500px]s bg-red-500`}>
               vvvv
             </div>
-          ) : (
-            ""
-          )}
+          )} */}
 
-          {dizinegrid ? (
+          {dizinegrid && (
             <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-center items-center w-full">
               {db.map((item, ind) => (
                 <HomeListVideo key={ind} />
               ))}
             </div>
-          ) : (
-            ""
           )}
 
-          {dizineflex ? (
+          {dizineflex && (
             <div className="w-full">
               {db.map((item, ind) => (
                 <Listflexcolvideo key={ind} />
               ))}
             </div>
-          ) : (
-            ""
           )}
         </div>
       </div>

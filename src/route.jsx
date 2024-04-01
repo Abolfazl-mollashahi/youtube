@@ -1,3 +1,4 @@
+import Channels from "./pages/Channels";
 import Home from "./pages/Home";
 import Serachpage from "./pages/Search";
 import Shorts from "./pages/Shorts";
@@ -24,6 +25,10 @@ const routes = [
   {
     path: "/Subscribe",
     element: <Subscribepage/> ,
+  },
+  {
+    path: "/channels",
+    element: <Channels/> ,
   },
 ];
 export default routes;

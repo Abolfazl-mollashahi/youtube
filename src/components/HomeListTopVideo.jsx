@@ -1,33 +1,57 @@
 import tstvideo from "../assets/videos/video.mp4";
 import imgreact from "../assets/react.svg";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useVideo } from "../utils/useVideo";
+import { CiMenuKebab } from "react-icons/ci";
 
 function HomeListVideo() {
-  const [ videoelem,mute,totaltime,currenttime,VideoMousMove,VideoMousLeav,mutefunc,updateTimes,loadedData ] = useVideo()
-  
+  const [
+    videoelem,
+    mute,
+    totaltime,
+    currenttime,
+    VideoMousMove,
+    VideoMousLeav,
+    mutefunc,
+    updateTimes,
+    loadedData,
+  ] = useVideo();
+  const btnshow = useRef({});
+  const divshow = useRef({});
+  const [menuitem, setmenuitem] = useState(false);
+  const btnitemshow = (e) => {
+    if (
+      btnshow.current.contains(e.target) ||
+      divshow.current.contains(e.target)
+    ) {
+      setmenuitem(true);
+    } else {
+      setmenuitem(false);
+    }
+  };
 
   useEffect(() => {
     const videoElement = videoelem.current;
-  
+
     if (videoElement) {
       videoElement.addEventListener("timeupdate", updateTimes);
       videoElement.addEventListener("loadeddata", loadedData);
     }
-  
+    document.addEventListener("click", btnitemshow);
     return () => {
+      document.removeEventListener("click", btnitemshow);
       if (videoElement) {
         videoElement.removeEventListener("timeupdate", updateTimes);
         videoElement.removeEventListener("loadeddata", loadedData);
       }
     };
-  },[]);
-
-
+  }, []);
 
   return (
-    <div className={`p-1 h-[300px] flex flex-col items-center justify-center gap-1 w-full `}>
+    <div
+      className={`p-1 h-[300px] relative flex flex-col items-center justify-center gap-1 w-full `}
+    >
       <div
         className="father w-full z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[-2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
         onMouseOver={VideoMousMove}
@@ -44,7 +68,7 @@ function HomeListVideo() {
           ></video>
         </NavLink>
 
-        <div className="children bg-[#3939392b] z-[2] px-1 py-0.5 absolute right-2 top-2 flex items-center rounded-lg gap-1">
+        <div className="children bg-[#00000092] z-[2] px-1 py-0.5 absolute right-2 top-2 flex items-center rounded-lg gap-1">
           <button onClick={mutefunc} className="mute z-[20]">
             <svg
               style={mute ? {} : { display: "none" }}
@@ -113,7 +137,7 @@ function HomeListVideo() {
           </button>
         </div>
 
-        <div className="childrens absolute bottom-3 left-2 text-white ">
+        <div className="childrens absolute bottom-3 left-2 px-1 rounded-lg bg-[#00000092] text-white cursor-pointer ">
           <span>{currenttime}</span>/<span>{totaltime}</span>
         </div>
       </div>
@@ -138,20 +162,53 @@ function HomeListVideo() {
             </div>
           </div>
         </NavLink>
-        {/* <div className="children relative hover:father h-max ">
-          <button
-            onClick={(e) => {
-              setitems(!items)
-              console.log(e);
-            }}
-            className=" w-[25px] h-[25px] bg-red-500 rotate-90 rounded-full"
-          >
-            ---
+
+        <button
+          ref={btnshow}
+          className=" z-4 w-[30px] h-[30px] rounded-full flex justify-center items-center "
+        >
+          <CiMenuKebab
+            className="w-full h-full p-1.5"
+            onClick={(e) => btnitemshow(e)}
+            id="btnshow"
+          />
+        </button>
+      </div>
+
+      {/* meno */}
+      <div
+        ref={divshow}
+        id="divmenu"
+        className={` ${
+          menuitem ? "flex " : "hidden"
+        } w-[250px] h-max absolute top-[240px] right-3 flex-col gap-1 p-2 rounded-xl shadow-lg bg-gray-100 shadow-gray-700 sm:z-[7]  `}
+      >
+        <div className="">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Add to queue
           </button>
-        <div className={` children  w-[150px] h-[200px] z-[100] absolute top-6  right-0 bg-green-600`}>
-          <p>tst</p>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Save to Watch later
+          </button>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Save tpo playlist
+          </button>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Download
+          </button>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Share
+          </button>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Not interested
+          </button>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Dont recommend channel
+          </button>
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+            Report
+          </button>
         </div>
-        </div> */}
       </div>
     </div>
   );

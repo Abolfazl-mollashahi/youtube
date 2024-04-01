@@ -54,9 +54,9 @@ function Listflexcolvideo() {
 
   return (
     <div
-      className={`p-2 w-max mx-auto flex flex-col items-center justify-center gap-1 md:mx-1 md:items-start md:flex-row md:h-max sm:-z-[5] bg-yellow-300`}
+      className={`p-2 w-max mx-auto flex flex-col items-center justify-center gap-1 md:mx-1 md:items-start md:flex-row md:h-max sm:-z-[5] `}
     >
-      <div className="w-full flex flex-col justify-center items-start gap-1 p-1 bg-blue-600 -z-1">
+      <div className="w-full flex flex-col justify-center items-start gap-1 p-1  sm:z-[3]">
         <NavLink to="/video/1" className="w-max ">
           <div className=" flex gap-2 items-center">
             <img
@@ -81,11 +81,11 @@ function Listflexcolvideo() {
               onTimeUpdate={updateTimes}
               muted
               ref={videoelem}
-              className={` w-full h-[240px]  sm:mx-auto z-[10] object-cover rounded-xl md:w-[250px] md:h-[140px] lg:w-[300px] lg:h-[160px] `}
+              className={` w-full h-[240px]  sm:mx-auto z-[5] object-cover rounded-xl md:w-[250px] md:h-[140px] lg:w-[300px] lg:h-[160px] `}
             ></video>
           </NavLink>
 
-          <div className="children bg-[#3939392b] z-[2] px-1 py-0.5 absolute right-2 top-2 flex items-center rounded-lg gap-1">
+          <div className="children bg-[#000000ba] z-[2] px-1 absolute right-2 top-2 flex items-center rounded-lg gap-1">
             <button onClick={mutefunc} className="mute z-[20]">
               <svg
                 style={mute ? {} : { display: "none" }}
@@ -154,92 +154,78 @@ function Listflexcolvideo() {
             </button>
           </div>
 
-          <div className="childrens absolute bottom-3 left-2 text-white ">
+          <div className="childrens absolute bottom-3 left-2 bg-[#000000ba] px-1 rounded-lg text-white ">
             <span>{currenttime}</span>/<span>{totaltime}</span>
           </div>
         </div>
       </div>
-      <div className=" w-full relative md:translate-y-10 flex justify-between items-start bg-green-400 z-5 sm:z-20">
-        <div className="w-full father flex relative bg-green-600 sm:z-[30] !important ">
-          <NavLink to="/video/1" className=" w-full block ">
-            <div className="flex flex-shrink gap-2 p-1">
-              <div className="">
-                <p className="py-1 text-[14px] md:text-[15px] md:w-[330px] lg:w-[450px] xl:w-[600px] xxl:w-[700px]">
-                  <span className="hidden md:block">{text}</span>
-                  <span className=" md:hidden">{text.substring(0, 60) + " ..."}</span>
-                </p>
-                <p className="py-1 text-[13px]  text-gray-600">
-                  <span>570 views</span> * <span>2 years ago</span>{" "}
-                </p>
+      <div className=" relative ">
+        <div className=" w-full relative md:translate-y-10 flex justify-between items-start  z-[5]">
+          <div className="w-full father flex relative ">
+            <NavLink to="/video/1" className=" w-full block ">
+              <div className="flex flex-shrink gap-2 p-1">
+                <div className="">
+                  <p className="py-1 text-[14px] md:text-[15px] md:w-[330px] lg:w-[450px] xl:w-[600px] xxl:w-[700px]">
+                    <span className="hidden md:block">{text}</span>
+                    <span className=" md:hidden">
+                      {text.substring(0, 60) + " ..."}
+                    </span>
+                  </p>
+                  <p className="py-1 text-[13px]  text-gray-600">
+                    <span>570 views</span> * <span>2 years ago</span>{" "}
+                  </p>
+                </div>
               </div>
-            </div>
-          </NavLink>
-          {/* <div className="children relative hover:father h-max ">
-          <button
-            onClick={(e) => {
-              setitems(!items)
-              console.log(e);
-            }}
-            className=" w-[25px] h-[25px] bg-red-500 rotate-90 rounded-full"
-          >
-            ---
-          </button>
-        <div className={` children  w-[150px] h-[200px] z-[100] absolute top-6  right-0 bg-green-600`}>
-          <p>tst</p>
-        </div>
-        </div> */}
+            </NavLink>
+
+            <button
+              ref={btnshow}
+              className=" z-4 w-[30px] h-[30px] rounded-full flex justify-center items-center "
+            >
+              <CiMenuKebab
+                className="w-full h-full p-1.5"
+                onClick={(e) => btnitemshow(e)}
+                id="btnshow"
+              />
+            </button>
+          </div>
         </div>
 
-        <div className=" relative  bg-violet-600 z-20">
-          <button ref={btnshow} className=" z-3 w-[30px] h-[30px] flex justify-center items-center bg-red-400 ">
-            <CiMenuKebab
-              className="w-full h-full p-1.5 bg-red-500"
-              onClick={(e) => btnitemshow(e)}
-              id="btnshow"
-            />
-          </button>
-
-          <div
-            ref={divshow}
-            id="divmenu"
-            className={` ${
-              menuitem ? "flex" : "hidden"
-            } w-[250px] h-max absolute top-10 right-3 flex-col gap-1 p-2 bg-gray-100 rounded-xl shadow-lg shadow-gray-700 z-[50] !important `}
-          >
-            <div className=" bg-red-700 ">
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Add to queue
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Save to Watch later
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Save tpo playlist
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Download
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Share
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Not interested
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Dont recommend channel
-              </button>
-              <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
-                Report
-              </button>
-            </div>
+        {/* meno */}
+        <div
+          ref={divshow}
+          id="divmenu"
+          className={` ${
+            menuitem ? "flex " : "hidden"
+          } w-[250px] h-max absolute top-[70px] right-3 flex-col gap-1 p-2 rounded-xl shadow-lg bg-gray-100 shadow-gray-700 sm:z-[7]  `}
+        >
+          <div className="">
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Add to queue
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Save to Watch later
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Save tpo playlist
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Download
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Share
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Not interested
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Dont recommend channel
+            </button>
+            <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+              Report
+            </button>
           </div>
-          {/* {menuitem ? (
-          <div id="divmenu" className=" w-[250px] h-max absolute right-0 top-10 bg-red-500 ">
-            fhdgsvc
-          </div>
-        ) : (
-          <></>
-        )} */}
+          
         </div>
       </div>
     </div>

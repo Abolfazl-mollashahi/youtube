@@ -138,7 +138,7 @@ function HomeListVideo() {
         </div>
 
         <div className="childrens absolute bottom-3 left-2 px-1 rounded-lg bg-[#00000092] text-white cursor-pointer ">
-          <span>{currenttime}</span>/<span>{totaltime}</span>
+          <span>{currenttime}</span> {(currenttime == 0) ? "" : "/"} <span>{totaltime}</span>
         </div>
       </div>
       <div className="w-full father flex relative ">

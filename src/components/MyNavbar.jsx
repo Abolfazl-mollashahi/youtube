@@ -3,6 +3,7 @@ import { PiBatteryPlus } from "react-icons/pi";
 import { FaMicrophone, FaBarsStaggered } from "react-icons/fa6";
 import { IoMdSearch, IoMdHome } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import { LuChevronRight } from "react-icons/lu";
 import { useRef, useState } from "react";
 import NavbarItem from "./NavbarItem";
 import imgreact from "../assets/react.svg";
@@ -55,7 +56,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
             <hr />
 
             <div className=" w-full flex justify-between items-center">
-              <button className="pr-4">///</button>
+              <button className="pr-4"><LuChevronRight /></button>
               <NavLink
                 to="/tst"
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
@@ -161,7 +162,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
             </NavLink>
 
             <div className=" w-full flex justify-between items-center">
-              <button className="pr-4">///</button>
+              <button className="pr-4"><LuChevronRight /></button>
               <NavLink
                 to="/tst"
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
@@ -186,7 +187,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
             </div>
 
             <div className=" w-full flex justify-between items-center">
-              <button className="pr-4">///</button>
+              <button className="pr-4"><LuChevronRight /></button>
               <NavLink
                 to="/tst"
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
@@ -211,7 +212,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
             </div>
 
             <div className=" w-full flex justify-between items-center">
-              <button className="pr-4">///</button>
+              <button className="pr-4"><LuChevronRight /></button>
               <NavLink
                 to="/tst"
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "
@@ -236,7 +237,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc,flagpagevideo }) {
             </div>
 
             <div className=" w-full flex justify-between items-center">
-              <button className="pr-4">///</button>
+              <button className="pr-4"><LuChevronRight /></button>
               <NavLink
                 to="/tst"
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-gray-100 "

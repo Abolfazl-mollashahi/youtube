@@ -53,6 +53,8 @@ export const useVideo =()=>{
   const loadedData = (e) => {
     settotaltime(formatDuration(e.target.duration));
   };
+
+ 
   
   return[videoelem,mute,totaltime,currenttime,VideoMousMove,VideoMousLeav,mutefunc,updateTimes,loadedData ]
 

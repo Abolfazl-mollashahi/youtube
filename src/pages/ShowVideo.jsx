@@ -1,4 +1,5 @@
 import tstvideo from "../assets/videos/video.mp4";
+import tstvideotablig from "../assets/videos/tablig-3.mp4";
 import imgreact from "../assets/react.svg";
 import { NavLink } from "react-router-dom";
 import { IoPlayOutline } from "react-icons/io5";
@@ -10,6 +11,7 @@ import { MdFullscreen } from "react-icons/md";
 import { MdFullscreenExit } from "react-icons/md";
 import { CgLogIn, CgPlayTrackPrev } from "react-icons/cg";
 import { CgMiniPlayer } from "react-icons/cg";
+import { LuChevronRight } from "react-icons/lu";
 import { SlDislike } from "react-icons/sl";
 import { RiShareForwardFill } from "react-icons/ri";
 import { CiMenuKebab } from "react-icons/ci";
@@ -38,6 +40,17 @@ function ShowVideo() {
     mutefunc,
     updateTimes,
     loadedData,
+  ] = useVideo();
+  const [
+    videoelemtablig,
+    mutetablig,
+    totaltimetablig,
+    currenttimetablig,
+    VideoMousMovetablig,
+    VideoMousLeavtablig,
+    mutefunctablig,
+    updateTimestablig,
+    loadedDatatablig,
   ] = useVideo();
 
   const listcoments2 = [
@@ -162,12 +175,16 @@ function ShowVideo() {
       replys: [],
     },
   ];
-  const [flagplay, setflagplay] = useState(false);
+  const [flagplay, setflagplay] = useState(true);
   const [flagmute, setflagmute] = useState(false);
   const [toggleflag, settoggleflag] = useState(false);
   const [flagminivideo, setflagminivideo] = useState(false);
   const [fullscreen, setfullscreen] = useState(false);
   const [speedvideo, setspeedvideo] = useState(1);
+  const [tabligat, settabligat] = useState(false);
+  const [timeshowbtn, settimeshowbtn] = useState(0);
+  const divbtntablig = useRef({});
+  const btnsendvideo = useRef({});
 
   const btnmenu = (e) => {
     if (
@@ -181,33 +198,43 @@ function ShowVideo() {
   };
   // هنوکارداره
   const funcvideo = (e) => {
-    console.log(e.target);
-    console.log("play");
+    // console.log(e.target);
+    // console.log("play");
     e.stopPropagation();
+
     // if (
     //   e.target == videoelem.current
     //   // spanplayvideo.current.contains(e.target)
     //   // e.stopPropagation() === undefined
     // ) {
     // };
-    setflagplay(!flagplay);
+
+    // console.log(currenttime == '');
+    // if (currenttime == "") {
     if (flagplay) {
       videoelem.current.pause();
+      setflagplay(false);
     } else {
+      setflagplay(true);
       videoelem.current.play();
+      
+      // }
     }
+    // CloseAndShowBtnSendVideo();
+    //   // currenttime = newcurrenttime
+    //   videoelem.current.play();
+    // }
     // console.log(e.stopPropagation());
-  }
+  };
 
   const funcmutevideo = (e) => {
-    // console.log(e.target);
-    // if(flagmute){
-    //   videoelem.current.play();
-    //   videoelem.current.muted = !videoelem.current.muted;
-    //   setflagmute(false);
-    // }else{
-    //   setflagmute(true);
-    // }
+    e.stopPropagation();
+    videoelem.current.muted = !videoelem.current.muted;
+    if (flagmute) {
+      setflagmute(false);
+    } else {
+      setflagmute(true);
+    }
   };
 
   // const funcmute =() =>{
@@ -215,14 +242,17 @@ function ShowVideo() {
   //   console.log(videoelem.current);
   // }
 
-  const FuncMiniVideo = () => {
+  const FuncMiniVideo = (e) => {
     if (flagminivideo) {
       window.document.exitPictureInPicture();
     }
     videoelem.current.requestPictureInPicture();
     setflagminivideo(!flagminivideo);
   };
-  const FuncFullScreenVideo = () => {
+
+  const FuncFullScreenVideo = (e) => {
+    e.preventDefault();
+    // console.log(document.documentElement);
     if (document.fullscreenElement == null) {
       videoelem.current.requestFullscreen();
     } else {
@@ -231,7 +261,8 @@ function ShowVideo() {
   };
 
   // speed-btn
-  const speedBtn = () => {
+  const speedBtn = (e) => {
+    e.stopPropagation();
     if (speedvideo >= 2) {
       videoelem.current.playbackRate = 1;
       setspeedvideo(1);
@@ -242,12 +273,28 @@ function ShowVideo() {
 
   useEffect(() => {
     document.addEventListener("click", btnmenu);
+    const div_btns = document.getElementById("btns");
     document.addEventListener("fullscreenchange", () => {
-      videoelem.current.classList.toggle(
-        "fullscreen",
-        document.fullscreenElement
-      );
+      // if(document.fullscreenElement){
+      //   // videoelem.current.classList.toggle(
+      //     //   "fullscreen",
+      //     //   document.fullscreenElement
+      //     // );
+      //   }else{
+      //   div_btns.style.display =
+      // }
     });
+    // let sum = 0;
+    // if (sum == 6) {
+    //   clearInterval()
+    // }
+    // setInterval(() => {
+    //   sum++;
+    //   // if (sum > 6) {
+    //   //   sum = 0;
+    //   // }
+    //   settimeshowbtn(sum);
+    // }, 1000);
 
     return () => {
       document.removeEventListener("click", btnmenu);
@@ -276,6 +323,34 @@ function ShowVideo() {
     }
   };
 
+  const exittabligatfunc = (e) => {
+    e.stopPropagation();
+    setflagplay(true);
+    CloseAndShowBtnSendVideo();
+    divbtntablig.current.style.display = "none";
+    settabligat(true);
+    setTimeout(() => {
+      divbtntablig.current.style.display = "flex";
+      CloseAndShowBtnSendVideo();
+      setflagplay(true);
+      settabligat(false);
+    }, 8000);
+  };
+
+  const CloseAndShowBtnSendVideo = () => {
+    setTimeout(() => {
+      btnsendvideo.current.style.display = "flex";
+    }, 6000);
+    // let sum = 0;
+    // setInterval(() => {
+    //   sum++;
+    //   if (sum > 6) {
+    //     sum = 0;
+    //   }
+    //   settimeshowbtn(sum);
+    // }, 1000);
+  };
+
   return (
     <div onClick={closefather}>
       <MyNavbar
@@ -288,10 +363,10 @@ function ShowVideo() {
         {/* left */}
         <div className="w-full h-max p-1 flex flex-col gap-4 ">
           <div className=" relative divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden ">
-            {/* div-video-asly */}
+            {/* div-video */}
             <div
               onClick={(e) => funcvideo(e)}
-              className=" div-video !w-full !h-full hiddene flex items-center justify-center "
+              className=" div-video relative w-full !h-full hiddene flex items-center justify-center "
             >
               {/* time-line */}
               <div className="timeline-container w-full h-[7px] z-[4] bottom-[50px] absolute flex items-center cursor-pointer">
@@ -302,14 +377,27 @@ function ShowVideo() {
                 </div>
               </div>
 
-              <video
-                // autoPlay
-                ref={videoelem}
-                onTimeUpdate={updateTimes}
-                onLoadedData={loadedData}
-                className="video !w-full !h-full object-cover z-[2] "
-                src={tstvideo}
-              ></video>
+              {tabligat ? (
+                <video
+                  autoPlay
+                  ref={videoelem}
+                  onTimeUpdate={updateTimes}
+                  onLoadedData={loadedData}
+                  className="video !w-full !h-full object-contain bg-gray-950 z-[2] "
+                  src={tstvideo}
+                ></video>
+              ) : (
+                <video
+                  autoPlay
+                  ref={videoelem}
+                  onTimeUpdate={updateTimes}
+                  onLoadedData={loadedData}
+                  className="video w-full h-full object-cover  bg-gray-950 z-[2] "
+                  src={tstvideotablig}
+                ></video>
+              )}
+
+              {/* icon-play */}
               {flagplay ? (
                 <span className="z-[3] opacity-0 absolute bg-[#0000005b] animate-play text-white rounded-full ">
                   <TbPlayerPause size={65} />
@@ -319,8 +407,12 @@ function ShowVideo() {
                   <IoPlayOutline size={65} />
                 </span>
               )}
-              {/* btn-video */}
-              <div className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[5]  ">
+
+              {/* btns-video */}
+              <div
+                id="btns"
+                className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[5]  "
+              >
                 {/* left */}
                 <div className="flex gap-3 items-center">
                   <span
@@ -330,30 +422,23 @@ function ShowVideo() {
                   >
                     {flagplay ? (
                       <TbPlayerPause size={30} />
-                      ) : (
+                    ) : (
                       <IoPlayOutline size={30} />
                     )}
                   </span>
+
                   <span className="cursor-pointer rotate-180">
                     <CgPlayTrackPrev size={30} />
                   </span>
                   <span className=" cursor-pointer flex gap-1 father ">
                     {flagmute ? (
-                      <GoMute onClick={(e)=>funcmutevideo(e)} size={30} />
+                      <GoMute onClick={(e) => funcmutevideo(e)} size={30} />
                     ) : (
-                      <GoUnmute onClick={(e)=>funcmutevideo(e)} size={30} />
+                      <GoUnmute onClick={(e) => funcmutevideo(e)} size={30} />
                     )}
-                    <input
-                      className=" children w-[100px] origin-left "
-                      type="range"
-                      name=""
-                      min={`0`}
-                      max={`5`}
-                      id=""
-                    />
                   </span>
-                  <span className=" cursor-default flex gap-2 items-center ">
-                    {currenttime} / {totaltime}
+                  <span className=" text-[15px] cursor-default flex gap-2 items-center ">
+                    {currenttime} {currenttime == 0 ? "" : "/"} {totaltime}
                   </span>
                 </div>
                 {/* right */}
@@ -362,13 +447,14 @@ function ShowVideo() {
                     <CgMiniPlayer onClick={FuncMiniVideo} size={30} />
                   </span>
                   {/* speed-btn */}
-                  <span
+                  <button
                     ref={speedbtn}
-                    onClick={speedBtn}
+                    onClick={(e) => speedBtn(e)}
                     className=" w-[45px] text-center text-[20px] cursor-pointer"
                   >
                     {speedvideo + "x"}
-                  </span>
+                  </button>
+
                   <span className=" cursor-pointer">
                     {fullscreen ? (
                       <MdFullscreenExit
@@ -382,7 +468,38 @@ function ShowVideo() {
                 </div>
               </div>
 
+              {/* div-btns-tablig */}
+              <div
+                ref={divbtntablig}
+                className=" w-full h-[70px] z-[5] text-white absolute px-5 bottom-16 left-0 flex justify-end items-center"
+              >
+                <button
+                  ref={btnsendvideo}
+                  className=" flex gap-1 items-center justify-center px-3 py-1.5 rounded-2xl bg-gray-600 hover:bg-gray-950 hover:border transition-colors"
+                  onClick={exittabligatfunc}
+                >
+                  Send <LuChevronRight size={20} />
+                </button>
+                <span>{timeshowbtn}</span>
+              </div>
             </div>
+
+            {/* div-tablig */}
+            {/* <div className="  bg-[#000000d4] relative w-full h-full flex items-center justify-center ">
+                <video
+                  ref={videoelemtablig}
+                  autoPlay
+                  onTimeUpdate={updateTimestablig}
+                  onLoadedData={loadedDatatablig}
+                  className=" w-max h-full object-contain "
+                  src="../src/assets/videos/tablig.mp4"
+                ></video>
+                <div className=" w-full h-[70px] text-white absolute px-10 bottom-10 left-0 flex justify-between items-center">
+                  <span>{currenttimetablig} / {totaltimetablig}</span>
+                  <button className=" flex gap-1 items-center justify-center px-2 py-1 rounded-2xl bg-gray-600 hover:bg-gray-900 transition-colors" onClick={exittabligatfunc}>Send <LuChevronRight size={20} /></button>
+                </div>
+              </div> */}
+
             {/* <div className=" !w-full !h-full bg-green-700">
             <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" !w-full !h-full object-cover " src={tstvideo}></video>
             </div> */}
@@ -458,7 +575,7 @@ function ShowVideo() {
           {/* date-views video */}
           <div className="flex gap-2 items-center pl-5">
             <p>
-              <span>89K</span> views {flagplay ? 1 : 0}
+              <span>89K</span> views
             </p>
             <p>
               <span>1</span> year ago

@@ -40,16 +40,16 @@ function Channels() {
         flagpagevideo={true}
       />
       <div
-        style={toggleflag ? { paddingRight: "220px" } : {}}
+        // style={toggleflag ? { paddingRight: "220px" } : {}}
         ref={divslidername}
-        className={` w-[100%] md:left-[75px] md:pr-[75px] relative flex justify-center items-center top-[55px] `}
+        className={` w-[100%] relative flex justify-center items-center top-[55px] `}
       >
-        <div className=" w-[90%] flex flex-col justify-center items-center">
+        <div className=" w-[90%]ff flex flex-col justify-center items-center">
           {dbchannels.map((channel, index) => (
-            <div className=" w-[80%] h-[150px] flex gap-4 justify-center items-center  mx-2" key={index}>
+            <div className=" w-[85%] h-[150px] flex gap-4 justify-center items-center p-2  my-1.5 border border-violet-400 rounded-2xl scale-100 hover:scale-95  shadow-md  shadow-violet-400 hover:border-violet-800 " key={index}>
               
               <img
-                className=" w-[100px] h-[100px] rounded-full object-cover"
+                className=" w-[100px] h-[100px] rounded-full object-cover  shadow-md border border-violet-300  shadow-violet-400"
                 src={imgreact}
                 alt=""
               />
@@ -64,7 +64,7 @@ function Channels() {
               </div>
               
               <div className="hidden md:block">
-                <button className=" px-3 py-1 rounded-xl bg-gray-200" >Subscribed</button>
+                <button className=" px-3 py-1 rounded-xl bg-gray-200 scale-100  shadow-md  shadow-violet-400  text-violet-700 hover:scale-95 " >Subscribed</button>
               </div>
               
             </div>

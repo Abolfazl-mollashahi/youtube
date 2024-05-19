@@ -272,6 +272,10 @@ function ShowVideo() {
   };
 
   useEffect(() => {
+    // if(videoelem.current){
+    //   videoelem.current.preload = 'auto'
+    //   // videoelem.current.buffered = true
+    // }
     document.addEventListener("click", btnmenu);
     const div_btns = document.getElementById("btns");
     document.addEventListener("fullscreenchange", () => {
@@ -361,12 +365,12 @@ function ShowVideo() {
       />
       <div className=" w-full p-2 h-max mt-14 flex flex-col gap-2 lg:flex-row items-start">
         {/* left */}
-        <div className="w-full h-max p-1 flex flex-col gap-4 ">
-          <div className=" relative divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden ">
+        <div className="w-full h-max p-1.5  flex flex-col gap-5 ">
+          <div className=" relative divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden shadow-xl  md:shadow-2xl   shadow-violet-400">
             {/* div-video */}
             <div
               onClick={(e) => funcvideo(e)}
-              className=" div-video relative w-full !h-full hiddene flex items-center justify-center "
+              className=" div-video relative w-full h-full flex items-center justify-center "
             >
               {/* time-line */}
               <div className="timeline-container w-full h-[7px] z-[4] bottom-[50px] absolute flex items-center cursor-pointer">
@@ -383,7 +387,7 @@ function ShowVideo() {
                   ref={videoelem}
                   onTimeUpdate={updateTimes}
                   onLoadedData={loadedData}
-                  className="video !w-full !h-full object-contain bg-gray-950 z-[2] "
+                  className="video w-full h-full object-cover z-[2] "
                   src={tstvideo}
                 ></video>
               ) : (
@@ -392,7 +396,7 @@ function ShowVideo() {
                   ref={videoelem}
                   onTimeUpdate={updateTimes}
                   onLoadedData={loadedData}
-                  className="video w-full h-full object-cover  bg-gray-950 z-[2] "
+                  className="video w-full h-full object-cover z-[2] "
                   src={tstvideotablig}
                 ></video>
               )}
@@ -504,7 +508,7 @@ function ShowVideo() {
             <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" !w-full !h-full object-cover " src={tstvideo}></video>
             </div> */}
           </div>
-          <h3 className=" pl-2 text-[20px]">
+          <h3 className=" md:mt-5  pl-2 text-[20px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
           <div className="w-full flex flex-col gap-2 md:px-1 md:flex-row">
@@ -524,31 +528,31 @@ function ShowVideo() {
               <button
                 className={` ${
                   false ? " bg-[#25232385] text-white" : " bg-gray-200"
-                } px-3 py-1.5  rounded-2xl `}
+                } px-3 py-1.5  rounded-2xl scale-100 hover:scale-90  shadow-md shadow-violet-600 `}
               >
                 Subscribe
               </button>
             </div>
             {/* btns */}
             <div className=" px-2 flex gap-4 h-[40px] relative items-center justify-end">
-              <div className="flex items-center h-full bg-gray-300 overflow-hidden rounded-full">
-                <button className=" w-[80px] h-full  flex gap-3 justify-center items-center hover:bg-gray-200">
-                  <SlLike /> 3.5K
+              <div className="flex items-center  h-[40px] ">
+                <button className=" w-[80px] h-full  flex gap-3 justify-center items-center bg-gray-300  hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600  rounded-l-full ">
+                  <SlLike className=" text-green-700" /> 3.5k
                 </button>
-                <button className=" w-[40px] h-full flex justify-center items-center bg-gray-300 hover:bg-gray-200">
-                  <SlDislike />
+                <button className=" w-[40px] h-full flex justify-center items-center bg-gray-300 hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600  rounded-r-full ">
+                  <SlDislike className=" text-red-700" />
                 </button>
               </div>
-              <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
+              <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600">
                 <RiShareForwardFill /> Share
               </button>
-              <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200">
+              <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600">
                 Download
               </button>
               <button
                 ref={btnmenvideo}
                 onClick={btnmenu}
-                className=" w-[40px] h-[40px] flex justify-center items-center bg-gray-300 hover:bg-gray-200 rounded-full"
+                className=" w-[40px] h-[40px] flex justify-center items-center bg-gray-300 hover:bg-gray-200 rounded-full scale-100 hover:scale-90  shadow-md shadow-violet-600"
               >
                 <CiMenuKebab />
               </button>

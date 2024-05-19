@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana;
+}
+
 .menuscroll::-webkit-scrollbar {
   width: 5px;
   height: 8px;
@@ -20,15 +24,15 @@
   content: "";
   position: absolute;
   width: 100%;
-  height: 90px;
+  height: 50px;
   bottom: 0;
   left: 0;
   z-index: 2;
-  background: rgb(2, 0, 36);
+  /* background: rgba(4, 1, 44, 0.779); */
   background: linear-gradient(
     to top,
-    rgb(24, 6, 57) 30%,
-    rgba(77, 58, 202, 0.005) 100%
+    rgba(21, 3, 58, 0.546) 30%,
+    rgba(46, 38, 99, 0) 100%
   );
 }
 

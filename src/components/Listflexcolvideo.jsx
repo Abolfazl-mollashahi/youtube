@@ -60,7 +60,7 @@ function Listflexcolvideo() {
         <NavLink to="/video/1" className="w-max ">
           <div className=" flex gap-2 items-center">
             <img
-              className=" w-[40px] h-[40px] rounded-full object-contain"
+              className=" w-[40px] h-[40px] rounded-full object-cover"
               src={imgreact}
               alt=""
             />

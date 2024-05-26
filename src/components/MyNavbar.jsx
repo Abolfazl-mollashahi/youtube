@@ -7,8 +7,12 @@ import { LuChevronRight } from "react-icons/lu";
 import { useRef, useState } from "react";
 import NavbarItem from "./NavbarItem";
 import imgreact from "../assets/react.svg";
+import { useContext } from "react";
+import { darkmodecontext } from "../context";
+
 
 function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
+  const { darkmode , setdarkmode } = useContext(darkmodecontext)
   const [flag1, setflag1] = useState(false);
   const btnmore = useRef({});
   const btnless = useRef({});
@@ -102,77 +106,15 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
 
             <hr />
 
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-            >
-              <span>TouTube Studio</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
-            </NavLink>
-
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl my-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-            >
-              <span>Purchases and memberships</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
-            </NavLink>
-
-            <hr />
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-            >
-              <span>Yor data in YouTube</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
-            </NavLink>
+           
 
             <div className=" w-full flex gap-1 justify-between items-center">
-              <button className="w-8 h-8 rounded-full  flex justify-center items-center border  bg text-red-700">
-                <LuChevronRight />
-              </button>
-              <NavLink
-                to="/tst"
+             
+              <button onClick={()=>setdarkmode(!darkmode)}
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
               >
                 <span>
-                  Appearance: <span>Light</span>
+                  Appearance: { darkmode ? <span>Light</span> : <span>Dark</span>}
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +129,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                 >
                   <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
                 </svg>
-              </NavLink>
+              </button>
             </div>
 
             <div className=" w-full flex gap-1 justify-between items-center">
@@ -365,8 +307,8 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
           <div className="hidden child bg w-[320px] md:w-[400px] text-[14px] p-1.5 h-max absolute  top-[33px] right-0 flex-col rounded-xl border-2 dark:text-white ">
             {/* notif-1 */}
             {
-              [0,0,0,0,0].map(()=>(
-            <NavLink to={`/ddd`} className={` mt-2 `}>
+              [0,0,0,0,0].map((index,key)=>(
+            <NavLink key={key}  to={`/ddd`} className={` mt-2 `}>
               <div className=" w-full h-max flex gap-2 items-center">
                 <img
                   className="w-[40px] h-[40px] rounded-full"

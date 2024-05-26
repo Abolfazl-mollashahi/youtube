@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import { TiThMenuOutline } from "react-icons/ti";
 import { CgMenuGridO } from "react-icons/cg";
-import MyNavbar from "../components/MyNavbar";
-import HomeListVideo from "../components/HomeListTopVideo";
-import Listflexcolvideo from "../components/listflexcolvideo";
+import MyNavbar from "../components/MyNavbar.jsx";
+import HomeListVideo from "../components/HomeListTopVideo.jsx";
+import Listflexcolvideo from "../components/listflexcolvideo.jsx";
 import { useNavigate } from "react-router-dom";
 
 function Subscribepage() {

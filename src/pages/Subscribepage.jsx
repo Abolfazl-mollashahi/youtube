@@ -3,7 +3,7 @@ import { TiThMenuOutline } from "react-icons/ti";
 import { CgMenuGridO } from "react-icons/cg";
 import MyNavbar from "../components/MyNavbar";
 import HomeListVideo from "../components/HomeListTopVideo";
-// import Listflexcolvideo from "../components/listflexcolvideo";
+import Listflexcolvideo from "../components/listflexcolvideo";
 import { useNavigate } from "react-router-dom";
 
 function Subscribepage() {
@@ -135,9 +135,9 @@ function Subscribepage() {
 
           {dizineflex && (
             <div className="w-full">
-              {/* {db.map((item, ind) => (
+              {db.map((item, ind) => (
                 <Listflexcolvideo key={ind} />
-              ))} */}
+              ))}
             </div>
           )}
         </div>

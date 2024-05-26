@@ -46,22 +46,23 @@ function Home() {
         flagpagevideo={true}
       />
 
-      <div className="flex w-full fixed top-0 left-0 ">
+      <div className="flex w-full fixed top-0 left-0 bg ">
         <div
           ref={divcontiner}
-          className=" w-full  h-screen flex flex-col justify-start items-center pt-[50px] "
+          className=" w-full  h-screen flex flex-col justify-start items-center pt-[45px] "
         >
           {/* aslider name */}
           <div
             style={toggleflag ? { paddingRight: "220px" } : {}}
             ref={divslidername}
-            className={` w-[100%] md:left-[75px] md:pr-[75px] fixed h-[50px] flex justify-center items-center top-[50px] `}
+            className={` w-[100%] left-[75px] px-0 fixed h-[45px] flex justify-center items-center top-[50px] rounded-xl `}
+            // className={` w-[100%] md:left-[75px] md:pr-[75px] fixed h-[50px] flex justify-center items-center top-[50px] `}
           >
             <SliderName toggle={toggleflag} elem={divslidername} />
           </div>
 
           <div className="contin-video w-full md:pl-[80px] relative mt-[50px] flex flex-col overflow-scroll overflow-x-auto">
-            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-2 justify-center items-center">
+            <div  className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-2 justify-center items-center">
               {dbvideos.slice(0, 8).map((item) => (
                 <HomeListTopVideo key={item} />
               ))}
@@ -73,7 +74,7 @@ function Home() {
 
             {/*  */}
 
-            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 justify-center items-center">
+            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-2 justify-center items-center">
               {dbvideos.slice(0, 8).map((item) => (
                 <HomeListTopVideo key={item}/>
               ))}
@@ -85,7 +86,7 @@ function Home() {
 
             {/*  */}
 
-            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 justify-center items-center">
+            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-2 justify-center items-center">
               {dbvideos.map((item) => (
                 <HomeListTopVideo key={item} />
               ))}

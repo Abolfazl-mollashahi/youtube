@@ -6,6 +6,7 @@ import { useVideo } from "../utils/useVideo";
 import { CiMenuKebab } from "react-icons/ci";
 
 function HomeListVideo() {
+  const [tsttext,settsttext] = useState('Lorem ipsum dolor, sit ergfs amet consectetur elit , sit ergfs amet consectetur eli')
   const [
     videoelem,
     mute,
@@ -32,6 +33,12 @@ function HomeListVideo() {
   };
 
   useEffect(() => {
+
+    // if(videoelem.current){
+    //   videoelem.current.preload = 'auto';
+    //   // videoelem.current.buffered = true;
+    // }
+
     const videoElement = videoelem.current;
 
     if (videoElement) {
@@ -50,10 +57,11 @@ function HomeListVideo() {
 
   return (
     <div
-      className={`p-1 h-[300px] relative flex flex-col items-center justify-center gap-1 w-full `}
+    //  data-aos="zoom-in"
+      className={`p-1 h-[300px] relative flex flex-col items-center justify-center gap-1 mx-auto  w-[90%] md:w-[95%] shadow-lg  shadow-violet-400  rounded-3xl dark:border dark:bg-transparent dark:border-violet-800 dark:shadow-md  dark:shadow-red-700 dark:text-slate-100  `}
     >
-      <div
-        className="father w-full z-[5] relative rounded-xl before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[-2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent overflow-hidden"
+      <div 
+        className="father w-full z-[5] relative rounded-xl shadow-sm  shadow-violet-400  before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[-2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent before:rounded-xl  overflow-hidden"
         onMouseOver={VideoMousMove}
         onMouseOut={VideoMousLeav}
       >
@@ -64,7 +72,7 @@ function HomeListVideo() {
             onTimeUpdate={updateTimes}
             muted
             ref={videoelem}
-            className={` w-full h-[240px] z-[10] object-cover rounded-xl `}
+            className={` w-full h-[240px]d h-full  z-[10] object-cover rounded-xl `}
           ></video>
         </NavLink>
 
@@ -145,13 +153,13 @@ function HomeListVideo() {
         <NavLink to="/video/1" className=" w-full block">
           <div className="flex flex-shrink gap-2 p-1">
             <img
-              className=" w-[40px] h-[40px] rounded-full object-contain"
+              className=" w-[45px] h-[45px] rounded-full p-0.5  object-contain shadow-md shadow-violet-500 border  border-violet-200  dark:border-violet-700  dark:shadow-red-700  "
               src={imgreact}
               alt=""
             />
             <div className="">
               <p className=" text-[12px] md:text-[14px]">
-                Lorem ipsum dolor, sit ergfs amet consectetur elit.
+                {tsttext.substring(0,60) + '...'}
               </p>
               <p className=" text-[12px] md:text-[14px] text-gray-500">
                 abolfazl mollashahi
@@ -165,7 +173,7 @@ function HomeListVideo() {
 
         <button
           ref={btnshow}
-          className=" z-4 w-[30px] h-[30px] rounded-full flex justify-center items-center "
+          className=" z-4 w-[30px] h-[30px] rounded-full flex justify-center items-center !shadow-md !shadow-violet-300 dark:!shadow-red-700 border dark:border-violet-700  bg   "
         >
           <CiMenuKebab
             className="w-full h-full p-1.5"
@@ -181,35 +189,36 @@ function HomeListVideo() {
         id="divmenu"
         className={` ${
           menuitem ? "flex " : "hidden"
-        } w-[250px] h-max absolute top-[240px] right-3 flex-col gap-1 p-2 rounded-xl shadow-lg bg-gray-100 shadow-gray-700 sm:z-[7]  `}
+        } w-[250px] h-max absolute top-[225px] right-3 flex-col gap-1 p-2 rounded-xl shadow-lg bg !shadow-violet-700 sm:z-[7]  `}
       >
         <div className="">
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300  dark:hover:bg-violet-950 ">
             Add to queue
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Save to Watch later
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Save tpo playlist
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Download
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Share
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Not interested
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Dont recommend channel
           </button>
-          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+          <button className=" w-full px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-violet-300 dark:hover:bg-violet-950 ">
             Report
           </button>
         </div>
       </div>
+
     </div>
   );
 }

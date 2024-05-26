@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { NavLink } from "react-router-dom";
 import { useEffect, useRef } from "react";
 
@@ -29,78 +30,30 @@ function SliderName({ toggle, elem }) {
   ];
 
   return (
-    <div className=" ">
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={5}
-        slidesPerView={5}
-        navigation
-        // ref={swi}
-        breakpoints={{
-          640: {
-            slidesPerView: 9, // Show 1 slide per view on screens wider than 640px
-          },
-          768: {
-            slidesPerView: 4, // Show 2 slides per view on screens wider than 768px
-          },
-          1024: {
-            slidesPerView: 8, // Show 3 slides per view on screens wider than 1024px
-          },
-        }}
-        className=''
-        onSlideChange={() => {}}
-      >
+    <Swiper
+      slidesPerView={40}
+      // centeredSlides={true}
+      // slidesPerView={20}
+      spaceBetween={10}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Pagination]}
+      className="mySwiper -translate-x-16 md:translate-x-[10px] bg-slate-50  p-1.5 px-0  border  dark:border-violet-700 shadow-sm rounded-lg dark:shadow-red-700   dark:bg-[#0d0417] dark:text-white"
+    >
+      <SwiperSlide>
         {slides.map((slideContent, index) => (
-          <SwiperSlide key={index} className=" " virtualIndex={index}>
-            <NavLink
-              className=" w-fit h-fit text-[16px]  whitespace-nowrap text-center px-2  rounded-lg bg-gray-100 text-block hover:bg-gray-300"
-              to={slideContent.link}
-            >
-              {slideContent.name}
-            </NavLink>
-          </SwiperSlide>
+          <NavLink
+          key={index}
+            className=" w-full text-[16px] mx-[2px]  whitespace-nowrap text-center px-2 py-1  rounded-lg bg-slate-200 text-block hover:bg-gray-300 dark:hover:bg-violet-950  dark:border-violet-700 shadow-sm  dark:shadow-red-700   dark:bg-[#270c47ac]  "
+            to={slideContent.link}
+          >
+            {slideContent.name}
+          </NavLink>
         ))}
-      </Swiper>
-    </div>
+      </SwiperSlide>
+    </Swiper>
   );
 }
 
 export default SliderName;
-
-/*
-
-
-<div className={" items-center rtl p-12 bg-[#0F2650] mt-32"}>
-     <Swiper
-      modules={[Navigation]}
-      spaceBetween={30}
-      slidesPerView={8}
-      navigation={true}
-   
-      className=''
-      onSlideChange={() =>{
-      }}
-      breakpoints={{
-        640: {
-          slidesPerView: 1, // Show 1 slide per view on screens wider than 640px
-        },
-        768: {
-          slidesPerView: 2, // Show 2 slides per view on screens wider than 768px
-        },
-        1024: {
-          slidesPerView: 8, // Show 3 slides per view on screens wider than 1024px
-        },
-      }}
-    >
-      {slides.map((slideContent) => (
-        <SwiperSlide 
-          key={slideContent.id}
-          >
-          <Link href={slideContent.link} className=' w-fit h-fit text-[16px]  whitespace-nowrap text-center px-2  rounded-lg bg-gray-100 text-block hover:bg-gray-300' >{slideContent.name}</Link>
-        </SwiperSlide>
-      ))}
-
-      </Swiper>
-      </div>
-
-*/

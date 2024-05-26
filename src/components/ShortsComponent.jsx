@@ -41,9 +41,9 @@ function ShortsComponent() {
 
   return (
     <>
-      <div className="w-full mb-10">
+      <div className="w-full mb-10  bg-red-5000 ">
         <div className=" px-3 mb-3 flex justify-between items-center">
-          <p className=" flex text-[20px] items-center gap-2">
+          <p className=" flex text-[20px] items-center gap-2 dark:text-white dark:border dark:border-violet-700 dark:p-1 dark:rounded-xl dark:shadow-md dark:shadow-red-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -66,25 +66,25 @@ function ShortsComponent() {
             Shorts
           </p>
 
-          <span className="px-2 text-[20px]  rounded-full hover:bg-gray-300">
+          <span className="px-2 text-[20px]  rounded-full hover:bg-gray-300 border  bg dark:text-white">
             X
           </span>
         </div>
         <div
           ref={div_cont}
-          className="w-full h-[450px] overflow-hidden p-1 justify-center items-center grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
+          className="w-full h-[450px] overflow-hidden p-1 justify-center items-center grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
         >
           {dbshorts.map((item) => (
-            <NavLink to="/shorts" key={item}>
-              <div className="  mx-auto p-1 ">
+            <NavLink to="/shorts" key={item} className={`flex justify-center items-center gap-3`}>
+              <div className="  mx-auto p-1.5  !rounded-3xl border  bg  dark:text-white  dark:!shadow-md dark:!shadow-red-700  ">
                 <video
                   onMouseMove={VideoMousMoveshorts}
                   onMouseLeave={VideoMousLeavshorts}
-                  className=" w-full md:w-[230px] lg:w-[200px] mx-auto h-[380px] rounded-2xl object-cover "
+                  className=" w-full md:w-[230px] lg:w-[200px] mx-auto h-[380px] rounded-2xl object-cover dark:shadow-md dark:shadow-violet-700 "
                 >
                   <source src={tstvideoshorts} />
                 </video>
-                <div className="text-shortscomponent flex justify-between px-1 pt-1">
+                <div className="text-shortscomponent flex justify-between px-1  pt-1 ">
                   <p>tst video </p>
                   <span className=" hidden btn w-[24px] h-[24px] cursor-pointer ">
                     <svg

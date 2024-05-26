@@ -74,7 +74,7 @@ function Subscribepage() {
   // };
 
   return (
-    <div onClick={closefather}>
+    <div onClick={closefather} className="bg pb-[60px]">
       <MyNavbar
         toggleflag={toggleflag}
         settoggleflag={settoggleflag}
@@ -86,7 +86,7 @@ function Subscribepage() {
         className="w-full flex flex-col justify-start items-center pt-[50px] md:pl-[85px] "
       >
         {/* btns-top */}
-        <div className="w-full fixed top-[48px] z-50 bg-white p-2 px-10 flex justify-between items-center ">
+        <div className="w-full md:ml-[85px]  border  bg  fixed top-[48px] z-50 p-2 px-6  flex  justify-between items-center dark:text-white ">
           <span>Latest</span>
           <div className="flex gap-3 items-center lg:pr-10">
             <button

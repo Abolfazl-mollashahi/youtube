@@ -31,7 +31,7 @@ function Comments({ coment }) {
 
 
   return (
-    <div className=" w-full h-max flex gap-3 p-1 py-3 items-start border-b-2 rounded-b-3xl ">
+    <div className=" w-full h-max flex  gap-3 p-1 py-3 items-start border-b-2 rounded-b-3xl ">
       <img src={coment.imgprof} alt="" />
       <div className="w-full text-[14px] pr-3 flex justify-between">
         <div className="w-full flex gap-1 flex-col">

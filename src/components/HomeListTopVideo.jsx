@@ -58,7 +58,7 @@ function HomeListVideo() {
   return (
     <div
     //  data-aos="zoom-in"
-      className={`p-1 h-[300px] relative flex flex-col items-center justify-center gap-1 mx-auto  w-[90%] md:w-[95%] shadow-lg  shadow-violet-400  rounded-3xl dark:border dark:bg-transparent dark:border-violet-800 dark:shadow-md  dark:shadow-red-700 dark:text-slate-100  `}
+      className={`p-1 h-[300px] relative flex flex-col items-center justify-center gap-1 mx-auto  w-[90%] md:w-[95%] shadow-lg  shadow-violet-400  rounded-3xl dark:border dark:border-t-0  dark:bg-transparent dark:border-violet-800 dark:shadow-md  dark:shadow-red-700 dark:text-slate-100  `}
     >
       <div 
         className="father w-full z-[5] relative rounded-xl shadow-sm  shadow-violet-400  before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[-2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent before:rounded-xl  overflow-hidden"
@@ -150,7 +150,7 @@ function HomeListVideo() {
         </div>
       </div>
       <div className="w-full father flex relative ">
-        <NavLink to="/video/1" className=" w-full block">
+        <NavLink to="/ali" className=" w-full block">
           <div className="flex flex-shrink gap-2 p-1">
             <img
               className=" w-[45px] h-[45px] rounded-full p-0.5  object-contain shadow-md shadow-violet-500 border  border-violet-200  dark:border-violet-700  dark:shadow-red-700  "

@@ -5,14 +5,19 @@ import { IoMdSearch, IoMdHome } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { LuChevronRight } from "react-icons/lu";
 import { useRef, useState } from "react";
+import { BsPersonFillAdd } from "react-icons/bs";
 import NavbarItem from "./NavbarItem";
 import imgreact from "../assets/react.svg";
+import { TbLogout2 } from "react-icons/tb";
+import { CiSettings } from "react-icons/ci";
+import { IoLanguage } from "react-icons/io5";
+import { LuSunMedium } from "react-icons/lu";
+import { CiDark } from "react-icons/ci";
 import { useContext } from "react";
 import { darkmodecontext } from "../context";
 
-
 function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
-  const { darkmode , setdarkmode } = useContext(darkmodecontext)
+  const { darkmode, setdarkmode } = useContext(darkmodecontext);
   const [flag1, setflag1] = useState(false);
   const btnmore = useRef({});
   const btnless = useRef({});
@@ -34,12 +39,12 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
       dir="rtl"
       className=" px-2 pt-1 flex justify-between items-center w-full fixed top-0 left-0 z-[100] bg border  border-t-0 border-x-0  "
     >
-      <div className="div-1 flex gap-4 items-center">
+      <div className="div-1 flex gap-4 items-center ">
+        {/* div-acant */}
         <div className=" relative father">
           <button className=" w-[35px] h-[35px] bg !bg-blue-950 !rounded-full text-white shadow border  ">
             a
           </button>
-          {/* div-acant */}
           <div className="hidden child w-[280px] p-2 h-max absolute  top-[35px] right-0 flex-col rounded-xl border-2 bordder-black bg dark:text-white text-[15px] ">
             <div className="w-full flex mb-1 flex-row-reverse items-center gap-2">
               <img
@@ -68,19 +73,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                 className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
               >
                 <span>Switch account</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  focusable="false"
-                  className="ml-[10px]"
-                  style={{
-                    display: "block",
-                    width: "24px",
-                    height: "24px",
-                  }}
-                >
-                  <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-                </svg>
+                <BsPersonFillAdd className="ml-[10px] w-6 h-6 text-gray-700  dark:text-white " />
               </NavLink>
             </div>
 
@@ -89,46 +82,23 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
               className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl my-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
             >
               <span>Sign out</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
+              <TbLogout2 className="ml-[10px] w-6 h-6  text-red-600 " />
             </NavLink>
 
-            <hr />
-
-           
-
             <div className=" w-full flex gap-1 justify-between items-center">
-             
-              <button onClick={()=>setdarkmode(!darkmode)}
-                className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
+              <button
+                onClick={() => setdarkmode(!darkmode)}
+                className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
               >
                 <span>
-                  Appearance: { darkmode ? <span>Light</span> : <span>Dark</span>}
+                  Appearance:{" "}
+                  {darkmode ? <span>Light</span> : <span>Dark</span>}
                 </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  focusable="false"
-                  className="ml-[10px]"
-                  style={{
-                    display: "block",
-                    width: "24px",
-                    height: "24px",
-                  }}
-                >
-                  <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-                </svg>
+                {darkmode ? (
+                  <LuSunMedium className="ml-[10px] w-6 h-6  text-white " />
+                ) : (
+                  <CiDark className="ml-[10px] w-6 h-6 text-black " />
+                )}
               </button>
             </div>
 
@@ -143,203 +113,59 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                 <span>
                   Language: <span>English</span>
                 </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  focusable="false"
-                  className="ml-[10px]"
-                  style={{
-                    display: "block",
-                    width: "24px",
-                    height: "24px",
-                  }}
-                >
-                  <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-                </svg>
+                <IoLanguage className="ml-[10px] w-6 h-6 text-gray-700  dark:text-white " />
               </NavLink>
             </div>
-
-            <div className=" w-full flex gap-1  justify-between items-center">
-              <button className="w-8 h-8 rounded-full  flex justify-center items-center border  bg text-red-700">
-                <LuChevronRight />
-              </button>
-              <NavLink
-                to="/tst"
-                className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-              >
-                <span>
-                  Restricted Mode: <span>Off</span>
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  focusable="false"
-                  className="ml-[10px]"
-                  style={{
-                    display: "block",
-                    width: "24px",
-                    height: "24px",
-                  }}
-                >
-                  <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-                </svg>
-              </NavLink>
-            </div>
-
-            <div className=" w-full flex gap-1  justify-between items-center">
-              <button className="w-8 h-8 rounded-full  flex justify-center items-center border  bg text-red-700">
-                <LuChevronRight />
-              </button>
-              <NavLink
-                to="/tst"
-                className=" w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-              >
-                <span>
-                  Location: <span>United States</span>
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  focusable="false"
-                  className="ml-[10px]"
-                  style={{
-                    display: "block",
-                    width: "24px",
-                    height: "24px",
-                  }}
-                >
-                  <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-                </svg>
-              </NavLink>
-            </div>
-
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-            >
-              <span>Keybord shortcuts</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
-            </NavLink>
-
-            <hr />
 
             <NavLink
               to="/tst"
               className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl my-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
             >
               <span>Settings</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
-            </NavLink>
-
-            <hr />
-
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-            >
-              <span>Help</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
-            </NavLink>
-
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950"
-            >
-              <span>Send feedback</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                focusable="false"
-                className="ml-[10px]"
-                style={{
-                  display: "block",
-                  width: "24px",
-                  height: "24px",
-                }}
-              >
-                <path fill="red"  d="M3,3v18h18V3H3z M4.99,20c0.39-2.62,2.38-5.1,7.01-5.1s6.62,2.48,7.01,5.1H4.99z M9,10c0-1.65,1.35-3,3-3s3,1.35,3,3 c0,1.65-1.35,3-3,3S9,11.65,9,10z M12.72,13.93C14.58,13.59,16,11.96,16,10c0-2.21-1.79-4-4-4c-2.21,0-4,1.79-4,4 c0,1.96,1.42,3.59,3.28,3.93c-4.42,0.25-6.84,2.8-7.28,6V4h16v15.93C19.56,16.73,17.14,14.18,12.72,13.93z"></path>
-              </svg>
+              <CiSettings className="ml-[10px] w-6 h-6  dark:text-white " />
             </NavLink>
           </div>
         </div>
 
+        {/* div-notifications */}
         <div className=" relative father">
           <button className=" w-8 h-8 flex items-center justify-center  border  bg dark:text-white   ">
             <SlBell size={20} />
           </button>
-          {/* div-notifications */}
           <div className="hidden child bg w-[320px] md:w-[400px] text-[14px] p-1.5 h-max absolute  top-[33px] right-0 flex-col rounded-xl border-2 dark:text-white ">
             {/* notif-1 */}
-            {
-              [0,0,0,0,0].map((index,key)=>(
-            <NavLink key={key}  to={`/ddd`} className={` mt-2 `}>
-              <div className=" w-full h-max flex gap-2 items-center">
-                <img
-                  className="w-[40px] h-[40px] rounded-full"
-                  src={imgreact}
-                  alt=""
-                />
-                <div className="flex flex-col items-end">
-                  <p className=" text-left">
-                    incidunt in aut tenetur sint debitis error pariatur
-                    provident consequuntur
-                  </p>
-                  <span> 2 weeks ago</span>
+            {[0, 0, 0, 0, 0].map((index, key) => (
+              <NavLink key={key} to={`/ddd`} className={` mt-2 `}>
+                <div className=" w-full h-max flex gap-2 items-center">
+                  <img
+                    className="w-[40px] h-[40px] rounded-full"
+                    src={imgreact}
+                    alt=""
+                  />
+                  <div className="flex flex-col items-end">
+                    <p className=" text-left">
+                      incidunt in aut tenetur sint debitis error pariatur
+                      provident consequuntur
+                    </p>
+                    <span> 2 weeks ago</span>
+                  </div>
+                  <img
+                    className="w-[80px] h-[50px] rounded-lg bg-red-500"
+                    src={imgreact}
+                    alt=""
+                  />
                 </div>
-                <img
-                  className="w-[80px] h-[50px] rounded-lg bg-red-500"
-                  src={imgreact}
-                  alt=""
-                />
-              </div>
-            </NavLink>
-              ))
-            }
-
+              </NavLink>
+            ))}
           </div>
         </div>
-
+        
+        {/* div-upload video */}
         <div className="relative father">
           <button className="w-8 h-8 flex items-center justify-center  border  bg dark:text-white ">
             <PiBatteryPlus size={23} />
           </button>
-          {/* div-upload video */}
+
           <div className="hidden child w-[150px] text-[14px] p-2 h-max absolute  top-[30px] right-0 flex-col rounded-xl border-2 bordder-black bg dark:text-white ">
             <NavLink
               to="/shorts"
@@ -391,20 +217,21 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
           </div>
         </div>
 
-        <div className=" sm:hidden">
+        <div className=" w-8 h-8 flex items-center justify-center  sm:hidden border  bg dark:text-white">
           <button>
             <FaMicrophone size={23} />
           </button>
         </div>
 
-        <div className=" sm:hidden">
+        <div className=" w-8 h-8 flex items-center justify-center  sm:hidden border  bg dark:text-white">
           <button className="">
             <IoMdSearch size={23} />
           </button>
         </div>
       </div>
 
-      <div className="div-2 px-3 w-full hidden sm:flex justify-center gap-3 items-center">
+      {/* div-serch-md */}
+      <div className=" div-2 px-3 w-full hidden sm:flex justify-center gap-3 items-center">
         <div className=" w-9 h-9 cursor-pointer flex justify-center items-center border bg dark:text-white dark:hover:bg-violet-950 ">
           <button>
             <FaMicrophone size={23} />
@@ -427,6 +254,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
         </div>
       </div>
 
+      {/* menus */}
       <div className="div-3 pl-2 flex items-center gap-4">
         <NavLink className=" w-[100px] h-[45px]  scale-100 hover:scale-105">
           <svg
@@ -484,7 +312,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
               {toggleflag ? (
                 <div
                   ref={div2}
-                  className=" relative top-2 left-1 bg dark:text-white"
+                  className=" relative top-2 left-1 bg  dark:text-white"
                 >
                   <div className=" menuscroll py-2 w-[225px] h-screen flex flex-col items-end overflow-scroll overflow-x-auto ">
                     <div className="divmenu px-1 w-[230px] h-max flex flex-col gap-3 items-end ">
@@ -494,7 +322,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                       >
                         <span>Home</span>
                         <IoMdHome
-                          className="ml-[10px] dark:text-red-600 "
+                          className="ml-[10px] text-red-600 "
                           size={24}
                         />
                       </NavLink>
@@ -1011,8 +839,8 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                         d="M10 18v-6l5 3-5 3zm7-15H7v1h10V3zm3 3H4v1h16V6zm2 3H2v12h20V9zM3 10h18v10H3V10z"
                       ></path>
                     </svg>
-                    <span className="text-[10px] text-black dark:text-white ">
-                      Subscriptions
+                    <span className="  text-black dark:text-white ">
+                      Sub
                     </span>
                   </NavLink>
 

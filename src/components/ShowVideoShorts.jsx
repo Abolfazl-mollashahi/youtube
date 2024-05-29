@@ -152,7 +152,8 @@ function ShowVideoShorts() {
     },
   ];
 
-  const setlikefunc = () => {
+  const setlikefunc = (e) => {
+    e.stopPropagation()
     if (!likeflag) {
       setlikenumber(likenumber + 1);
     } else {
@@ -172,36 +173,29 @@ function ShowVideoShorts() {
     setshareflag(!shareflag);
   };
 
-  const videomeutfunc = () => {
+  const videomeutfunc = (e) => {
+    e.stopPropagation();
+    // e.stopPropagation()
     setvideomeutflag(!videomeutflag);
     videotag.current.muted = !videotag.current.muted;
-    console.log(videotag.current);
+    // console.log(videotag.current);
   };
 
-  // اینجا تعقییرات لازمه
-  const move = () => {
-    let num = 0
+  const move = (e) => {
+    e.stopPropagation()
+    console.log(flagplay);
     if (flagplay) {
       videotag.current.pause();
     } else {
-      setInterval(() => {
-       num++
-       if(num == 100){
-         num = 100
-        //  loadingtag.current.style.width = "0px"
-        }
-       loadingtag.current.style.width = `${num} %`
-       setTimeout(() => {
-         videotag.current.play();
-       }, 4000);
-      },50);
+      videotag.current.play();
     }
     setflagplay(!flagplay);
   };
-  const leve = () => {
-    videotag.current.pause();
-    setflagplay(false);
-  };
+
+  // const leve = () => {
+  //   videotag.current.pause();
+  //   setflagplay(false);
+  // };
 
   const menuitemsfunc = (event) => {
     if (
@@ -231,7 +225,7 @@ function ShowVideoShorts() {
   };
 
   return (
-    <div className="w-[450px] sm:w-[550px] md:w-[750px] md:flex md:justify-center h-[620px] overflow-y-auto shareshortspage overflow-scroll">
+    <div className="w-[450px] sm:w-[550px] md:w-[750px] md:flex md:justify-center h-[620px] overflow-y-auto shareshortspage overflow-scroll ">
       <div
         className={` ${
           showcomments ? "w-max" : " "
@@ -239,8 +233,8 @@ function ShowVideoShorts() {
       >
         <div
           onMouseDown={move}
-          onMouseLeave={leve}
-          className=" w-[340px] z-[6] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500"
+          // onMouseLeave={leve}
+          className=" w-[340px] z-[6] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500 dark:shadow-violet-950"
         >
           <video
             ref={videotag}

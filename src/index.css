@@ -21,10 +21,11 @@ body{
 
 
 .divmenu .active {
-  background: rgb(63, 7, 97);
+  color: rgb(254, 134, 5);
+  background: rgba(62, 7, 97, 0.822);
 }
 .linkitemmenu{
-  @apply w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-violet-950 ;
+  @apply w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-violet-200  dark:hover:bg-violet-950 ;
 }
 
 .menu .active{

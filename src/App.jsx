@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom"
+import { useRoutes  } from "react-router-dom"
 import routes from './route'
 // import "aos/dist/aos.css"
 // import { useEffect } from "react"
@@ -9,7 +9,7 @@ export default function App() {
   // Aos.init()
   // },[])
   return(
-    router
+      router
   )
   
 }

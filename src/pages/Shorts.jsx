@@ -24,7 +24,7 @@ function Shorts() {
   return (
     <div onClick={closefathershorts}>
       <MyNavbar toggleflag={toggleflagshorts} togglefunc={togglefuncshorts} />
-      <div ref={divshortsvideo} className=" w-full mt-[60px] justify-center items-center flex flex-col gap-16 pb-5">
+      <div ref={divshortsvideo} className=" w-full mt-[50px] justify-center items-center flex flex-col gap-16 py-5 bg">
         <ShowVideoShorts />
         <ShowVideoShorts />
         <ShowVideoShorts />

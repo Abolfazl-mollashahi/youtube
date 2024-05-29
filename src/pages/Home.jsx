@@ -10,11 +10,11 @@ function Home() {
   const [dbvideos, setdbvideos] = useState([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ]);
-  const [toggleflag, settoggleflag] = useState(false);
-
+  
   const divcontiner = useRef({});
   const divslidername = useRef({});
-
+  
+  const [toggleflag, settoggleflag] = useState(false);
   const togglefunc = () => {
     if (toggleflag) {
       settoggleflag(false);
@@ -38,15 +38,15 @@ function Home() {
   };
 
   return (
-    <div onClick={closefather}>
+    <div className="  "   onClick={closefather} >
       <MyNavbar
         toggleflag={toggleflag}
         settoggleflag={settoggleflag}
         togglefunc={togglefunc}
         flagpagevideo={true}
       />
-
-      <div className="flex w-full fixed top-0 left-0 bg ">
+ 
+      <div className="flex w-full fixed top-0 left-0  bg">
         <div
           ref={divcontiner}
           className=" w-full  h-screen flex flex-col justify-start items-center pt-[45px] "
@@ -92,6 +92,7 @@ function Home() {
               ))}
             </div>
           </div>
+          
         </div>
       </div>
 

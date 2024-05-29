@@ -37,7 +37,7 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
   return (
     <div
       dir="rtl"
-      className=" px-2 pt-1 flex justify-between items-center w-full fixed top-0 left-0 z-[100] bg border  border-t-0 border-x-0  "
+      className=" px-2 pt-1 flex justify-between items-center w-full fixed top-0 left-0 z-[100] bg border !rounded-none  border-t-0 border-x-0  "
     >
       <div className="div-1 flex gap-4 items-center ">
         {/* div-acant */}

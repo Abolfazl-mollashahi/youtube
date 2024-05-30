@@ -39,7 +39,7 @@ function SliderName({ toggle, elem }) {
         clickable: true,
       }}
       modules={[Pagination]}
-      className="mySwiper -translate-x-16 md:translate-x-[10px] bg-slate-50  p-1.5 px-0  border  dark:border-violet-700 shadow-sm rounded-lg dark:shadow-red-700   dark:bg-[#0d0417] dark:text-white"
+      className="mySwiper -translate-x-16 md:translate-x-[10px] bg-slate-50  p-1.5 px-0  shadow-sm rounded-lg dark:bg-[#0d0417] dark:text-white"
     >
       <SwiperSlide>
         {slides.map((slideContent, index) => (

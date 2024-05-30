@@ -5,7 +5,7 @@ import Shorts from "./pages/Shorts";
 import ShowVideo from "./pages/ShowVideo";
 import PersonPage from "./pages/PersonPage";
 import Subscribepage from "./pages/Subscribepage";
-
+import NotFound from "./pages/NotFound";
 
 const routes = [
   {
@@ -13,7 +13,7 @@ const routes = [
     element: <Home/> ,
   },
   {
-    path: "/:username?",
+    path: "/:username",
     element: <PersonPage/> ,
   },
   {
@@ -36,5 +36,10 @@ const routes = [
     path: "/channels",
     element: <Channels/> ,
   },
+  {
+    path: "*",
+    element: <NotFound/> ,
+  },
+
 ];
 export default routes;

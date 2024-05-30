@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg{
-  @apply bg-slate-50  dark:border-violet-700 shadow-sm rounded-lg dark:shadow-red-500 dark:bg-[#0d0417] ;
+  @apply bg-slate-50  text-gray-900   dark:border-violet-700 shadow-sm rounded-lg dark:shadow-red-500 dark:bg-[#0d0417] dark:text-white ;
 }
 
 body{
@@ -22,14 +22,14 @@ body{
 
 .divmenu .active {
   color: rgb(254, 134, 5);
-  background: rgba(62, 7, 97, 0.822);
+  background: rgba(74, 9, 114, 0.822);
 }
 .linkitemmenu{
   @apply w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-violet-200  dark:hover:bg-violet-950 ;
 }
 
 .menu .active{
-  background-color: rgba(79, 41, 114, 0.671);
+  background-color: rgb(36, 18, 53);
   padding: 3px;
   border: 1px dashed rgb(76, 63, 150);
   border-radius: 5px;

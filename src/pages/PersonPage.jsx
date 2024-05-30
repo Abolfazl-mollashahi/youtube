@@ -62,7 +62,7 @@ function PersonPage() {
             </div>
 
             <div className="flex justify-start items-center gap-2 mt-3 w-[100%] md:w-[95%]  lg:max-w-[1200px] mx-auto">
-              <img className=" w-20 h-20 rounded-full " src={personimg} alt="" />
+              <img className=" w-28 h-28  mask mask-hexagon " src={personimg} alt="" />
               <div className="flex flex-col justify-center items-start gap-2">
                 <p className="text-[30px]">ali</p>
                 <p>username . 160K subscribers . 2K videos </p>

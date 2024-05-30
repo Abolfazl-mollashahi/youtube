@@ -1,5 +1,5 @@
 import tstvideo from "../assets/videos/video.mp4";
-import imgreact from "../assets/react.svg";
+import personimg from "../assets/person.jpg"
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useVideo } from "../utils/useVideo";
@@ -153,8 +153,8 @@ function HomeListVideo() {
         <NavLink to="/ali" className=" w-full block">
           <div className="flex flex-shrink gap-2 p-1">
             <img
-              className=" w-[45px] h-[45px] rounded-full p-0.5  object-contain shadow-md shadow-violet-500 border  border-violet-200  dark:border-violet-700  dark:shadow-red-700  "
-              src={imgreact}
+              className=" w-[55px] h-[55px] mask mask-hexagon   object-contain  "
+              src={personimg}
               alt=""
             />
             <div className="">

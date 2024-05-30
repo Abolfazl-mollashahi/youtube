@@ -35,7 +35,7 @@ function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild 
         onMouseMove={VideoMousMove}
         onMouseLeave={VideoMousLeav}
         onLoadedData={loadedData}
-          className={` ${ classvideo ? classvideo : ` w-[${Wvideo}] h-[${Hvideo}] object-cover rounded-lg ` } `}
+          className={` ${ classvideo ? classvideo : ` w-[${Wvideo}] h-[${Hvideo}] object-cover rounded-lg  border border-t-0  bg  ` } `}
           src={tstvideo}
         >
         </video>
@@ -53,7 +53,7 @@ function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild 
       <button
         ref={btnm}
         onClick={menufunc}
-        className=" bmenu w-[35px] h-[35px] child justify-center items-center rounded-full hover:bg-gray-300 "
+        className=" bmenu w-[35px] h-[35px] child justify-center items-center rounded-full hover:bg-gray-300 border  bg dark:hover:bg-violet-950 "
       >
         <CiMenuKebab />
       </button>
@@ -61,30 +61,30 @@ function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild 
         ref={divmen}
         className={` ${
           menuit ? "flex" : "hidden"
-        } w-[200px]f h-max absolute z-[3] top-10 right-0 flex-col gap-2 p-2 bg-white rounded-xl `}
+        } w-[200px]f h-max absolute z-[3] top-10 right-0 flex-col gap-2 p-2 border  bg rounded-xl `}
       >
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Add to queue
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Save to Watch later
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Save tpo playlist
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Download
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Share
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Not interested
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Dont recommend channel
         </button>
-        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200">
+        <button className="px-2 py-0.5 flex gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950">
           Report
         </button>
       </div>

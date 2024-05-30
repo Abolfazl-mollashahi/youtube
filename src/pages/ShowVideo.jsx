@@ -1,6 +1,6 @@
 import tstvideo from "../assets/videos/video.mp4";
 import tstvideotablig from "../assets/videos/tablig-3.mp4";
-import imgreact from "../assets/react.svg";
+import personimg from '../assets/person.jpg'
 import { NavLink } from "react-router-dom";
 import { IoPlayOutline } from "react-icons/io5";
 import { GoUnmute } from "react-icons/go";
@@ -20,6 +20,7 @@ import VideoComponentShow from "../components/VideoComponentShow";
 import { useVideo } from "../utils/useVideo";
 import Comments from "../components/Comments";
 import MyNavbar from "../components/MyNavbar";
+import SliderName from "../components/SliderName";
 
 function ShowVideo() {
   const [menuitemvid, setmenuitemvid] = useState(false);
@@ -56,7 +57,7 @@ function ShowVideo() {
   const listcoments2 = [
     {
       id: 1,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-1",
       textcoment: "tstcoment-1",
       comentlike: 10,
@@ -66,7 +67,7 @@ function ShowVideo() {
     },
     {
       id: 2,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-2",
       textcoment: "tstcoment-2",
       comentlike: 45,
@@ -76,7 +77,7 @@ function ShowVideo() {
     },
     {
       id: 3,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-3",
       textcoment: "tstcoment-3",
       comentlike: 23,
@@ -86,7 +87,7 @@ function ShowVideo() {
     },
     {
       id: 4,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-4",
       textcoment: "tstcoment-4",
       comentlike: 98,
@@ -96,7 +97,7 @@ function ShowVideo() {
     },
     {
       id: 5,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-5",
       textcoment: "tstcoment-5",
       comentlike: 21,
@@ -106,7 +107,7 @@ function ShowVideo() {
     },
     {
       id: 6,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-6",
       textcoment: "tstcoment-6",
       comentlike: 90,
@@ -116,7 +117,7 @@ function ShowVideo() {
     },
     {
       id: 7,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-7",
       textcoment: "tstcoment-7",
       comentlike: 130,
@@ -126,7 +127,7 @@ function ShowVideo() {
     },
     {
       id: 8,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-8",
       textcoment: "tstcoment-8",
       comentlike: 40,
@@ -136,7 +137,7 @@ function ShowVideo() {
     },
     {
       id: 9,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-9",
       textcoment: "tstcoment-9",
       comentlike: 120,
@@ -146,7 +147,7 @@ function ShowVideo() {
     },
     {
       id: 10,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-10",
       textcoment: "tstcoment-10",
       comentlike: 730,
@@ -156,7 +157,7 @@ function ShowVideo() {
     },
     {
       id: 11,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-11",
       textcoment: "tstcoment-11",
       comentlike: 260,
@@ -166,7 +167,7 @@ function ShowVideo() {
     },
     {
       id: 12,
-      imgprof: imgreact,
+      imgprof: personimg,
       user: "@abolfzl-12",
       textcoment: "tstcoment-12",
       comentlike: 430,
@@ -185,6 +186,7 @@ function ShowVideo() {
   const [timeshowbtn, settimeshowbtn] = useState(0);
   const divbtntablig = useRef({});
   const btnsendvideo = useRef({});
+  const divslidername = useRef({});
 
   const btnmenu = (e) => {
     if (
@@ -363,7 +365,7 @@ function ShowVideo() {
         togglefunc={togglefunc}
         flagpagevideo={false}
       />
-      <div className=" w-full p-2 h-max mt-14 flex flex-col gap-2 lg:flex-row items-start">
+      <div className=" w-full p-2 h-max pt-14 flex flex-col gap-2 lg:flex-row items-start   bg dark:text-white">
         {/* left */}
         <div className="w-full h-max p-1.5  flex flex-col gap-5 ">
           <div className=" relative divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden shadow-xl  md:shadow-2xl   shadow-violet-400">
@@ -516,10 +518,10 @@ function ShowVideo() {
             <div className=" w-full flex items-center gap-5">
               <img
                 className=" w-[50px] h-[50px]  rounded-full"
-                src={imgreact}
+                src={personimg}
                 alt=""
               />
-              <div className="text-black flex flex-col">
+              <div className="text-black dark:text-gray-300  flex flex-col">
                 <NavLink className=" text-[19px]" to={`/profile/id`}>
                   abolfazl-tst
                 </NavLink>
@@ -527,8 +529,8 @@ function ShowVideo() {
               </div>
               <button
                 className={` ${
-                  false ? " bg-[#25232385] text-white" : " bg-gray-200"
-                } px-3 py-1.5  rounded-2xl scale-100 hover:scale-90  shadow-md shadow-violet-600 `}
+                  false ? " !bg-[#25232385] text-white" : ""
+                } px-3 py-1.5 border  bg  rounded-2xl scale-100 hover:scale-90  shadow-md shadow-violet-600 `}
               >
                 Subscribe
               </button>
@@ -536,23 +538,23 @@ function ShowVideo() {
             {/* btns */}
             <div className=" px-2 flex gap-4 h-[40px] relative items-center justify-end">
               <div className="flex items-center  h-[40px] ">
-                <button className=" w-[80px] h-full  flex gap-3 justify-center items-center bg-gray-300  hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600  rounded-l-full ">
+                <button className=" w-[80px] h-full  flex gap-3 justify-center items-center border  bg dark:hover:bg-violet-950   hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600  rounded-l-full ">
                   <SlLike className=" text-green-700" /> 3.5k
                 </button>
-                <button className=" w-[40px] h-full flex justify-center items-center bg-gray-300 hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600  rounded-r-full ">
+                <button className=" w-[40px] h-full flex justify-center items-center dark:ml-2  border  bg dark:hover:bg-violet-950  hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600  rounded-r-full ">
                   <SlDislike className=" text-red-700" />
                 </button>
               </div>
-              <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600">
+              <button className=" w-[100px] h-full flex gap-3 justify-center items-center rounded-full border  bg dark:hover:bg-violet-950  hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600">
                 <RiShareForwardFill /> Share
               </button>
-              <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full bg-gray-300 hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600">
+              <button className=" w-[100px] h-full lg:hidden xl:flex flex gap-3 justify-center items-center rounded-full border  bg dark:hover:bg-violet-950   hover:bg-gray-200 scale-100 hover:scale-90  shadow-md shadow-violet-600">
                 Download
               </button>
               <button
                 ref={btnmenvideo}
                 onClick={btnmenu}
-                className=" w-[40px] h-[40px] flex justify-center items-center bg-gray-300 hover:bg-gray-200 rounded-full scale-100 hover:scale-90  shadow-md shadow-violet-600"
+                className=" w-[40px] h-[40px] flex justify-center items-center border  bg  hover:bg-gray-200 dark:hover:bg-violet-950 rounded-full scale-100 hover:scale-90  shadow-md shadow-violet-600"
               >
                 <CiMenuKebab />
               </button>
@@ -562,15 +564,15 @@ function ShowVideo() {
                 ref={divmenvideo}
                 className={`${
                   menuitemvid ? "flex" : "hidden"
-                } w-[100px] absolute top-12 p-2 right-0 h-max bg-gray-100 gap-2 flex-col  rounded-xl `}
+                } w-[100px] absolute top-12 p-2 right-0 h-max border bg  gap-2 flex-col  rounded-xl `}
               >
-                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
+                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950 ">
                   Clip
                 </button>
-                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
+                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950 ">
                   Save
                 </button>
-                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200">
+                <button className=" px-2 py-1 flex  gap-1 items-center rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950 ">
                   Report
                 </button>
               </div>
@@ -600,13 +602,13 @@ function ShowVideo() {
         </div>
 
         {/* right */}
-        <div className="w-full lg:w-3/6 h-max p-2 flex flex-col ">
+        <div className="w-full md:w-4/6  lg:w-3/6 mx-auto   h-max p-2 flex flex-col ">
           {/* tabliqh */}
-          <div className=" w-full h-[140px] bg-green-200 flex flex-col justify-center rounded-xl">
+          <div className=" w-full my-1  h-[140px] flex flex-col justify-center rounded-xl bg-green-600 dark:bg-violet-950">
             <div className="flex gap-3 justify-center items-center">
               <img
-                className=" w-[50px] h-[50px] bg-red-500 rounded-full"
-                src={imgreact}
+                className=" w-[50px] h-[50px]  rounded-full"
+                src={personimg}
                 alt=""
               />
               <div className="flex flex-col gap-1">
@@ -622,12 +624,21 @@ function ShowVideo() {
             </div>
           </div>
 
-          <div className=" text-center">
+           {/* aslider name */}
+           {/* <div
+            // ref={divslidername}
+            className={` w-full lg:w-6/6  h-[45px] flex justify-center items-center  rounded-xl `}
+          >
+            <SliderName  />
+          </div> */}
+          
+
+          {/* <div className=" text-center">
             <p>slider name</p>
-          </div>
+          </div> */}
 
           {/* videos */}
-          <div className=" flex flex-col gap-2">
+          <div className="mt-2 flex flex-col gap-3">
             {dbvideos.map((item) => (
               <VideoComponentShow
                 Wvideo={`160px`}

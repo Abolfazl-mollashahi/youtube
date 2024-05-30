@@ -3,7 +3,7 @@ import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { CiMenuKebab } from "react-icons/ci";
 
-import imgreact from "../assets/react.svg";
+import personimg from '../assets/person.jpg'
 import { useState } from "react";
 
 function Comments({ coment }) {
@@ -31,8 +31,8 @@ function Comments({ coment }) {
 
 
   return (
-    <div className=" w-full h-max flex  gap-3 p-1 py-3 items-start border-b-2 rounded-b-3xl ">
-      <img src={coment.imgprof} alt="" />
+    <div className=" w-full h-max flex mt-2  gap-3 p-1 py-3 items-start border-b-2 rounded-b-3xl bg ">
+      <img className=" w-[70px] h-[70px] object-cover rounded-full "  src={coment.imgprof} alt="" />
       <div className="w-full text-[14px] pr-3 flex justify-between">
         <div className="w-full flex gap-1 flex-col">
           <div className="flex gap-1 items-end">
@@ -63,14 +63,14 @@ function Comments({ coment }) {
               />
               {commentdislike}
             </button>
-            <button onClick={replyfunc}>Reply</button>
+            <button className=" p-2 scale-100 hover:scale-110  border  bg"   onClick={replyfunc}>Reply</button>
           </div>
           {replyflag ? (
             <div className=" w-full p-1 flex gap-2 flex-col ">
               <div className="w-full flex gap-2 items-center">
-                <img className=" w-[30px] h-[30px]" src={imgreact} alt="" />
+                <img className=" w-[30px] h-[30px] rounded-full object-cover" src={personimg} alt="" />
                 <input
-                  className="inputreply w-full h-[30px] px-2 border-b-2 rounded-b-lg border-violet-400 bg-transparent outline-none p-1"
+                  className="inputreply w-full h-[30px] px-2 border-b-2 rounded-b-lg border-violet-400 dark:border-violet-800  bg-transparent outline-none p-1"
                   placeholder="Add a reply..."
                   type="text"
                   name=""
@@ -79,13 +79,13 @@ function Comments({ coment }) {
               </div>
               <div className="w-full flex gap-4 justify-end">
                 <button
-                  className=" bg-gray-200 px-3 py-1 rounded-lg"
+                  className=" bg-red-700 text-white  px-3 py-1 rounded-lg"
                   onClick={() => setreplyflag(false)}
                 >
                   Cancel
                 </button>
                 <button
-                  className={`${ true ? " bg-blue-600 text-white " : " "
+                  className={`${ true ? " bg-blue-700 text-white " : " "
                   } px-3 py-1 rounded-lg`}
                 >
                   Reply
@@ -97,7 +97,7 @@ function Comments({ coment }) {
           )}
         </div>
         <div className="">
-          <button>
+          <button className=" p-1.5 border scale-100 hover:scale-110  bg"  >
             <CiMenuKebab size={20} />
           </button>
         </div>

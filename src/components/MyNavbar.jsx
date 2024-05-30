@@ -15,6 +15,7 @@ import { LuSunMedium } from "react-icons/lu";
 import { CiDark } from "react-icons/ci";
 import { useContext } from "react";
 import { darkmodecontext } from "../context";
+import personimg from '../assets/person.jpg'
 
 function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
   const { darkmode, setdarkmode } = useContext(darkmodecontext);
@@ -42,8 +43,8 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
       <div className="div-1 flex gap-4 items-center ">
         {/* div-acant */}
         <div className=" relative father">
-          <button className=" w-[35px] h-[35px] bg !bg-blue-950 !rounded-full text-white shadow border  ">
-            a
+          <button className=" w-[40px] h-[40px] bg !bg-blue-950 !rounded-full text-white shadow border  ">
+            <img className=" w-full h-full  rounded-full  object-cover"  src={personimg} alt="" />
           </button>
           <div className="hidden child w-[280px] p-2 h-max absolute  top-[35px] right-0 flex-col rounded-xl border-2 bordder-black bg dark:text-white text-[15px] ">
             <div className="w-full flex mb-1 flex-row-reverse items-center gap-2">

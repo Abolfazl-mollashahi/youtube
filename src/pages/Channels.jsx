@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import MyNavbar from "../components/MyNavbar";
-import imgreact from "../assets/react.svg";
+import personimg from '../assets/person.jpg'
 import { Link } from "react-router-dom";
 
 function Channels() {
@@ -49,7 +49,7 @@ function Channels() {
               
               <img
                 className=" w-[100px] h-[100px] rounded-full object-cover  shadow-md border border-violet-300 dark:border-violet-950  shadow-violet-400"
-                src={imgreact}
+                src={personimg}
                 alt=""
               />
               

@@ -53,9 +53,9 @@ function PersonPage() {
           className="  w-full h-screen flex flex-col justify-start citems-center pt-[50px] "
         >
           <div className="contin-video w-full p-1  md:pl-[80px] lg:max-w-[1200px]d lg:w-[100%]  mx-auto  relative flex flex-col overflow-scroll overflow-x-auto ">
-            <div className="img-baner mt-2  w-[100%]  h-[100px] md:w-[95%]  md:h-[220px] lg:max-w-[1200px] mx-auto ">
+            <div className="img-baner mt-2  w-[100%]  h-[130px] md:w-[95%]  md:h-[220px] lg:max-w-[1200px] mx-auto ">
               <img
-                className=" w-full h-full object-fill  rounded-2xl"
+                className=" w-full h-full object-fill rounded-2xl"
                 src={baner}
                 alt=""
               />

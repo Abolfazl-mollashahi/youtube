@@ -5,11 +5,31 @@ import { useEffect, useRef, useState } from "react";
 import HomeListTopVideo from "../components/HomeListTopVideo";
 import ShortsComponent from "../components/ShortsComponent";
 import SliderName from "../components/SliderName";
+import video1 from "../assets/videos/video1.mp4";
+import video2 from "../assets/videos/video2.mp4";
+import video3 from "../assets/videos/video3.mp4";
 
 function Home() {
-  const [dbvideos, setdbvideos] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ]);
+  let dbvideos = [
+    {id:1,src:video1},
+    {id:2,src:video2},
+    {id:3,src:video3},
+    {id:4,src:video1},
+    {id:5,src:video2},
+    {id:6,src:video3},
+    {id:7,src:video1},
+    {id:8,src:video2},
+    {id:9,src:video3},
+    {id:10,src:video1},
+    {id:11,src:video2},
+    {id:12,src:video3},
+    {id:13,src:video1},
+    {id:14,src:video2},
+    {id:15,src:video3},
+    {id:16,src:video1},
+    {id:17,src:video2},
+    {id:18,src:video3},
+  ];
   
   const divcontiner = useRef({});
   const divslidername = useRef({});
@@ -38,7 +58,7 @@ function Home() {
   };
 
   return (
-    <div className="  "   onClick={closefather} >
+    <div className="" onClick={closefather} >
       <MyNavbar
         toggleflag={toggleflag}
         settoggleflag={settoggleflag}
@@ -62,9 +82,9 @@ function Home() {
           </div>
 
           <div className="contin-video w-full md:pl-[80px] relative mt-[50px] flex flex-col overflow-scroll overflow-x-auto">
-            <div  className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-2 justify-center items-center">
-              {dbvideos.slice(0, 8).map((item) => (
-                <HomeListTopVideo key={item} />
+            <div  className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3d lg:grid-cols-3 xl:grid-cols-4  gap-5 p-2 justify-center items-center">
+              {dbvideos.slice(0, 8).map((item,index) => (
+                <HomeListTopVideo key={index}  item={item} />
               ))}
             </div>
 
@@ -74,9 +94,9 @@ function Home() {
 
             {/*  */}
 
-            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-2 justify-center items-center">
-              {dbvideos.slice(0, 8).map((item) => (
-                <HomeListTopVideo key={item}/>
+            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3d lg:grid-cols-3 xl:grid-cols-4 gap-5 p-2 justify-center items-center">
+              {dbvideos.slice(0, 8).map((item,index) => (
+                <HomeListTopVideo key={index} item={item}/>
               ))}
             </div>
 
@@ -86,9 +106,9 @@ function Home() {
 
             {/*  */}
 
-            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-2 justify-center items-center">
-              {dbvideos.map((item) => (
-                <HomeListTopVideo key={item} />
+            <div className="d-1 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3d lg:grid-cols-3 xl:grid-cols-4 gap-5 p-2 justify-center items-center">
+              {dbvideos.map((item,index) => (
+                <HomeListTopVideo key={index} item={item} />
               ))}
             </div>
           </div>

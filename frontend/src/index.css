@@ -28,12 +28,16 @@ body{
   @apply w-[90%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl hover:bg-violet-200  dark:hover:bg-violet-950 ;
 }
 
+.link_menu{
+  @apply  scale-95 hover:scale-105  w-[65px] bg-violet-200  hover:bg-violet-300 dark:bg-violet-950 dark:hover:bg-violet-900 shadow  h-[65px] flex flex-col items-center justify-center mask mask-hexagon
+}
+
 .menu .active{
-  background-color: rgb(36, 18, 53);
+  background-color: rgba(88, 7, 31, 0.916);
   padding: 3px;
-  border: 1px dashed rgb(76, 63, 150);
   border-radius: 5px;
-  box-shadow: 0px 2px 5px  rgba(85, 15, 177, 0.598);
+  color: white;
+  box-shadow: 0px 2px 5px rgba(42, 3, 93, 0.598) ;
 }
 
 .text-shortscomponent:hover .btn {

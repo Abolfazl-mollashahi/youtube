@@ -1,18 +1,16 @@
-import tstvideo from "../assets/videos/video.mp4";
+import video1 from "../assets/videos/video1.mp4";
+import video2 from "../assets/videos/video2.mp4";
+import video3 from "../assets/videos/video3.mp4";
 import tstvideotablig from "../assets/videos/tablig-3.mp4";
-import personimg from '../assets/person.jpg'
-import { NavLink } from "react-router-dom";
+import personimg from "../assets/person.jpg";
+import { NavLink, useParams } from "react-router-dom";
 import { IoPlayOutline } from "react-icons/io5";
-import { GoUnmute } from "react-icons/go";
-import { GoMute } from "react-icons/go";
+import { GoUnmute, GoMute } from "react-icons/go";
 import { TbPlayerPause } from "react-icons/tb";
-import { SlLike } from "react-icons/sl";
-import { MdFullscreen } from "react-icons/md";
-import { MdFullscreenExit } from "react-icons/md";
-import { CgLogIn, CgPlayTrackPrev } from "react-icons/cg";
-import { CgMiniPlayer } from "react-icons/cg";
+import { SlLike, SlDislike } from "react-icons/sl";
+import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
+import { CgLogIn, CgPlayTrackPrev, CgMiniPlayer } from "react-icons/cg";
 import { LuChevronRight } from "react-icons/lu";
-import { SlDislike } from "react-icons/sl";
 import { RiShareForwardFill } from "react-icons/ri";
 import { CiMenuKebab } from "react-icons/ci";
 import { useEffect, useRef, useState } from "react";
@@ -20,7 +18,7 @@ import VideoComponentShow from "../components/VideoComponentShow";
 import { useVideo } from "../utils/useVideo";
 import Comments from "../components/Comments";
 import MyNavbar from "../components/MyNavbar";
-import SliderName from "../components/SliderName";
+import { useMediaQuery } from "react-responsive";
 
 function ShowVideo() {
   const [menuitemvid, setmenuitemvid] = useState(false);
@@ -29,7 +27,24 @@ function ShowVideo() {
   const spanplayvideo = useRef({});
   const speedbtn = useRef({});
   let dbvideos = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    { id: 1, src: video1 },
+    { id: 2, src: video2 },
+    { id: 3, src: video3 },
+    { id: 4, src: video1 },
+    { id: 5, src: video2 },
+    { id: 6, src: video3 },
+    { id: 7, src: video1 },
+    { id: 8, src: video2 },
+    { id: 9, src: video3 },
+    { id: 10, src: video1 },
+    { id: 11, src: video2 },
+    { id: 12, src: video3 },
+    { id: 13, src: video1 },
+    { id: 14, src: video2 },
+    { id: 15, src: video3 },
+    { id: 16, src: video1 },
+    { id: 17, src: video2 },
+    { id: 18, src: video3 },
   ];
   const [
     videoelem,
@@ -176,17 +191,23 @@ function ShowVideo() {
       replys: [],
     },
   ];
+
+  const route = useParams();
+// console.log(route.id);
   const [flagplay, setflagplay] = useState(true);
   const [flagmute, setflagmute] = useState(false);
   const [toggleflag, settoggleflag] = useState(false);
   const [flagminivideo, setflagminivideo] = useState(false);
   const [fullscreen, setfullscreen] = useState(false);
   const [speedvideo, setspeedvideo] = useState(1);
+  const [currenttimevideo, setcurrenttimevideo] = useState(() => currenttime);
   const [tabligat, settabligat] = useState(false);
-  const [timeshowbtn, settimeshowbtn] = useState(0);
-  const divbtntablig = useRef({});
+  const [flagVideosUsers, setFlagVideosUsers] = useState(false);
+  const [sum, setsum] = useState(7);
   const btnsendvideo = useRef({});
   const divslidername = useRef({});
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isTabletOrLarger = useMediaQuery({ query: "(min-width: 768px)" });
 
   const btnmenu = (e) => {
     if (
@@ -198,45 +219,54 @@ function ShowVideo() {
       setmenuitemvid(false);
     }
   };
+
+  const secend = () => {
+    setInterval(() => {
+      setsum((per) => {
+        if (per >= 7) {
+          clearInterval();
+          return per;
+        }
+        return per + 1;
+      });
+    }, 1000);
+  };
+
   // هنوکارداره
   const funcvideo = (e) => {
-    // console.log(e.target);
-    // console.log("play");
+    if (flagVideosUsers) {
+      setFlagVideosUsers(false);
+    }
     e.stopPropagation();
-
-    // if (
-    //   e.target == videoelem.current
-    //   // spanplayvideo.current.contains(e.target)
-    //   // e.stopPropagation() === undefined
-    // ) {
-    // };
-
-    // console.log(currenttime == '');
-    // if (currenttime == "") {
+    // CloseAndShowBtnSendVideo()
+    // console.log('333');
     if (flagplay) {
       videoelem.current.pause();
       setflagplay(false);
     } else {
       setflagplay(true);
       videoelem.current.play();
-      
-      // }
     }
-    // CloseAndShowBtnSendVideo();
-    //   // currenttime = newcurrenttime
-    //   videoelem.current.play();
-    // }
-    // console.log(e.stopPropagation());
+  };
+
+  // play video tabligh
+  const funcvideotab = (e) => {
+    e.stopPropagation();
+    if (flagplay) {
+      videoelemtablig.current.pause();
+      setflagplay(false);
+    } else {
+      secend();
+      setflagplay(true);
+      videoelemtablig.current.play();
+    }
   };
 
   const funcmutevideo = (e) => {
-    e.stopPropagation();
-    videoelem.current.muted = !videoelem.current.muted;
-    if (flagmute) {
-      setflagmute(false);
-    } else {
-      setflagmute(true);
-    }
+    // e.stopPropagation();
+    // videoelem.current.muted = !videoelem.current.muted;
+    mutefunc();
+    setflagmute(!flagmute);
   };
 
   // const funcmute =() =>{
@@ -273,39 +303,35 @@ function ShowVideo() {
     }
   };
 
+// const closevideoshowtabligh =()=>{
+//   setflagplay(true); 
+//   settabligat(true);
+//   videoelem.current.pause();
+// }
+
   useEffect(() => {
-    // if(videoelem.current){
-    //   videoelem.current.preload = 'auto'
-    //   // videoelem.current.buffered = true
-    // }
+    secend();
     document.addEventListener("click", btnmenu);
     const div_btns = document.getElementById("btns");
-    document.addEventListener("fullscreenchange", () => {
-      // if(document.fullscreenElement){
-      //   // videoelem.current.classList.toggle(
-      //     //   "fullscreen",
-      //     //   document.fullscreenElement
-      //     // );
-      //   }else{
-      //   div_btns.style.display =
-      // }
-    });
-    // let sum = 0;
-    // if (sum == 6) {
-    //   clearInterval()
-    // }
-    // setInterval(() => {
-    //   sum++;
-    //   // if (sum > 6) {
-    //   //   sum = 0;
-    //   // }
-    //   settimeshowbtn(sum);
-    // }, 1000);
+    document.addEventListener("fullscreenchange", () => {});
 
-    return () => {
+    videoelem.current.src = dbvideos[route.id - 1].src
+    
+    // const timer = setTimeout(() => {
+    //   console.log('1');
+    //   console.log(Math.floor(videoelem.current.currentTime), "ctime-1");
+    //   closevideoshowtabligh()
+    // }, 10000);
+      
+      
+      return () => {
+        // clearTimeout(timer)
+      
+      
       document.removeEventListener("click", btnmenu);
     };
   }, []);
+
 
   const togglefunc = () => {
     if (toggleflag) {
@@ -332,30 +358,18 @@ function ShowVideo() {
   const exittabligatfunc = (e) => {
     e.stopPropagation();
     setflagplay(true);
-    CloseAndShowBtnSendVideo();
-    divbtntablig.current.style.display = "none";
-    settabligat(true);
-    setTimeout(() => {
-      divbtntablig.current.style.display = "flex";
-      CloseAndShowBtnSendVideo();
-      setflagplay(true);
-      settabligat(false);
-    }, 8000);
+    settabligat(false);
+    videoelem.current.play();
+    // // console.log(Math.ceil(videoelem.current.currentTime),'eee');
+    // if (Math.ceil(videoelem.current.currentTime) >= 10) {
+    //   setTimeout(()=>{
+    //     console.log('2');
+    //     closevideoshowtabligh();
+    //   },10000)
+    //   console.log("totall",totaltime, "cur",currenttime);
+    // }
   };
 
-  const CloseAndShowBtnSendVideo = () => {
-    setTimeout(() => {
-      btnsendvideo.current.style.display = "flex";
-    }, 6000);
-    // let sum = 0;
-    // setInterval(() => {
-    //   sum++;
-    //   if (sum > 6) {
-    //     sum = 0;
-    //   }
-    //   settimeshowbtn(sum);
-    // }, 1000);
-  };
 
   return (
     <div onClick={closefather}>
@@ -368,148 +382,194 @@ function ShowVideo() {
       <div className=" w-full p-2 h-max pt-14 flex flex-col gap-2 lg:flex-row items-start   bg dark:text-white">
         {/* left */}
         <div className="w-full h-max p-1.5  flex flex-col gap-5 ">
-          <div className=" relative divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-lg overflow-hidden shadow-xl  md:shadow-2xl   shadow-violet-400">
-            {/* div-video */}
-            <div
-              onClick={(e) => funcvideo(e)}
-              className=" div-video relative w-full h-full flex items-center justify-center "
-            >
-              {/* time-line */}
-              <div className="timeline-container w-full h-[7px] z-[4] bottom-[50px] absolute flex items-center cursor-pointer">
-                <img className="thumbnail-img " src="" alt="" />
-                <div className="timeline h-[3px] w-[100%] relative bg-[#5d5b5b70]">
-                  <img className="preview-img" alt="" />
-                  <div className="thumb-indicator"></div>
-                </div>
-              </div>
-
-              {tabligat ? (
-                <video
-                  autoPlay
-                  ref={videoelem}
-                  onTimeUpdate={updateTimes}
-                  onLoadedData={loadedData}
-                  className="video w-full h-full object-cover z-[2] "
-                  src={tstvideo}
-                ></video>
-              ) : (
-                <video
-                  autoPlay
-                  ref={videoelem}
-                  onTimeUpdate={updateTimes}
-                  onLoadedData={loadedData}
-                  className="video w-full h-full object-cover z-[2] "
-                  src={tstvideotablig}
-                ></video>
-              )}
-
-              {/* icon-play */}
-              {flagplay ? (
-                <span className="z-[3] opacity-0 absolute bg-[#0000005b] animate-play text-white rounded-full ">
-                  <TbPlayerPause size={65} />
-                </span>
-              ) : (
-                <span className="z-[3] absolute bg-[#0000005b] animate-pulse text-white rounded-full ">
-                  <IoPlayOutline size={65} />
-                </span>
-              )}
-
-              {/* btns-video */}
-              <div
-                id="btns"
-                className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[5]  "
-              >
-                {/* left */}
-                <div className="flex gap-3 items-center">
-                  <span
-                    ref={spanplayvideo}
-                    onClick={(e) => funcvideo(e)}
-                    className=" cursor-pointer pointer-events-none z-[3] "
-                  >
-                    {flagplay ? (
-                      <TbPlayerPause size={30} />
-                    ) : (
-                      <IoPlayOutline size={30} />
-                    )}
-                  </span>
-
-                  <span className="cursor-pointer rotate-180">
-                    <CgPlayTrackPrev size={30} />
-                  </span>
-                  <span className=" cursor-pointer flex gap-1 father ">
-                    {flagmute ? (
-                      <GoMute onClick={(e) => funcmutevideo(e)} size={30} />
-                    ) : (
-                      <GoUnmute onClick={(e) => funcmutevideo(e)} size={30} />
-                    )}
-                  </span>
-                  <span className=" text-[15px] cursor-default flex gap-2 items-center ">
-                    {currenttime} {currenttime == 0 ? "" : "/"} {totaltime}
-                  </span>
-                </div>
-                {/* right */}
-                <div className="flex gap-3 items-center">
-                  <span className=" cursor-pointer">
-                    <CgMiniPlayer onClick={FuncMiniVideo} size={30} />
-                  </span>
-                  {/* speed-btn */}
-                  <button
-                    ref={speedbtn}
-                    onClick={(e) => speedBtn(e)}
-                    className=" w-[45px] text-center text-[20px] cursor-pointer"
-                  >
-                    {speedvideo + "x"}
-                  </button>
-
-                  <span className=" cursor-pointer">
-                    {fullscreen ? (
-                      <MdFullscreenExit
-                        onClick={FuncFullScreenVideo}
-                        size={30}
-                      />
-                    ) : (
-                      <MdFullscreen onClick={FuncFullScreenVideo} size={30} />
-                    )}
-                  </span>
-                </div>
-              </div>
-
-              {/* div-btns-tablig */}
-              <div
-                ref={divbtntablig}
-                className=" w-full h-[70px] z-[5] text-white absolute px-5 bottom-16 left-0 flex justify-end items-center"
-              >
-                <button
-                  ref={btnsendvideo}
-                  className=" flex gap-1 items-center justify-center px-3 py-1.5 rounded-2xl bg-gray-600 hover:bg-gray-950 hover:border transition-colors"
-                  onClick={exittabligatfunc}
+          {/* div-video and tabligh */}
+          <div className=" relative  w-full  divs h-[300px] sm:w-[600px] sm:h-[400px]  md:h-[450px] md:w-[100%] lg:w-[100%] mx-auto lg:h-[500px] rounded-3xl hover:rounded-2xl overflow-hidden shadow-lg shadow-black">
+            <>
+              {/* //  div-video */}
+              <div className=" relative w-full h-full ">
+                <div
+                  className=" div-video cursor-pointer relative w-full h-full flex items-center justify-center "
+                  onClick={(e) => funcvideo(e)}
                 >
-                  Send <LuChevronRight size={20} />
-                </button>
-                <span>{timeshowbtn}</span>
-              </div>
-            </div>
+                  <video
+                    autoPlay
+                    // onPlay={()=>funcvideo}
+                    ref={videoelem}
+                    onTimeUpdate={updateTimes}
+                    onLoadedData={loadedData}
+                    onEnded={() => {
+                      setFlagVideosUsers(true);
+                    }}
+                    className="video w-full h-full object-fill z-[2] "
+                    // src={}
+                  ></video>
 
-            {/* div-tablig */}
-            {/* <div className="  bg-[#000000d4] relative w-full h-full flex items-center justify-center ">
-                <video
-                  ref={videoelemtablig}
-                  autoPlay
-                  onTimeUpdate={updateTimestablig}
-                  onLoadedData={loadedDatatablig}
-                  className=" w-max h-full object-contain "
-                  src="../src/assets/videos/tablig.mp4"
-                ></video>
-                <div className=" w-full h-[70px] text-white absolute px-10 bottom-10 left-0 flex justify-between items-center">
-                  <span>{currenttimetablig} / {totaltimetablig}</span>
-                  <button className=" flex gap-1 items-center justify-center px-2 py-1 rounded-2xl bg-gray-600 hover:bg-gray-900 transition-colors" onClick={exittabligatfunc}>Send <LuChevronRight size={20} /></button>
+                  {/* icon-play */}
+                  {flagplay ? (
+                    <span className=" z-[3] p-2 opacity-0 absolute bg-[#0000005b] animate-play text-white  mask mask-hexagon ">
+                      <TbPlayerPause size={60} className="" />
+                    </span>
+                  ) : (
+                    <span className="z-[3] p-1.5 cursor-pointer  absolute bg-[#0000005b] animate-pulse text-white rounded-full  mask mask-hexagon ">
+                      <IoPlayOutline size={65} className=" translate-x-1" />
+                    </span>
+                  )}
                 </div>
-              </div> */}
+                {/* btns-video */}
+                <div
+                  id="btns"
+                  className=" w-full flex gap-2 justify-between px-5 pb-2 h-[80px] items-end text-white absolute  bottom-0 left-0 z-[5] "
+                >
+                  {/* left */}
+                  <div className="flex gap-3 items-center pointer-events-none">
+                    <span
+                      ref={spanplayvideo}
+                      onClick={(e) => funcvideo(e)}
+                      className=" cursor-pointer pointer-events-auto z-[3] "
+                    >
+                      {flagplay ? (
+                        <TbPlayerPause size={30} />
+                      ) : (
+                        <IoPlayOutline size={30} />
+                      )}
+                    </span>
 
-            {/* <div className=" !w-full !h-full bg-green-700">
-            <video autoPlay ref={videoelem} onTimeUpdate={updateTimes} onMouseMove={VideoMousMove} onLoadedData={loadedData} onMouseLeave={VideoMousLeav} className=" !w-full !h-full object-cover " src={tstvideo}></video>
-            </div> */}
+                    <span className="cursor-pointer rotate-180">
+                      <CgPlayTrackPrev size={30} />
+                    </span>
+                    <span
+                      onClick={(e) => funcmutevideo(e)}
+                      className=" cursor-pointer flex gap-1 father pointer-events-auto"
+                    >
+                      {flagmute ? <GoMute size={30} /> : <GoUnmute size={30} />}
+                    </span>
+                    <span className=" text-[15px] select-none  flex gap-2 items-center ">
+                      {currenttime} {currenttime == 0 ? "" : "/"} {totaltime}
+                    </span>
+                  </div>
+                  {/* right */}
+                  <div className="flex gap-3 items-center">
+                    <span className=" cursor-pointer">
+                      <CgMiniPlayer onClick={FuncMiniVideo} size={30} />
+                    </span>
+                    {/* speed-btn */}
+                    <button
+                      ref={speedbtn}
+                      onClick={(e) => speedBtn(e)}
+                      className=" w-[45px] text-center select-none  text-[20px] cursor-pointer"
+                    >
+                      {speedvideo + "x"}
+                    </button>
+
+                    <span className=" cursor-pointer">
+                      {fullscreen ? (
+                        <MdFullscreenExit
+                          onClick={FuncFullScreenVideo}
+                          size={30}
+                        />
+                      ) : (
+                        <MdFullscreen onClick={FuncFullScreenVideo} size={30} />
+                      )}
+                    </span>
+                  </div>
+                </div>
+
+                {/* VideosUsers */}
+                {flagVideosUsers && (
+                  <div
+                    className={` ${
+                      flagVideosUsers ? " absolute  " : "hidden"
+                    }  w-full h-full bottom-0 left-0  z-[5] grid grid-cols-1 md:grid-cols-3 justify-center items-center `}
+                  >
+                    {isMobile &&
+                      dbvideos.slice(0, 1).map((video, index) => (
+                        <div
+                          key={index}
+                          className={` z-[6] w-[280px] mx-auto h-[180px] rounded-xl overflow-hidden shadow-md shadow-black bg-[#291051ab] `}
+                        >
+                          <video
+                            className="w-full h-[150px] object-cover rounded-xl"
+                            src={video1}
+                          ></video>
+                          <p className="px-1">text-video {index + 1}</p>
+                        </div>
+                      ))}
+
+                    {isTabletOrLarger &&
+                      dbvideos.slice(0, 6).map((video, index) => (
+                        <div
+                          key={index}
+                          className={` z-[6] w-[280px] mx-auto h-[180px] md:w-[200px] md:h-[150px] xl:w-[260px] xl:h-[180px]  rounded-xl overflow-hidden shadow-md shadow-black bg-[#291051ab] `}
+                        >
+                          <video
+                            className="w-full h-[150px] md:h-[120px] xl:h-[150px]  object-cover rounded-xl"
+                            src={video1}
+                          ></video>
+                          <p className="px-1">text-video {index + 1}</p>
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+            </>
+            {tabligat && (
+              // div-tablig
+              <div className=" w-full h-full  absolute z-[10] left-0  top-0">
+                <div
+                  onClick={(e) => funcvideotab(e)}
+                  className="  bg-[#000000d4] cursor-pointer z-[15]  relative w-full h-full flex items-center justify-center "
+                >
+                  <video
+                    ref={videoelemtablig}
+                    autoPlay
+                    onTimeUpdate={updateTimestablig}
+                    onLoadedData={loadedDatatablig}
+                    onEnded={() => settabligat(true)}
+                    className="video  w-full h-full  object-cover "
+                    src={tstvideotablig}
+                  ></video>
+
+                  {/* icon-play */}
+                  {flagplay ? (
+                    <span className="z-[3] p-2 opacity-0 absolute bg-[#0000005b] animate-play text-white  mask mask-hexagon ">
+                      <TbPlayerPause size={60} className="" />
+                    </span>
+                  ) : (
+                    <span className="z-[3] p-1.5 cursor-pointer absolute bg-[#0000005b] animate-pulse text-white rounded-full  mask mask-hexagon ">
+                      <IoPlayOutline size={65} className=" translate-x-1" />
+                    </span>
+                  )}
+
+                  <div className=" w-full h-[70px] z-[]  text-white absolute px-10 bottom-0 left-0 flex justify-between items-center pointer-events-none ">
+                    <span className=" bg-[#00000088] px-1.5 rounded-lg">
+                      {currenttimetablig} / {totaltimetablig}
+                    </span>
+                    <button
+                      disabled={sum === 7 ? false : true}
+                      className={` flex gap-2 items-center justify-center px-2 py-1 rounded-2xl transition-colorsk pointer-events-auto  ${
+                        sum === 7
+                          ? "bg-violet-950 hover:bg-violet-900"
+                          : "bg-violet-400 hover:bg-gray-900"
+                      }`}
+                      onClick={exittabligatfunc}
+                    >
+                      Send
+                      <LuChevronRight size={20} />
+                      <p
+                        className={` z-50  text-white  w-[30px] h-[30px] flex justify-center items-center  mask mask-hexagon-2 ${
+                          sum === 7 ? "bg-green-700" : "bg-red-700"
+                        }`}
+                      >
+                        {sum}s
+                      </p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* desc-video */}
           <h3 className=" md:mt-5  pl-2 text-[20px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
@@ -604,34 +664,33 @@ function ShowVideo() {
         {/* right */}
         <div className="w-full md:w-4/6  lg:w-3/6 mx-auto   h-max p-2 flex flex-col ">
           {/* tabliqh */}
-          <div className=" w-full my-1  h-[140px] flex flex-col justify-center rounded-xl bg-green-600 dark:bg-violet-950">
-            <div className="flex gap-3 justify-center items-center">
+          <div className=" w-full my-1 p-2  h-[140px] flex flex-col justify-center rounded-xl bg-green-600 dark:bg-violet-950">
+            <div className="flex gap-2 justify-center items-center">
               <img
                 className=" w-[50px] h-[50px]  rounded-full"
                 src={personimg}
                 alt=""
               />
-              <div className="flex flex-col gap-1">
+              <div className="w-full text-[12px] lg:text-[15px]  flex flex-col gap-1 ">
                 <span>Find Your Match</span>
                 <span>
                   Sponsored .{" "}
                   <span className=" text-gray-300">www.target.com/b/maul</span>
                 </span>
               </div>
-              <button className=" px-2 py-2 bg-blue-600 text-white rounded-full">
+              <button className=" w-[100px] h-[30px] text-nowrap p-1  bg-blue-600 text-white rounded-full">
                 Shop new
               </button>
             </div>
           </div>
 
-           {/* aslider name */}
-           {/* <div
+          {/* aslider name */}
+          {/* <div
             // ref={divslidername}
             className={` w-full lg:w-6/6  h-[45px] flex justify-center items-center  rounded-xl `}
           >
             <SliderName  />
           </div> */}
-          
 
           {/* <div className=" text-center">
             <p>slider name</p>
@@ -639,11 +698,12 @@ function ShowVideo() {
 
           {/* videos */}
           <div className="mt-2 flex flex-col gap-3">
-            {dbvideos.map((item) => (
+            {dbvideos.map((item, index) => (
               <VideoComponentShow
-                Wvideo={`160px`}
+                Wvideo={`170px`}
                 Hvideo={`100px`}
-                key={item}
+                key={index}
+                item={item}
               />
             ))}
           </div>

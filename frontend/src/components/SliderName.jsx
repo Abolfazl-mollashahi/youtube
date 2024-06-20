@@ -46,8 +46,7 @@ function SliderName({ toggle, elem }) {
           <NavLink
           key={index}
             className=" w-full text-[16px] mx-[2px]  whitespace-nowrap text-center px-2 py-1  rounded-lg bg-slate-200 text-block hover:bg-gray-300 dark:hover:bg-violet-950  dark:border-violet-700 shadow-sm  dark:shadow-red-700   dark:bg-[#270c47ac]  "
-            to={slideContent.link}
-          >
+            to={slideContent.link}>
             {slideContent.name}
           </NavLink>
         ))}

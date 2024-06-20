@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import tstvideo from "../assets/videos/video.mp4";
+import tstvideo from "../assets/videos/video1.mp4";
 import { CiLogin, CiMenuKebab } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import { useVideo } from "../utils/useVideo";
 
-function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild }) {
+function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild,item }) {
   const [menuit, setmenuit] = useState(false);
   const btnm = useRef({});
   const divmen = useRef({});
@@ -29,20 +29,21 @@ function VideoComponentShow({ Wvideo , Hvideo,classvideo,classdiv,classdivchild 
 
   return (
     <div className={` ${ classdiv ? classdiv : `w-full flex gap-1 relative father `} `}>
-      <NavLink to={`/video/2`} className=" w-max relative">
+      <NavLink to={`/video/${item.id}`} className={` w-[180px]  relative `}>
         <video
         ref={videoelem}
+        muted
         onMouseMove={VideoMousMove}
         onMouseLeave={VideoMousLeav}
         onLoadedData={loadedData}
-          className={` ${ classvideo ? classvideo : ` w-[${Wvideo}] h-[${Hvideo}] object-cover rounded-lg  border border-t-0  bg  ` } `}
-          src={tstvideo}
+          className={` ${ classvideo ? classvideo : ` !w-[${Wvideo}]  h-[${Hvideo}] object-cover  rounded-lg  border border-t-0  bg  ` } `}
+          src={item.src}
         >
         </video>
           <span className=" w-max absolute  bottom-1 right-1 px-1 rounded-lg bg-[#251515bb] text-white">{totaltime}</span>
       </NavLink>
       <div className={` ${ classdivchild ? classdivchild : `flex flex-col gap-1 `}`}>
-        <NavLink to={`/video/2`}>
+        <NavLink to={`/video/${item.id}`}>
           <span className=" text-[15px]">Lorem, ipsum dolor sit amet</span>
         </NavLink>
         <NavLink to={`/profile/id`} className="flex flex-col gap-1">

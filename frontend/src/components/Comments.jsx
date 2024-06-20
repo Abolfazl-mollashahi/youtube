@@ -32,7 +32,7 @@ function Comments({ coment }) {
 
   return (
     <div className=" w-full h-max flex mt-2  gap-3 p-1 py-3 items-start border-b-2 rounded-b-3xl bg ">
-      <img className=" w-[70px] h-[70px] object-cover rounded-full "  src={coment.imgprof} alt="" />
+      <img className=" w-[70px] h-[70px] bg-blue-700 mask mask-hexagon  object-cover rounded-full "  src={coment.imgprof} alt="" />
       <div className="w-full text-[14px] pr-3 flex justify-between">
         <div className="w-full flex gap-1 flex-col">
           <div className="flex gap-1 items-end">
@@ -65,7 +65,7 @@ function Comments({ coment }) {
             </button>
             <button className=" p-2 scale-100 hover:scale-110  border  bg"   onClick={replyfunc}>Reply</button>
           </div>
-          {replyflag ? (
+          {replyflag && (
             <div className=" w-full p-1 flex gap-2 flex-col ">
               <div className="w-full flex gap-2 items-center">
                 <img className=" w-[30px] h-[30px] rounded-full object-cover" src={personimg} alt="" />
@@ -92,8 +92,6 @@ function Comments({ coment }) {
                 </button>
               </div>
             </div>
-          ) : (
-            <></>
           )}
         </div>
         <div className="">

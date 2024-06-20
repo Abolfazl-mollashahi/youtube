@@ -1,5 +1,5 @@
 import { CiMenuKebab } from "react-icons/ci";
-import tstvideo from "../assets/videos/video.mp4";
+import tstvideo from "../assets/videos/video1.mp4";
 import imgreact from "../assets/react.svg";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";

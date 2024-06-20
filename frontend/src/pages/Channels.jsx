@@ -43,12 +43,12 @@ function Channels() {
         ref={divslidername}
         className={` w-[100%]  relative flex justify-center items-center top-[50px] bg `}
       >
-        <div className=" w-[90%]ff   flex flex-col justify-center items-center mt-2 mb-8">
+        <div className=" w-[100%] sm:w-[85%]  flex flex-col justify-center items-center mt-2 mb-8">
           {dbchannels.map((channel, index) => (
             <div className=" w-[85%] h-[150px] flex gap-4 justify-center items-center p-2  my-1.5 border border-violet-400 rounded-2xl scale-100 hover:scale-95  shadow-md  shadow-violet-400 hover:border-violet-800 " key={index}>
               
               <img
-                className=" w-[100px] h-[100px] rounded-full object-cover  shadow-md border border-violet-300 dark:border-violet-950  shadow-violet-400"
+                className=" w-[120px] h-[120px] mask mask-hexagon  rounded-full object-cover  shadow-md border "
                 src={personimg}
                 alt=""
               />

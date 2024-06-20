@@ -8,23 +8,27 @@ import { useRef, useState } from "react";
 import { BsPersonFillAdd } from "react-icons/bs";
 import NavbarItem from "./NavbarItem";
 import { TbLogout2 } from "react-icons/tb";
-import { CiSettings } from "react-icons/ci";
+import { CiSettings, CiDark } from "react-icons/ci";
 import { IoLanguage } from "react-icons/io5";
 import { LuSunMedium } from "react-icons/lu";
-import { CiDark } from "react-icons/ci";
 import { useContext } from "react";
-import { darkmodecontext } from "../context";
+import { darkmodecontext } from "../context/context";
 import personimg from "../assets/person.jpg";
+import userfalse from "../assets/user.png";
 import Login from "./Login";
+import { useAuthContext } from "../context/authContext";
+import useLogout from "../hooks/useLogout";
 
 function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
   const { darkmode, setdarkmode } = useContext(darkmodecontext);
+  const { authUser } = useAuthContext();
   const [flag1, setflag1] = useState(false);
   const [flaglogin, setflaglogin] = useState(false);
   const btnmore = useRef({});
   const btnless = useRef({});
   const btnnav = useRef();
   const div2 = useRef({});
+  const { loading: flogout, logout } = useLogout();
 
   const showmore = (e) => {
     if (!flag1) {
@@ -47,28 +51,57 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
           <button className=" w-[40px] h-[40px] mask mask-hexagon  ">
             <img
               className=" w-full h-full  rounded-full  object-cover"
-              src={personimg}
+              src={false ? personimg : userfalse}
               alt=""
             />
           </button>
           <div className="hidden child w-[280px] p-2 h-max absolute  top-[45px] right-0 flex-col rounded-xl border-2 bordder-black bg dark:text-white text-[15px] ">
-            <div className="w-full flex mb-1 flex-row-reverse items-center gap-2">
-              <img
-                className={`w-[50px] h-[50px] mask mask-hexagon  rounded-full`}
-                src={personimg}
-              />
-              <div className=" w-full flex flex-col items-end gap-1">
-                <NavLink
-                  className={` w-full h-max flex-col items-end`}
-                  to={`/`}
+            {authUser ? (
+              <>
+                <div className="w-full flex mb-1 flex-row-reverse items-center gap-2">
+                  <img
+                    className={`w-[50px] h-[50px] mask mask-hexagon  rounded-full`}
+                    src={personimg}
+                  />
+                  <div className=" w-full flex flex-col items-end gap-1">
+                    <NavLink
+                      className={` w-full h-max flex-col items-end`}
+                      to={`/`}
+                    >
+                      <p className="w-full text-left">{authUser.fullname}</p>
+                      <p className="w-full text-left">{authUser.email}</p>
+                    </NavLink>
+                    <NavLink className={` text-sky-600`}>
+                      View your channel
+                    </NavLink>
+                  </div>
+                </div>
+                <hr />
+                <button
+                  onClick={logout}
+                  className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl my-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
                 >
-                  <p className="w-full text-left">abolfazl_mollashahi</p>
-                  <p className="w-full text-left">@abolfazlmollashahi</p>
-                </NavLink>
-                <NavLink className={` text-sky-600`}>View your channel</NavLink>
+                  {flogout ? (
+                    <span className="loading loading-dots loading-md"></span>
+                  ) : (
+                    <>
+                      <span>Logout</span>
+                      <TbLogout2 className="ml-[10px] w-6 h-6  text-red-600 " />
+                    </>
+                  )}
+                </button>
+              </>
+            ) : (
+              <div className=" w-full flex gap-1  justify-between items-center">
+                <button
+                  onClick={() => setflaglogin(true)}
+                  className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
+                >
+                  <span>Login - Signup</span>
+                  <BsPersonFillAdd className="ml-[10px] w-6 h-6 text-gray-700 dark:text-white " />
+                </button>
               </div>
-            </div>
-            <hr />
+            )}
 
             {/* <div className=" w-full flex gap-1  justify-between items-center">
               <button className=" w-8 h-8 rounded-full  flex justify-center items-center border  bg dark:text-white ">
@@ -82,21 +115,6 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                 <BsPersonFillAdd className="ml-[10px] w-6 h-6 text-gray-700 dark:text-white " />
               </NavLink>
             </div> */}
-
-            <div className=" w-full flex gap-1  justify-between items-center">
-              <button onClick={()=>setflaglogin(true)}  className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl mt-1  hover:bg-violet-100 dark:hover:bg-violet-950 ">
-                <span>Login</span>
-                <BsPersonFillAdd className="ml-[10px] w-6 h-6 text-gray-700 dark:text-white " />
-              </button>
-            </div>
-
-            <NavLink
-              to="/tst"
-              className=" w-[100%]  mx-auto py-2 flex gap-3 justify-end items-center rounded-xl my-1  hover:bg-violet-100 dark:hover:bg-violet-950 "
-            >
-              <span>Sign out</span>
-              <TbLogout2 className="ml-[10px] w-6 h-6  text-red-600 " />
-            </NavLink>
 
             <div className=" w-full flex gap-1 justify-between items-center">
               <button
@@ -312,18 +330,18 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
         </NavLink>
 
         {/* menu-hamber */}
-        <div className="flex flex-col pl-3 relative ">
-          <button ref={btnnav} onClick={togglefunc} className="   ">
+        <div className="flex flex-col pl-2 relative ">
+          <button ref={btnnav} onClick={togglefunc} className="w-[40px] h-[40px] text-red-600 hover:bg-violet-400 dark:hover:bg-violet-700  mask mask-hexagon scale-95 hover:scale-105  bg-violet-200  dark:bg-violet-950">
             <FaBarsStaggered
               size={30}
-              className=" dark:text-violet-700 hover:bg-violet-300 p-1  dark:hover:bg-violet-950 scale-100 hover:scale-110 bg "
+              className=" -translate-x-1  p-1 "
             />
           </button>
 
-          <div className=" absolute top-8 -left-4">
+          <div className=" absolute top-[34px] -left-4">
             <div className="div-tst ">
               {toggleflag ? (
-                <div ref={div2} className=" relative top-2 left-1 bg ">
+                <div ref={div2} className=" relative top-2 left-0 bg ">
                   <div className=" menuscroll py-2 w-[225px] h-screen flex flex-col items-end overflow-scroll overflow-x-auto ">
                     <div className="divmenu  w-[225px] h-max flex flex-col gap-3 items-end ">
                       <NavLink
@@ -793,19 +811,19 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                     </div>
                   </div>
                 </div>
-              ) : flagpagevideo ? (
-                <div className=" menu  hidden ml-[1px] mt-3  p-1 w-[78px] text-[12px] pt-[10px] h-max md:flex   gap-5 flex-col items-center justify-start border  border-t-0 rounded-xl border-slate-300  bg">
+              ) : flagpagevideo && (
+                <div className=" menu  hidden  translate-x-2 mt-3 w-[70px] text-[12px] pt-[10px] h-max md:flex gap-4 flex-col items-center justify-center border rounded-xl border-violet-700 border-y-0 ">
                   <NavLink
                     to={`/`}
-                    className=" scale-100 hover:scale-110  w-[70px] bg-violet-950 hover:bg-violet-900 shadow  h-[60px] flex flex-col items-center justify-center  rounded-xl mask mask-hexagon"
+                    className=" link_menu translate-x-1.5 "
                   >
                     <IoMdHome size={25} className="text-red-700" />
-                    <span className=" text-black dark:text-white ">Home</span>
+                    <span className=" dark:text-white ">Home</span>
                   </NavLink>
 
                   <NavLink
                     to={`/shorts`}
-                    className=" scale-100 hover:scale-110  w-[70px] bg-violet-950  hover:bg-violet-900 shadow  h-[60px] flex flex-col items-center justify-center  rounded-xl mask mask-hexagon"
+                    className=" link_menu translate-x-1.5 "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -825,12 +843,12 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                         d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l2.04-1.08v-1.21l-.69-.28-1.11-.46c-.99-.41-1.65-1.35-1.7-2.41-.05-1.06.52-2.06 1.46-2.56l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72L15.5 9.26v1.21l1.8.74c.99.41 1.65 1.35 1.7 2.41.05 1.06-.52 2.06-1.46 2.56z"
                       ></path>
                     </svg>
-                    <span className=" text-black dark:text-white ">Shorts</span>
+                    <span className=" dark:text-white ">Shorts</span>
                   </NavLink>
 
                   <NavLink
                     to={`/Subscribe`}
-                    className=" scale-100 hover:scale-110  w-[70px] bg-violet-950  hover:bg-violet-900 shadow  h-[60px] flex flex-col items-center justify-center  rounded-xl mask mask-hexagon"
+                    className=" link_menu translate-x-1.5 "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -849,12 +867,12 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                         d="M10 18v-6l5 3-5 3zm7-15H7v1h10V3zm3 3H4v1h16V6zm2 3H2v12h20V9zM3 10h18v10H3V10z"
                       ></path>
                     </svg>
-                    <span className="  text-black dark:text-white ">Sub</span>
+                    <span className=" dark:text-white ">Sub</span>
                   </NavLink>
 
                   <NavLink
                     to={`/you`}
-                    className=" scale-100 hover:scale-110  w-[70px] bg-violet-950  hover:bg-violet-900 shadow  h-[60px] flex flex-col items-center justify-center  rounded-xl mask mask-hexagon" 
+                    className=" link_menu translate-x-1.5 "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -873,20 +891,17 @@ function MyNavbar({ toggleflag, settoggleflag, togglefunc, flagpagevideo }) {
                         d="m11 7 6 3.5-6 3.5V7zm7 13H4V6H3v15h15v-1zm3-2H6V3h15v15zM7 17h13V4H7v13z"
                       ></path>
                     </svg>
-                    <span className=" text-black dark:text-white ">You</span>
+                    <span className=" dark:text-white ">You</span>
                   </NavLink>
                 </div>
-              ) : (
-                <></>
               )}
             </div>
           </div>
         </div>
       </div>
 
-      {flaglogin && <Login setflaglogin={setflaglogin}  />}
+      {flaglogin && <Login setflaglogin={setflaglogin} />}
     </div>
-
   );
 }
 

@@ -1,11 +1,11 @@
-import tstvideo from "../assets/videos/video.mp4";
 import personimg from "../assets/person.jpg"
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useVideo } from "../utils/useVideo";
 import { CiMenuKebab } from "react-icons/ci";
 
-function HomeListVideo() {
+function HomeListVideo({item}) {
+
   const [tsttext,settsttext] = useState('Lorem ipsum dolor, sit ergfs amet consectetur elit , sit ergfs amet consectetur eli')
   const [
     videoelem,
@@ -58,16 +58,16 @@ function HomeListVideo() {
   return (
     <div
     //  data-aos="zoom-in"
-      className={`p-1 h-[300px] relative flex flex-col items-center justify-center gap-1 mx-auto  w-[90%] md:w-[95%] shadow-lg  shadow-violet-400  rounded-3xl dark:border dark:border-t-0  dark:bg-transparent dark:border-violet-800 dark:shadow-md  dark:shadow-red-700 dark:text-slate-100  `}
+      className={`p-1  h-[300px] relative flex flex-col items-center justify-center gap-1 mx-auto  w-[80%] sm:w-[100%] shadow-lg  shadow-violet-400  rounded-3xl dark:border dark:border-t-0  dark:bg-transparent dark:border-violet-800 dark:shadow-md  dark:shadow-red-700 dark:text-slate-100  `}
     >
       <div 
         className="father w-full z-[5] relative rounded-xl shadow-sm  shadow-violet-400  before:content-[''] before:absolute before:bottom-0 before:w-full before:z-[-2] before:aspect-[6/1] before:bg-gradient-to-t before:from-[#00000097] before:to-[#26262605] before:bg-transparent before:rounded-xl  overflow-hidden"
         onMouseOver={VideoMousMove}
         onMouseOut={VideoMousLeav}
       >
-        <NavLink to="/video/1" className=" ">
+        <NavLink to={`/video/${item.id}`} className=" ">
           <video
-            src={tstvideo}
+            src={item.src}
             onLoadedData={loadedData}
             onTimeUpdate={updateTimes}
             muted
@@ -145,12 +145,12 @@ function HomeListVideo() {
           </button>
         </div>
 
-        <div className="childrens absolute bottom-3 left-2 px-1 rounded-lg bg-[#00000092] text-white cursor-pointer ">
-          <span>{currenttime}</span> {(currenttime == 0) ? "" : "/"} <span>{totaltime}</span>
+        <div className="childrens absolute bottom-3 left-2 p-1 px-2 rounded-lg bg-[#00000092] text-white cursor-pointer text-sm font-bold ">
+          <span >{currenttime}</span> {(currenttime == 0) ? "" : "/"} <span>{totaltime}</span>
         </div>
       </div>
       <div className="w-full father flex relative ">
-        <NavLink to="/ali" className=" w-full block">
+        <NavLink to="/user/ali" className=" w-full block">
           <div className="flex flex-shrink gap-2 p-1">
             <img
               className=" w-[55px] h-[55px] mask mask-hexagon   object-contain  "

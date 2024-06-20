@@ -1,7 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+import useSignup from "../hooks/useSignup.js";
+import useLogin from "../hooks/useLogin.js";
 
 function Login({ setflaglogin }) {
   const [flagsignin, setflagesignin] = useState(true);
+  const { loading: fsignup, signup } = useSignup();
+  const { loading: flogin, login } = useLogin();
+  const [user, setUser] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const valueinput = (e) => {
+    const { value, name } = e.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const formlogin = async (e) => {
+    e.preventDefault();
+    const logi = await login(user)
+    if(logi) setflaglogin(false)
+  };
+
+  const formSignup = async (e) => {
+    e.preventDefault();
+    const sin = await signup(user);
+    if (sin) setflaglogin(false);
+  };
 
   return (
     <div
@@ -20,7 +49,7 @@ function Login({ setflaglogin }) {
           <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white">
             Login
           </h2>
-          <form className="space-y-6">
+          <form onSubmit={formlogin} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
@@ -32,6 +61,8 @@ function Login({ setflaglogin }) {
                 type="email"
                 id="email"
                 name="email"
+                onChange={valueinput}
+                value={user.email}
                 required
                 className="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               />
@@ -47,6 +78,8 @@ function Login({ setflaglogin }) {
                 type="password"
                 id="password"
                 name="password"
+                onChange={valueinput}
+                value={user.password}
                 required
                 className="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               />
@@ -71,8 +104,13 @@ function Login({ setflaglogin }) {
               <button
                 type="submit"
                 className="w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                disabled={flogin}
               >
-                Sign in
+                {flogin ? (
+                  <span className="loading loading-dots loading-md"></span>
+                ) : (
+                  "Login"
+                )}
               </button>
             </div>
           </form>
@@ -87,7 +125,7 @@ function Login({ setflaglogin }) {
           </div>
         </div>
       ) : (
-        // sign in
+        // sign up
         <div className="w-[90%] relative  max-w-md p-8 space-y-6 !rounded-2xl bg ">
           <button
             onClick={() => setflaglogin(false)}
@@ -99,7 +137,8 @@ function Login({ setflaglogin }) {
           <h2 className="text-2xl font-bold text-center text-gray-800 dark:!text-white">
             Sign Up
           </h2>
-          <form className="space-y-6">
+          {/* {user.fullname} */}
+          <form onSubmit={formSignup} className="space-y-6">
             <div>
               <label
                 htmlFor="name"
@@ -110,7 +149,9 @@ function Login({ setflaglogin }) {
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="fullname"
+                onChange={valueinput}
+                value={user.fullname}
                 required
                 className="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               />
@@ -126,6 +167,8 @@ function Login({ setflaglogin }) {
                 type="email"
                 id="email"
                 name="email"
+                onChange={valueinput}
+                value={user.email}
                 required
                 className="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               />
@@ -141,6 +184,8 @@ function Login({ setflaglogin }) {
                 type="password"
                 id="password"
                 name="password"
+                onChange={valueinput}
+                value={user.password}
                 required
                 className="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               />
@@ -155,7 +200,9 @@ function Login({ setflaglogin }) {
               <input
                 type="password"
                 id="confirm_password"
-                name="confirm_password"
+                name="confirmPassword"
+                onChange={valueinput}
+                value={user.confirmPassword}
                 required
                 className="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               />
@@ -164,8 +211,13 @@ function Login({ setflaglogin }) {
               <button
                 type="submit"
                 className="w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                disabled={fsignup}
               >
-                Sign Up
+                {fsignup ? (
+                  <span className="loading loading-dots loading-md"></span>
+                ) : (
+                  "Sign Up"
+                )}
               </button>
             </div>
           </form>
@@ -175,7 +227,7 @@ function Login({ setflaglogin }) {
               onClick={() => setflagesignin(true)}
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              Sign in
+              Login
             </button>
           </div>
         </div>

@@ -10,10 +10,10 @@ import NotFound from "./pages/NotFound";
 const routes = [
   {
     path: "/",
-    element: <Home/> ,
+    element: <Home/>,
   },
   {
-    path: "/:username",
+    path: "/user/:username",
     element: <PersonPage/> ,
   },
   {

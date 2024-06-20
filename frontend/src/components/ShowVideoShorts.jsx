@@ -14,21 +14,6 @@ import { useEffect, useRef, useState } from "react";
 import Comments from "./Comments";
 
 function ShowVideoShorts() {
-  const [likeflag, setlikeflag] = useState(false);
-  const [shareflag, setshareflag] = useState(false);
-  const [dislikeflag, setdislikeflag] = useState(false);
-  const [menulitems, setmenulitems] = useState(false);
-  const [showcomments, setshowcomments] = useState(false);
-  const [videomeutflag, setvideomeutflag] = useState(false);
-  const [dialogsub, setdialogsub] = useState(false);
-  const [flagplay, setflagplay] = useState(false);
-  const [sub, setsub] = useState(false);
-  const [likenumber, setlikenumber] = useState(435);
-  const divshowmenu = useRef({});
-  const btnmenuitem = useRef({});
-  const videotag = useRef({});
-  const loadingtag = useRef()
-
   const listcoments = [
     {
       id: 1,
@@ -151,6 +136,20 @@ function ShowVideoShorts() {
       replys: [],
     },
   ];
+  const [likeflag, setlikeflag] = useState(false);
+  const [shareflag, setshareflag] = useState(false);
+  const [dislikeflag, setdislikeflag] = useState(false);
+  const [menulitems, setmenulitems] = useState(false);
+  const [showcomments, setshowcomments] = useState(false);
+  const [videomeutflag, setvideomeutflag] = useState(false);
+  const [dialogsub, setdialogsub] = useState(false);
+  const [flagplay, setflagplay] = useState(false);
+  const [sub, setsub] = useState(false);
+  const [likenumber, setlikenumber] = useState(435);
+  const divshowmenu = useRef({});
+  const btnmenuitem = useRef({});
+  const videotag = useRef({});
+  const loadingtag = useRef()
 
   const setlikefunc = (e) => {
     e.stopPropagation()
@@ -162,7 +161,9 @@ function ShowVideoShorts() {
     setlikeflag(!likeflag);
     setdislikeflag(false);
   };
-  const setdislikefunc = () => {
+
+  const setdislikefunc = (e) => {
+    e.stopPropagation()
     if (likeflag) {
       setlikeflag(false);
       setlikenumber(likenumber - 1);
@@ -174,8 +175,7 @@ function ShowVideoShorts() {
   };
 
   const videomeutfunc = (e) => {
-    e.stopPropagation();
-    // e.stopPropagation()
+    e.stopPropagation()
     setvideomeutflag(!videomeutflag);
     videotag.current.muted = !videotag.current.muted;
     // console.log(videotag.current);
@@ -183,7 +183,6 @@ function ShowVideoShorts() {
 
   const move = (e) => {
     e.stopPropagation()
-    console.log(flagplay);
     if (flagplay) {
       videotag.current.pause();
     } else {
@@ -225,135 +224,136 @@ function ShowVideoShorts() {
   };
 
   return (
-    <div className="w-[450px] sm:w-[550px] md:w-[750px] md:flex md:justify-center h-[620px] overflow-y-auto shareshortspage overflow-scroll ">
+    <div className="  w-[450px] sm:w-[550px] md:w-[750px] md:flex md:justify-center h-[620px] overflow-y-auto shareshortspage overflow-scroll ">
       <div
         className={` ${
           showcomments ? "w-max" : " "
         } h-[570px]  flex justify-center gap-2`}
       >
         <div
-          onMouseDown={move}
           // onMouseLeave={leve}
-          className=" w-[340px] z-[6] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-lg shadow-violet-500 dark:shadow-violet-950"
+          className=" w-[340px] z-[6] relative mx-auto father flex flex-col h-[570px] rounded-2xl shadow-md shadow-violet-500 dark:shadow-violet-950"
         >
           <video
+          onMouseDown={move}
             ref={videotag}
             className=" h-full z-[6] w-full object-cover rounded-2xl "
             src={videoshorts}
           ></video>
 
           <div className="z-[6] child absolute top-0 left-0 w-full px-3 pt-3 flex justify-between">
-            <div className="left">
+            <div className="left ">
               <button
                 onClick={move}
-                className="hiddenn w-[35px] h-[35px] flex items-center justify-center text-white rounded-full bg-[#0000004a] "
+                className="hiddenn w-[40px] h-[40px] flex items-center justify-center text-white mask mask-hexagon bg-[#0000004a] "
               >
                 {flagplay ? (
-                  <TbPlayerPause size={22} />
+                    <TbPlayerPause size={24}  />
                 ) : (
-                  <IoPlayOutline size={22} />
+                    <IoPlayOutline size={24} />
                 )}
               </button>
             </div>
             <div className="right">
               <button
                 onClick={videomeutfunc}
-                className=" w-[35px] h-[35px] flex items-center justify-center text-white rounded-full bg-[#0000004a] "
+                className=" w-[40px] h-[40px] flex items-center justify-center text-white mask mask-hexagon bg-[#0000004a] "
               >
-                {videomeutflag ? <GoMute size={22} /> : <GoUnmute size={22} />}
+                {videomeutflag ? <GoMute size={24} /> : <GoUnmute size={24} />}
               </button>
             </div>
           </div>
 
+          {/* menu */}
           <div
             className={` ${
               showcomments ? "sm:-right-[0px] " : " sm:-right-[65px]"
-            } absolute z-[6] text-[13px]  bottom-0 right-0  w-[60px] h-max flex flex-col gap-3 items-center justify-center `}
+            } absolute z-[6] text-[13px] pointer-events-none  bottom-0 right-0  w-[60px] h-max flex flex-col gap-3 items-center justify-center `}
           >
             {/* btn-like */}
-            <div className="p-1 w-[100%] text-center h-max like">
+            <div className="p-1 w-[100%] text-center h-max flex flex-col items-center  like ">
               <button
                 onClick={setlikefunc}
                 className={` ${
                   likeflag
-                    ? " bg-[#ffffff] border border-black text-black  "
-                    : "bg-[#4e4e4e4a] text-white "
-                } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
+                    ? " bg-[#ffffff] text-black  "
+                    : "bg-[#40116075] text-white "
+                } p-1 z-[7] pointer-events-auto scale-95 hover:scale-105  w-[50px] h-[50px] flex items-center justify-center mask mask-hexagon `}
               >
                 <SlLike size={20} />
               </button>
               <p className={` ${
                 showcomments ? 'text-white' : ' text-white sm:text-black'
-              } `}>{likenumber}</p>
+              } dark:text-white `}>{likenumber}</p>
             </div>
             {/* btn-dislike */}
-            <div className="p-1 w-[100%] text-center h-max dislike">
+            <div className="p-1 w-[100%] text-center h-max flex flex-col items-center  dislike">
               <button
                 onClick={setdislikefunc}
                 className={` ${
                   dislikeflag
-                  ? " bg-[#ffffff] border border-black text-black  "
-                  : "bg-[#4e4e4e4a] text-white "
-                } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
+                  ? " bg-[#ffffff]  text-black  "
+                  : "bg-[#40116075] text-white "
+                } p-1 z-[7] pointer-events-auto scale-95 hover:scale-105  w-[45px] h-[45px] flex items-center justify-center mask mask-hexagon `}
               >
                 <SlDislike size={20} />
               </button>
               <p className={` ${
                 showcomments ? 'text-white' : ' text-white sm:text-black'
-              } `}>Dislike</p>
+              } dark:text-white `}>12</p>
             </div>
             {/* btn-comment */}
-            <div className="p-1 w-[100%] text-center h-max comment">
+            <div className="p-1 w-[100%] text-center h-max flex flex-col items-center comment">
               <div className="">
                 <button
                   onClick={() => setshowcomments(!showcomments)}
                   className={`${
                     showcomments
-                    ? " bg-[#ffffff] border border-black text-black  "
-                    : "bg-[#4e4e4e4a] text-white "
-                  } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
+                    ? " bg-[#ffffff] text-black  "
+                    : "bg-[#40116075] text-white "
+                  } p-1 z-[7] pointer-events-auto scale-95 hover:scale-105  w-[45px] h-[45px] flex items-center justify-center mask mask-hexagon `}
                 >
                   <MdComment size={20} />
                 </button>
                 <p className={` ${
                 showcomments ? 'text-white' : ' text-white sm:text-black'
-              } `}>4.3K</p>
+              } dark:text-white `}>4.3K</p>
               </div>
             </div>
             {/* btn-share */}
-            <div className="p-1 w-[100%] text-center h-max share">
+            <div className="p-1 w-[100%] text-center h-max flex flex-col items-center  share">
               <button
                 onClick={setshareflagfunc}
                 className={` ${
                   shareflag
-                  ? " bg-[#ffffff] border border-black text-black  "
-                  : "bg-[#4e4e4e4a] text-white "
-                } p-1 w-[45px] h-[45px] flex items-center justify-center rounded-full `}
+                  ? " bg-[#ffffff] text-black  "
+                  : "bg-[#40116075] text-white "
+                } p-1 z-[7] pointer-events-auto scale-95 hover:scale-105  w-[45px] h-[45px] flex items-center justify-center mask mask-hexagon `}
               >
                 <RiShareForwardFill size={20} />
               </button>
               <p className={` ${
                 showcomments ? 'text-white' : ' text-white sm:text-black'
-              } `}>Share</p>
+              } dark:text-white `}>Share</p>
             </div>
             {/* btn-menu */}
-            <div className="p-1 w-[100%] text-center h-max menu">
+            <div className="p-1 w-[100%] text-center h-max flex flex-col items-center menu">
               <button
                 ref={btnmenuitem}
                 onClick={menuitemsfunc}
                 className={`${
                   menulitems
-                  ? " bg-[#ffffff] border border-black text-black  "
-                  : "bg-[#4e4e4e4a] text-white "
-                }  p-1 w-[45px] btn-tst h-[45px] flex items-center justify-center rounded-full `}
+                  ? " bg-[#ffffff] text-black  "
+                  : "bg-[#40116075] text-white "
+                }  p-1 z-[7] pointer-events-auto scale-95 hover:scale-105  w-[45px] btn-tst h-[45px] flex items-center justify-center mask mask-hexagon `}
               >
                 <CiMenuKebab size={20} />
               </button>
             </div>
             {/* link-profile */}
-            <div className="p-1 w-[100%] text-center h-max img-prof">
+            <div className="p-1 w-[100%] text-center h-max flex flex-col items-center  img-prof">
               <img
-                className=" w-[45px] h-[45px] mx-auto "
+                className=" p-0.5 z-[7] pointer-events-auto scale-95 hover:scale-105  w-[45px] h-[45px] mx-auto mask mask-hexagon bg-violet-900 "
                 src={imgreact}
                 alt=""
               />
@@ -363,9 +363,9 @@ function ShowVideoShorts() {
             <div
               ref={divshowmenu}
               style={{ display: "none" }}
-              className=" text-black w-[300px] h-max z-[100] absolute flex flex-col gap-2 p-2 bottom-28 right-3 rounded-xl bg-gray-200 shadow-lg shadow-gray-800 "
+              className=" pointer-events-auto  w-[300px] h-max z-[100] absolute flex flex-col gap-1 p-2 bottom-28 right-3 rounded-xl bg  shadow-lg shadow-gray-800 "
             >
-              <button className="flex gap-1 items-center hover:bg-gray-300">
+              <button className="flex gap-1 items-center rounded-md px-1 py-1  hover:bg-violet-300 dark:hover:bg-violet-950 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   style={{ display: "block", width: "25px", height: "25px" }}
@@ -376,7 +376,7 @@ function ShowVideoShorts() {
                 Description
               </button>
 
-              <button className="flex gap-1 items-center hover:bg-gray-300">
+              <button className="flex gap-1 items-center rounded-md px-1 py-1  hover:bg-violet-300 dark:hover:bg-violet-950 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   focusable="false"
@@ -387,7 +387,7 @@ function ShowVideoShorts() {
                 Save to playlist
               </button>
 
-              <button className="flex gap-1 items-center hover:bg-gray-300">
+              <button className="flex gap-1 items-center rounded-md px-1 py-1  hover:bg-violet-300 dark:hover:bg-violet-950 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   focusable="false"
@@ -398,7 +398,7 @@ function ShowVideoShorts() {
                 Captions
               </button>
 
-              <button className="flex gap-1 items-center hover:bg-gray-300">
+              <button className="flex gap-1 items-center rounded-md px-1 py-1  hover:bg-violet-300 dark:hover:bg-violet-950 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   focusable="false"
@@ -411,7 +411,7 @@ function ShowVideoShorts() {
                 Don't recommend this channel
               </button>
 
-              <button className="flex gap-1 items-center hover:bg-gray-300">
+              <button className="flex gap-1 items-center rounded-md px-1 py-1  hover:bg-violet-300 dark:hover:bg-violet-950 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   focusable="false"
@@ -424,43 +424,43 @@ function ShowVideoShorts() {
             </div>
           </div>
 
-          <div className=" z-[6] absolute bottom-0 left-0 px-3 w-[250px] h-[100px] flex gap-2 flex-col justify-center items-start">
-            <div className=" w-full flex items-center gap-3">
-              <img src={imgreact} alt="" />
-              <NavLink className=" text-white" to={`/`}>
+          {/* data-accant */}
+          <div className=" absolute bottom-0 left-0 px-3 w-[250px] h-[100px] flex gap-2 flex-col justify-center items-start">
+            <div className=" w-full flex items-center gap-3 z-[7] pointer-events-auto">
+              <img className=" w-[40px] h-[40px]  mask mask-hexagon object-cover "  src={imgreact} alt="" />
+              <NavLink className=" text-white text-[14px]" to={`/`}>
                 abolfazl-tst
               </NavLink>
               <button
                 onClick={subscribefunc}
                 className={` ${
                   sub ? " bg-[#25232385] text-white" : " bg-yellow-50"
-                } px-2 py-1  rounded-2xl `}
+                } dark:text-black text-[14px]  px-2 py-1  rounded-lg `}
               >
                 Subscribe
               </button>
             </div>
-            <p className="text-white text-[13px]">
+            <p className="text-white text-[13px] z-[7] pointer-events-auto">
               انواع شعبده بازی کلوز آپ چین؟
             </p>
           </div>
         </div>
 
+
         {/* show-comments */}
-        {showcomments ? (
-          <div className=" w-[340px] h-[570px] rounded-2xl shadow-lg shadow-violet-500">
-            <div className="px-2 flex justify-between items-center">
-              <p>
+        {showcomments && (
+          <div className=" w-[340px] h-[570px] rounded-2xl shadow-md  shadow-violet-500">
+            <div className="px-3 flex justify-between items-center">
+              <p className="text-[13px]">
                 Comments <span>{listcoments.length}</span>
               </p>
-              <div className="">
-                <button className=" w-[30px] h-[30px] rounded-full hover:bg-gray-200">
+                <button onClick={()=>setshowcomments(false)}  className=" w-[35px] h-[35px] hover:bg-red-800 text-white  bg-red-600 scale-100 hover:scale-90  mask mask-hexagon">
                   X
                 </button>
-              </div>
             </div>
 
-            <div className=" w-full h-[450px] overflow-scroll widthscroll overflow-x-auto bg-red-100f">
-              <div className="flex flex-col gap-2">
+            <div className=" w-full h-[450px] overflow-scroll widthscroll overflow-x-auto rounded-md">
+              <div className="flex px-1  flex-col gap-0.5 ">
                 {listcoments.length > 0 ?
                   listcoments.map((item) => (
                     <Comments key={item.id} coment={item} />
@@ -468,32 +468,30 @@ function ShowVideoShorts() {
               </div>
             </div>
 
-            <div className="p-2">
-            <div className=" w-full p-1 flex gap-1 flex-col ">
+            <div className="p-1  rounded-t-lg ">
+            <div className=" w-full p-1 flex gap-1 flex-col rounded-t-lg ">
               <div className="w-full flex gap-2 items-center">
-                <img className=" w-[30px] h-[30px]" src={imgreact} alt="" />
+                <img className=" w-[35px] h-[35px]" src={imgreact} alt="" />
                 <input className=" w-full h-[20px] border-b-2 border-violet-400 bg-transparent outline-none p-1" placeholder="Add a reply..." type="text" name="" id="" />
               </div>
               <div className="w-full flex gap-4 justify-end">
-                <button className="py-1 px-2 bg-blue-500 rounded-lg text-white">Reply</button>
+                <button className="py-1 px-2 bg-blue-700 rounded-lg text-white">Reply</button>
               </div>
             </div>
             </div>
           </div>
-        ) : (
-          <></>
         )}
       </div>
 
       {/* share */}
-      {shareflag ? (
+      {shareflag && (
         <div className=" w-full h-full fixed z-[200] top-0 left-0 flex justify-center items-center bg-[#00000085]">
-          <div className=" w-[420px] h-[210px] p-2 bg-[#ffffff] shadow-lg shadow-gray-800 rounded-2xl">
+          <div className=" w-[420px] h-[210px] p-2 bg shadow-lg shadow-gray-800 rounded-2xl">
             <div className="px-1 mt-1 flex items-center justify-between">
               <span>Share</span>
               <button
                 onClick={() => setshareflag(false)}
-                className=" w-[35px] h-[35px] text-[15px] hover:text-black hover:bg-gray-200 rounded-full"
+                className=" w-[35px] h-[35px] text-[15px] text-white bg-red-600 mask mask-hexagon scale-100 hover:scale-110"
               >
                 X
               </button>
@@ -539,10 +537,6 @@ function ShowVideoShorts() {
                 </button>
 
                 <button className="w-[60px] h-[85px] text-[12px] flex flex-col justify-center ">
-                  <span className=" mx-auto">X</span>
-                </button>
-
-                <button className="w-[60px] h-[85px] text-[12px] flex flex-col justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     focusable="false"
@@ -726,22 +720,19 @@ function ShowVideoShorts() {
             </div>
           </div>
         </div>
-      ) : (
-        ""
       )}
 
       {/* dialog-sub */}
-      {dialogsub ? (
+      {dialogsub && (
         <div className=" w-full h-full fixed z-[200] top-0 left-0 flex justify-center items-center bg-[#00000036] ">
-          <div className="w-[270px] h-[100px] p-2 flex flex-col gap-3 justify-center bg-[#f5f5f8] shadow-lg shadow-gray-800 rounded-2xl">
+          <div className="w-[270px] h-[100px] p-2 flex flex-col gap-3 justify-center bg shadow-lg shadow-gray-800 rounded-2xl">
             <span className=" w-max mx-auto">
-              {" "}
               UnSubscribe from @abolfazl-tst?
             </span>
             <div className=" w-full flex justify-center gap-5">
               <button
                 onClick={() => setdialogsub(false)}
-                className=" px-2 py-1 rounded-lg hover:bg-gray-200 text-black"
+                className=" px-2 py-1 rounded-lg hover:bg-gray-200 dark:hover:bg-violet-950 "
               >
                 Cancel
               </button>
@@ -749,15 +740,13 @@ function ShowVideoShorts() {
                 onClick={() => {
                   setsub(false), setdialogsub(false);
                 }}
-                className=" px-2 py-1 rounded-lg hover:bg-gray-200 text-blue-600"
+                className=" px-2 py-1 rounded-lg hover:bg-gray-200 text-red-600 dark:hover:bg-violet-950"
               >
                 UnSubscribe
               </button>
             </div>
           </div>
         </div>
-      ) : (
-        <></>
       )}
       {/* loading-tag */}
     <p ref={loadingtag} className="w-0 h-[5px] absolute top-0 left-0 bg-red-500 z-[100]"></p>

@@ -20,10 +20,6 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json())
 
-// app.use(express.static(join(__dirname,"/frontend/dist")))
-// app.get("/",(req,res)=>{
-//   res.sendFile(join(__dirname,"frontend","dist","index.html"))
-// })
 app.use("/auth/",authRoutes)
 app.use("/video/",videoRoutes)
 
